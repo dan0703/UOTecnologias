@@ -1,0 +1,61 @@
+# Ignore the generated Entity Framework migration files
+*.mdf
+*.ldf
+*.ndf
+*.bak
+*.pubsettings
+
+# Ignore the ASP.NET Core runtime files
+*.runtimeconfig.json
+*.runtimeconfig.dev.json
+
+# Ignore the Visual Studio project and solution files
+*.csproj
+*.sln
+*.suo
+*.user
+*.vshost.exe
+
+# Ignore the NuGet packages folder
+packages/
+
+# Ignore the logs and temp folders
+logs/
+temp/
+
+# Ignore the bin and obj folders
+bin/
+obj/
+
+# Ignore the Entity Framework migrations folder
+migrations/
+
+# Ignore the Entity Framework Core Tools folder
+tools/
+
+# Ignore the Entity Framework Core Tools cache folder
+.efcore/
+
+# Ignore the Entity Framework Core Tools log file
+.efcore.log
+
+# Ignore the Entity Framework Core Tools temp folder
+.efcore.tmp/
+
+# Ignore the Entity Framework Core Tools user data folder
+.efcore/User.json
+
+# Ignore the Visual Studio Code settings file
+settings.json
+
+# Ignore the Visual Studio Code workspace file
+workspace.json
+
+# Ignore the Visual Studio Code extensions folder
+extensions/
+
+# Ignore the Visual Studio Code tasks.json file
+tasks.json
+
+# Ignore the Visual Studio Code launch.json file
+launch.json
