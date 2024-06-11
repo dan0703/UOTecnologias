@@ -1,0 +1,12 @@
+C:\Users\danse\source\repos\FEIService\FEIService\bin\Debug\Service.exe.config
+C:\Users\danse\source\repos\FEIService\FEIService\bin\Debug\Service.exe
+C:\Users\danse\source\repos\FEIService\FEIService\bin\Debug\Service.pdb
+C:\Users\danse\source\repos\FEIService\FEIService\obj\Debug\Service.csproj.AssemblyReference.cache
+C:\Users\danse\source\repos\FEIService\FEIService\obj\Debug\Service.csproj.CoreCompileInputs.cache
+C:\Users\danse\source\repos\FEIService\FEIService\obj\Debug\Service.exe
+C:\Users\danse\source\repos\FEIService\FEIService\obj\Debug\Service.pdb
+C:\Users\danse\source\repos\FEIService\FEIService\bin\Debug\EntityFramework.dll
+C:\Users\danse\source\repos\FEIService\FEIService\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\danse\source\repos\FEIService\FEIService\bin\Debug\EntityFramework.xml
+C:\Users\danse\source\repos\FEIService\FEIService\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\danse\source\repos\FEIService\FEIService\obj\Debug\Service.csproj.Up2Date
