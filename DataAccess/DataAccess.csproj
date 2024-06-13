@@ -93,6 +93,9 @@
     <Compile Include="User.cs">
       <DependentUpon>FEIDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewStudent.cs">
+      <DependentUpon>FEIDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="ViewStudentInfo.cs">
       <DependentUpon>FEIDB.tt</DependentUpon>
     </Compile>

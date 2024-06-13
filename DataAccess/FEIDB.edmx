@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="FEIDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="FEIDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Administrators">
           <Key>
             <PropertyRef Name="IdAdministrator" />
@@ -98,6 +98,28 @@ advertencia 6002: La tabla o vista 'FEIDB.dbo.ViewStudentInfoes' no tiene defini
           <Property Name="Tutor_IdTutor" Type="int" Nullable="false" />
           <Property Name="IdUser" Type="int" Nullable="false" />
           <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'FEIDB.dbo.ViewStudent' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="ViewStudent">
+          <Key>
+            <PropertyRef Name="IdStudent" />
+            <PropertyRef Name="FullName" />
+            <PropertyRef Name="IdCareer" />
+            <PropertyRef Name="CareerName" />
+            <PropertyRef Name="IdTutor" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Password" />
+            <PropertyRef Name="IdUser" />
+          </Key>
+          <Property Name="IdStudent" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IdCareer" Type="int" Nullable="false" />
+          <Property Name="CareerName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IdTutor" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IdUser" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_CareerStudent">
           <End Role="Careers" Type="Self.Careers" Multiplicity="1" />
@@ -198,6 +220,18 @@ advertencia 6002: La tabla o vista 'FEIDB.dbo.ViewStudentInfoes' no tiene defini
     [ViewStudentInfoes].[Password] AS [Password]
     FROM [dbo].[ViewStudentInfoes] AS [ViewStudentInfoes]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="ViewStudent" EntityType="Self.ViewStudent" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ViewStudent].[IdStudent] AS [IdStudent], 
+    [ViewStudent].[FullName] AS [FullName], 
+    [ViewStudent].[IdCareer] AS [IdCareer], 
+    [ViewStudent].[CareerName] AS [CareerName], 
+    [ViewStudent].[IdTutor] AS [IdTutor], 
+    [ViewStudent].[Name] AS [Name], 
+    [ViewStudent].[Password] AS [Password], 
+    [ViewStudent].[IdUser] AS [IdUser]
+    FROM [dbo].[ViewStudent] AS [ViewStudent]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_CareerStudent" Association="Self.FK_CareerStudent">
             <End Role="Careers" EntitySet="Careers" />
             <End Role="Students" EntitySet="Students" />
@@ -223,8 +257,7 @@ advertencia 6002: La tabla o vista 'FEIDB.dbo.ViewStudentInfoes' no tiene defini
             <End Role="Students" EntitySet="Students" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="FEIDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -436,7 +469,28 @@ advertencia 6002: La tabla o vista 'FEIDB.dbo.ViewStudentInfoes' no tiene defini
             <End Role="Users" EntitySet="Users" />
             <End Role="Students" EntitySet="Students" />
           </AssociationSet>
+          <EntitySet Name="ViewStudents" EntityType="FEIDBModel.ViewStudent" />
         </EntityContainer>
+        <EntityType Name="ViewStudent">
+          <Key>
+            <PropertyRef Name="IdStudent" />
+            <PropertyRef Name="FullName" />
+            <PropertyRef Name="IdCareer" />
+            <PropertyRef Name="CareerName" />
+            <PropertyRef Name="IdTutor" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Password" />
+            <PropertyRef Name="IdUser" />
+          </Key>
+          <Property Name="IdStudent" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="FullName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdCareer" Type="Int32" Nullable="false" />
+          <Property Name="CareerName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdTutor" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdUser" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -530,6 +584,20 @@ advertencia 6002: La tabla o vista 'FEIDB.dbo.ViewStudentInfoes' no tiene defini
                 <ScalarProperty Name="Tutor_IdTutor" ColumnName="Tutor_IdTutor" />
                 <ScalarProperty Name="IdUser" ColumnName="IdUser" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewStudents">
+            <EntityTypeMapping TypeName="FEIDBModel.ViewStudent">
+              <MappingFragment StoreEntitySet="ViewStudent">
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IdTutor" ColumnName="IdTutor" />
+                <ScalarProperty Name="CareerName" ColumnName="CareerName" />
+                <ScalarProperty Name="IdCareer" ColumnName="IdCareer" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="IdStudent" ColumnName="IdStudent" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

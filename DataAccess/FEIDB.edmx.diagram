@@ -20,6 +20,7 @@
         <AssociationConnector Association="FEIDBModel.FK_CareerStudent" ManuallyRouted="false" />
         <AssociationConnector Association="FEIDBModel.FK_TutorStudent" ManuallyRouted="false" />
         <AssociationConnector Association="FEIDBModel.FK_UserStudent" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="FEIDBModel.ViewStudent" Width="1.5" PointX="0.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
