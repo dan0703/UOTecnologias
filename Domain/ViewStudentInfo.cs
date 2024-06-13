@@ -16,5 +16,7 @@ namespace Domain
         [DataMember] public int idCareer { get; set; }
         [DataMember] public int idUser { get; set; }
         [DataMember] public string password { get; set; }
+        [DataMember] public string tutorName { get; set; }
+        [DataMember] public string careerName { get; set; }
     }
 }

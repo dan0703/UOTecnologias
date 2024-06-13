@@ -12,5 +12,8 @@ namespace Domain
     {
         [OperationContract]
         bool RegisterStudent(ViewStudentInfo student);
+
+        [OperationContract]
+        Student GetStudentNameById(string idStudent);
     }
 }

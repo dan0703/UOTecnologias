@@ -8,12 +8,9 @@ using System.Threading.Tasks;
 namespace Domain
 {
     [ServiceContract]
-    public interface ITutor
+    public interface IProcedure
     {
         [OperationContract]
-        List<Tutor> GetTutorsList();
-
-        [OperationContract]
-        Tutor GetTutorById(int idTutor);
+        List<Procedure> GetProcedureList();
     }
 }

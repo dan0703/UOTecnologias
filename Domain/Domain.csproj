@@ -43,14 +43,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Appointment.cs" />
     <Compile Include="Career.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="Intafaces\IAppointment.cs" />
     <Compile Include="Intafaces\ICareer.cs" />
+    <Compile Include="Intafaces\IProcedure.cs" />
     <Compile Include="Intafaces\IStudent.cs" />
     <Compile Include="Intafaces\ITutor.cs" />
     <Compile Include="Intafaces\IViewStudentInfo.cs" />
+    <Compile Include="Procedure.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Student.cs" />
+    <Compile Include="StudentCallbackChanels.cs" />
     <Compile Include="Tutor.cs" />
     <Compile Include="ViewStudentInfo.cs" />
   </ItemGroup>
