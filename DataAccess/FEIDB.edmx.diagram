@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c9b5b6f1d9c24a56a67d659b42493095" Name="Diagram1" >
+        <EntityTypeShape EntityType="FEIDB.User" Width="1.5" PointX="2.625" PointY="1.5" />
+        <EntityTypeShape EntityType="FEIDB.Tutor" Width="1.5" PointX="8.375" PointY="2.125" />
+        <EntityTypeShape EntityType="FEIDB.Appointment" Width="1.875" PointX="5.375" PointY="5.625" />
+        <EntityTypeShape EntityType="FEIDB.Career" Width="1.5" PointX="8.375" PointY="4" />
+        <EntityTypeShape EntityType="FEIDB.Administrator" Width="1.5" PointX="2.625" PointY="4.5" />
+        <EntityTypeShape EntityType="FEIDB.Student" Width="1.5" PointX="5.375" PointY="2.875" />
+        <AssociationConnector Association="FEIDB.TutorStudent" />
+        <AssociationConnector Association="FEIDB.CareerStudent" />
+        <AssociationConnector Association="FEIDB.StudentAppointment" />
+        <AssociationConnector Association="FEIDB.AdministratorUser" />
+        <AssociationConnector Association="FEIDB.StudentUser" />
+        <EntityTypeShape EntityType="FEIDB.Procedure" Width="1.5" PointX="8.375" PointY="6.125" />
+        <AssociationConnector Association="FEIDB.ProcedureAppointment" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
