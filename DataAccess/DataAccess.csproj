@@ -52,39 +52,76 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administrator.cs">
+      <DependentUpon>FEIDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Appointment.cs">
+      <DependentUpon>FEIDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Career.cs">
+      <DependentUpon>FEIDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="FEIDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>FEIDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FEIDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FEIDB.tt</DependentUpon>
     </Compile>
     <Compile Include="FEIDB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>FEIDB.edmx</DependentUpon>
     </Compile>
+    <Compile Include="GetAppointmentInfo.cs">
+      <DependentUpon>FEIDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetStudentInfo.cs">
+      <DependentUpon>FEIDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Procedure.cs">
+      <DependentUpon>FEIDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Student.cs">
+      <DependentUpon>FEIDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tutor.cs">
+      <DependentUpon>FEIDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>FEIDB.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <EntityDeploy Include="FEIDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>FEIDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="App.Config" />
     <None Include="FEIDB.edmx.diagram">
       <DependentUpon>FEIDB.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="FEIDB.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>FEIDB.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="FEIDB.edmx.sql" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Content Include="FEIDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FEIDB.edmx</DependentUpon>
+      <LastGenOutput>FEIDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="FEIDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FEIDB.edmx</DependentUpon>
+      <LastGenOutput>FEIDB.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

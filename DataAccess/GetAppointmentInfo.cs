@@ -12,16 +12,15 @@ namespace DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class Appointment
+    public partial class GetAppointmentInfo
     {
-        public int IdAppointment { get; set; }
         public System.DateTime AttendedDate { get; set; }
         public long Duration { get; set; }
         public short Status { get; set; }
-        public string NotAttendedReason { get; set; }
-        public string Student_IdStudent { get; set; }
-        public int Procedure_IdProcedure { get; set; }
-    
-        public virtual Procedure Procedure { get; set; }
+        public string FullName { get; set; }
+        public string IdStudent { get; set; }
+        public string Name { get; set; }
+        public string CareerName { get; set; }
+        public string Expr1 { get; set; }
     }
 }

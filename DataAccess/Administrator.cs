@@ -16,7 +16,8 @@ namespace DataAccess
     {
         public int IdAdministrator { get; set; }
         public string FullName { get; set; }
+        public int Users_IdUser { get; set; }
     
-        public virtual User Users { get; set; }
+        public virtual User User { get; set; }
     }
 }

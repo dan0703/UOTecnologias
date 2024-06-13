@@ -13,3 +13,8 @@ C:\Users\danse\source\repos\FEIService\Host\obj\Debug\Host.csproj.CoreCompileInp
 C:\Users\danse\source\repos\FEIService\Host\obj\Debug\Host.csproj.Up2Date
 C:\Users\danse\source\repos\FEIService\Host\obj\Debug\Host.exe
 C:\Users\danse\source\repos\FEIService\Host\obj\Debug\Host.pdb
+C:\Users\danse\source\repos\FEIService\Host\bin\Debug\DataAccess.exe
+C:\Users\danse\source\repos\FEIService\Host\bin\Debug\DataAccess.pdb
+C:\Users\danse\source\repos\FEIService\Host\bin\Debug\DataAccess.exe.config
+C:\Users\danse\source\repos\FEIService\Host\bin\Debug\Domain.dll
+C:\Users\danse\source\repos\FEIService\Host\bin\Debug\Domain.pdb

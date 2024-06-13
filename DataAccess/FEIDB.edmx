@@ -4,428 +4,546 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="FEIDB.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityContainer Name="FEIDBStoreContainer">
-    <EntitySet Name="Users" EntityType="FEIDB.Store.Users" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Tutors" EntityType="FEIDB.Store.Tutors" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Appointments" EntityType="FEIDB.Store.Appointments" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Careers" EntityType="FEIDB.Store.Careers" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Administrators" EntityType="FEIDB.Store.Administrators" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Students" EntityType="FEIDB.Store.Students" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Procedures" EntityType="FEIDB.Store.Procedures" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="TutorStudent" Association="FEIDB.Store.TutorStudent">
-      <End Role="Tutor" EntitySet="Tutors" />
-      <End Role="Student" EntitySet="Students" />
-    </AssociationSet>
-    <AssociationSet Name="CareerStudent" Association="FEIDB.Store.CareerStudent">
-      <End Role="Career" EntitySet="Careers" />
-      <End Role="Student" EntitySet="Students" />
-    </AssociationSet>
-    <AssociationSet Name="StudentAppointment" Association="FEIDB.Store.StudentAppointment">
-      <End Role="Student" EntitySet="Students" />
-      <End Role="Appointment" EntitySet="Appointments" />
-    </AssociationSet>
-    <AssociationSet Name="AdministratorUser" Association="FEIDB.Store.AdministratorUser">
-      <End Role="Administrator" EntitySet="Administrators" />
-      <End Role="User" EntitySet="Users" />
-    </AssociationSet>
-    <AssociationSet Name="StudentUser" Association="FEIDB.Store.StudentUser">
-      <End Role="Student" EntitySet="Students" />
-      <End Role="User" EntitySet="Users" />
-    </AssociationSet>
-    <AssociationSet Name="ProcedureAppointment" Association="FEIDB.Store.ProcedureAppointment">
-      <End Role="Procedure" EntitySet="Procedures" />
-      <End Role="Appointment" EntitySet="Appointments" />
-    </AssociationSet>
-  </EntityContainer>
-  <EntityType Name="Users">
-    <Key>
-      <PropertyRef Name="IdUser" />
-    </Key>
-    <Property Name="IdUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Tutors">
-    <Key>
-      <PropertyRef Name="IdTutor" />
-    </Key>
-    <Property Name="IdTutor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Appointments">
-    <Key>
-      <PropertyRef Name="IdAppointment" />
-    </Key>
-    <Property Name="IdAppointment" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="AttendedDate" Type="datetime" Nullable="false" />
-    <Property Name="Duration" Type="bigint" Nullable="false" />
-    <Property Name="Status" Type="smallint" Nullable="false" DefaultValue="0" />
-    <Property Name="NotAttendedReason" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Student_IdStudent" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Procedure_IdProcedure" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Careers">
-    <Key>
-      <PropertyRef Name="IdCareer" />
-    </Key>
-    <Property Name="IdCareer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="CareerName" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Administrators">
-    <Key>
-      <PropertyRef Name="IdAdministrator" />
-    </Key>
-    <Property Name="IdAdministrator" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="FullName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Users_IdUser" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Students">
-    <Key>
-      <PropertyRef Name="IdStudent" />
-    </Key>
-    <Property Name="IdStudent" Type="nvarchar(max)" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="FullName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Tutor_IdTutor" Type="int" Nullable="false" />
-    <Property Name="Career_IdCareer" Type="int" Nullable="false" />
-    <Property Name="Users_IdUser" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Procedures">
-    <Key>
-      <PropertyRef Name="IdProcedure" />
-    </Key>
-    <Property Name="IdProcedure" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <Association Name="TutorStudent">
-    <End Role="Tutor" Type="FEIDB.Store.Tutors" Multiplicity="1" />
-    <End Role="Student" Type="FEIDB.Store.Students" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Tutor">
-        <PropertyRef Name="IdTutor" />
-      </Principal>
-      <Dependent Role="Student">
-        <PropertyRef Name="Tutor_IdTutor" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="CareerStudent">
-    <End Role="Career" Type="FEIDB.Store.Careers" Multiplicity="1" />
-    <End Role="Student" Type="FEIDB.Store.Students" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Career">
-        <PropertyRef Name="IdCareer" />
-      </Principal>
-      <Dependent Role="Student">
-        <PropertyRef Name="Career_IdCareer" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="StudentAppointment">
-    <End Role="Student" Type="FEIDB.Store.Students" Multiplicity="1" />
-    <End Role="Appointment" Type="FEIDB.Store.Appointments" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Student">
-        <PropertyRef Name="IdStudent" />
-      </Principal>
-      <Dependent Role="Appointment">
-        <PropertyRef Name="Student_IdStudent" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="AdministratorUser">
-    <End Role="Administrator" Type="FEIDB.Store.Administrators" Multiplicity="*" />
-    <End Role="User" Type="FEIDB.Store.Users" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="IdUser" />
-      </Principal>
-      <Dependent Role="Administrator">
-        <PropertyRef Name="Users_IdUser" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="StudentUser">
-    <End Role="Student" Type="FEIDB.Store.Students" Multiplicity="*" />
-    <End Role="User" Type="FEIDB.Store.Users" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="IdUser" />
-      </Principal>
-      <Dependent Role="Student">
-        <PropertyRef Name="Users_IdUser" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="ProcedureAppointment">
-    <End Role="Procedure" Type="FEIDB.Store.Procedures" Multiplicity="1" />
-    <End Role="Appointment" Type="FEIDB.Store.Appointments" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Procedure">
-        <PropertyRef Name="IdProcedure" />
-      </Principal>
-      <Dependent Role="Appointment">
-        <PropertyRef Name="Procedure_IdProcedure" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-</Schema></edmx:StorageModels>
-    <!-- CSDL content -->
-    <edmx:ConceptualModels>
-      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="FEIDB" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
-        <EntityContainer Name="FEIDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Users" EntityType="FEIDB.User" />
-          <EntitySet Name="Tutors" EntityType="FEIDB.Tutor" />
-          <EntitySet Name="Appointments" EntityType="FEIDB.Appointment" />
-          <EntitySet Name="Careers" EntityType="FEIDB.Career" />
-          <EntitySet Name="Administrators" EntityType="FEIDB.Administrator" />
-          <EntitySet Name="Students" EntityType="FEIDB.Student" />
-          <AssociationSet Name="TutorStudent" Association="FEIDB.TutorStudent">
-            <End Role="Tutor" EntitySet="Tutors" />
-            <End Role="Student" EntitySet="Students" />
-          </AssociationSet>
-          <AssociationSet Name="CareerStudent" Association="FEIDB.CareerStudent">
-            <End Role="Career" EntitySet="Careers" />
-            <End Role="Student" EntitySet="Students" />
-          </AssociationSet>
-          <AssociationSet Name="StudentAppointment" Association="FEIDB.StudentAppointment">
-            <End Role="Student" EntitySet="Students" />
-            <End Role="Appointment" EntitySet="Appointments" />
-          </AssociationSet>
-          <AssociationSet Name="AdministratorUser" Association="FEIDB.AdministratorUser">
-            <End Role="Administrator" EntitySet="Administrators" />
-            <End Role="User" EntitySet="Users" />
-          </AssociationSet>
-          <AssociationSet Name="StudentUser" Association="FEIDB.StudentUser">
-            <End Role="Student" EntitySet="Students" />
-            <End Role="User" EntitySet="Users" />
-          </AssociationSet>
-          <EntitySet Name="Procedures" EntityType="FEIDB.Procedure" />
-          <AssociationSet Name="ProcedureAppointment" Association="FEIDB.ProcedureAppointment">
-            <End Role="Procedure" EntitySet="Procedures" />
-            <End Role="Appointment" EntitySet="Appointments" />
-          </AssociationSet>
-        </EntityContainer>
-        <EntityType Name="User">
+      <Schema Namespace="FEIDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Administrators">
           <Key>
-            <PropertyRef Name="IdUser" />
+            <PropertyRef Name="IdAdministrator" />
           </Key>
-          <Property Name="IdUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Password" Type="String" Nullable="false" />
-          <NavigationProperty Name="Administrator" Relationship="FEIDB.AdministratorUser" FromRole="User" ToRole="Administrator" />
-          <NavigationProperty Name="Student" Relationship="FEIDB.StudentUser" FromRole="User" ToRole="Student" />
+          <Property Name="IdAdministrator" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Users_IdUser" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="Tutor">
+        <EntityType Name="Appointments">
+          <Key>
+            <PropertyRef Name="IdAppointment" />
+          </Key>
+          <Property Name="IdAppointment" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AttendedDate" Type="datetime" Nullable="false" />
+          <Property Name="Duration" Type="bigint" Nullable="false" />
+          <Property Name="Status" Type="smallint" Nullable="false" />
+          <Property Name="NotAttendedReason" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Student_IdStudent" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Procedure_IdProcedure" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Careers">
+          <Key>
+            <PropertyRef Name="IdCareer" />
+          </Key>
+          <Property Name="IdCareer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CareerName" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Procedures">
+          <Key>
+            <PropertyRef Name="IdProcedure" />
+          </Key>
+          <Property Name="IdProcedure" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'FEIDB.dbo.Students' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Students">
+          <Key>
+            <PropertyRef Name="IdStudent" />
+            <PropertyRef Name="FullName" />
+            <PropertyRef Name="Tutor_IdTutor" />
+            <PropertyRef Name="Career_IdCareer" />
+            <PropertyRef Name="Users_IdUser" />
+          </Key>
+          <Property Name="IdStudent" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Tutor_IdTutor" Type="int" Nullable="false" />
+          <Property Name="Career_IdCareer" Type="int" Nullable="false" />
+          <Property Name="Users_IdUser" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tutors">
           <Key>
             <PropertyRef Name="IdTutor" />
           </Key>
-          <Property Name="IdTutor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" />
-          <NavigationProperty Name="Students" Relationship="FEIDB.TutorStudent" FromRole="Tutor" ToRole="Student" />
+          <Property Name="IdTutor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="IdUser" />
+          </Key>
+          <Property Name="IdUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'FEIDB.dbo.GetAppointmentInfo' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="GetAppointmentInfo">
+          <Key>
+            <PropertyRef Name="AttendedDate" />
+            <PropertyRef Name="Duration" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="FullName" />
+            <PropertyRef Name="IdStudent" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="CareerName" />
+            <PropertyRef Name="Expr1" />
+          </Key>
+          <Property Name="AttendedDate" Type="datetime" Nullable="false" />
+          <Property Name="Duration" Type="bigint" Nullable="false" />
+          <Property Name="Status" Type="smallint" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IdStudent" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CareerName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Expr1" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'FEIDB.dbo.GetStudentInfo' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="GetStudentInfo">
+          <Key>
+            <PropertyRef Name="IdStudent" />
+            <PropertyRef Name="FullName" />
+            <PropertyRef Name="Tutor_IdTutor" />
+            <PropertyRef Name="Career_IdCareer" />
+            <PropertyRef Name="Password" />
+          </Key>
+          <Property Name="IdStudent" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Tutor_IdTutor" Type="int" Nullable="false" />
+          <Property Name="Career_IdCareer" Type="int" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_AdministratorUser">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Administrators" Type="Self.Administrators" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="Administrators">
+              <PropertyRef Name="Users_IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CareerStudent">
+          <End Role="Careers" Type="Self.Careers" Multiplicity="1" />
+          <End Role="Students" Type="Self.Students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Careers">
+              <PropertyRef Name="IdCareer" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="Career_IdCareer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProcedureAppointment">
+          <End Role="Procedures" Type="Self.Procedures" Multiplicity="1" />
+          <End Role="Appointments" Type="Self.Appointments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Procedures">
+              <PropertyRef Name="IdProcedure" />
+            </Principal>
+            <Dependent Role="Appointments">
+              <PropertyRef Name="Procedure_IdProcedure" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentUser">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Students" Type="Self.Students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="Users_IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TutorStudent">
+          <End Role="Tutors" Type="Self.Tutors" Multiplicity="1" />
+          <End Role="Students" Type="Self.Students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tutors">
+              <PropertyRef Name="IdTutor" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="Tutor_IdTutor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FEIDBModelStoreContainer">
+          <EntitySet Name="Administrators" EntityType="Self.Administrators" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Appointments" EntityType="Self.Appointments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Careers" EntityType="Self.Careers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Procedures" EntityType="Self.Procedures" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tutors" EntityType="Self.Tutors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Students" EntityType="Self.Students" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Students].[IdStudent] AS [IdStudent], 
+    [Students].[FullName] AS [FullName], 
+    [Students].[Tutor_IdTutor] AS [Tutor_IdTutor], 
+    [Students].[Career_IdCareer] AS [Career_IdCareer], 
+    [Students].[Users_IdUser] AS [Users_IdUser]
+    FROM [dbo].[Students] AS [Students]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="GetAppointmentInfo" EntityType="Self.GetAppointmentInfo" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [GetAppointmentInfo].[AttendedDate] AS [AttendedDate], 
+    [GetAppointmentInfo].[Duration] AS [Duration], 
+    [GetAppointmentInfo].[Status] AS [Status], 
+    [GetAppointmentInfo].[FullName] AS [FullName], 
+    [GetAppointmentInfo].[IdStudent] AS [IdStudent], 
+    [GetAppointmentInfo].[Name] AS [Name], 
+    [GetAppointmentInfo].[CareerName] AS [CareerName], 
+    [GetAppointmentInfo].[Expr1] AS [Expr1]
+    FROM [dbo].[GetAppointmentInfo] AS [GetAppointmentInfo]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="GetStudentInfo" EntityType="Self.GetStudentInfo" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [GetStudentInfo].[IdStudent] AS [IdStudent], 
+    [GetStudentInfo].[FullName] AS [FullName], 
+    [GetStudentInfo].[Tutor_IdTutor] AS [Tutor_IdTutor], 
+    [GetStudentInfo].[Career_IdCareer] AS [Career_IdCareer], 
+    [GetStudentInfo].[Password] AS [Password]
+    FROM [dbo].[GetStudentInfo] AS [GetStudentInfo]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_AdministratorUser" Association="Self.FK_AdministratorUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Administrators" EntitySet="Administrators" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CareerStudent" Association="Self.FK_CareerStudent">
+            <End Role="Careers" EntitySet="Careers" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProcedureAppointment" Association="Self.FK_ProcedureAppointment">
+            <End Role="Procedures" EntitySet="Procedures" />
+            <End Role="Appointments" EntitySet="Appointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentUser" Association="Self.FK_StudentUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TutorStudent" Association="Self.FK_TutorStudent">
+            <End Role="Tutors" EntitySet="Tutors" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FEIDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Administrator">
+          <Key>
+            <PropertyRef Name="IdAdministrator" />
+          </Key>
+          <Property Name="IdAdministrator" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Users_IdUser" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_AdministratorUser" FromRole="Administrators" ToRole="Users" />
         </EntityType>
         <EntityType Name="Appointment">
           <Key>
             <PropertyRef Name="IdAppointment" />
           </Key>
           <Property Name="IdAppointment" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="AttendedDate" Type="DateTime" Nullable="false" />
+          <Property Name="AttendedDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Duration" Type="Int64" Nullable="false" />
-          <Property Name="Status" Type="Int16" Nullable="false" DefaultValue="0" />
-          <NavigationProperty Name="Student" Relationship="FEIDB.StudentAppointment" FromRole="Appointment" ToRole="Student" />
-          <Property Name="NotAttendedReason" Type="String" Nullable="false" />
-          <NavigationProperty Name="Procedure" Relationship="FEIDB.ProcedureAppointment" FromRole="Appointment" ToRole="Procedure" />
+          <Property Name="Status" Type="Int16" Nullable="false" />
+          <Property Name="NotAttendedReason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Student_IdStudent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Procedure_IdProcedure" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Procedure" Relationship="Self.FK_ProcedureAppointment" FromRole="Appointments" ToRole="Procedures" />
         </EntityType>
         <EntityType Name="Career">
           <Key>
             <PropertyRef Name="IdCareer" />
           </Key>
           <Property Name="IdCareer" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CareerName" Type="String" Nullable="false" />
-          <NavigationProperty Name="Students" Relationship="FEIDB.CareerStudent" FromRole="Career" ToRole="Student" />
+          <Property Name="CareerName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Students" Relationship="Self.FK_CareerStudent" FromRole="Careers" ToRole="Students" />
         </EntityType>
-        <EntityType Name="Administrator">
-          <Key>
-            <PropertyRef Name="IdAdministrator" />
-          </Key>
-          <Property Name="IdAdministrator" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FullName" Type="String" Nullable="false" />
-          <NavigationProperty Name="Users" Relationship="FEIDB.AdministratorUser" FromRole="Administrator" ToRole="User" />
-        </EntityType>
-        <EntityType Name="Student">
-          <Key>
-            <PropertyRef Name="IdStudent" />
-          </Key>
-          <Property Name="IdStudent" Type="String" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FullName" Type="String" Nullable="false" />
-          <NavigationProperty Name="Tutor" Relationship="FEIDB.TutorStudent" FromRole="Student" ToRole="Tutor" />
-          <NavigationProperty Name="Career" Relationship="FEIDB.CareerStudent" FromRole="Student" ToRole="Career" />
-          <NavigationProperty Name="Appointments" Relationship="FEIDB.StudentAppointment" FromRole="Student" ToRole="Appointment" />
-          <NavigationProperty Name="Users" Relationship="FEIDB.StudentUser" FromRole="Student" ToRole="User" />
-        </EntityType>
-        <Association Name="TutorStudent">
-          <End Type="FEIDB.Tutor" Role="Tutor" Multiplicity="1" />
-          <End Type="FEIDB.Student" Role="Student" Multiplicity="*" />
-        </Association>
-        <Association Name="CareerStudent">
-          <End Type="FEIDB.Career" Role="Career" Multiplicity="1" />
-          <End Type="FEIDB.Student" Role="Student" Multiplicity="*" />
-        </Association>
-        <Association Name="StudentAppointment">
-          <End Type="FEIDB.Student" Role="Student" Multiplicity="1" />
-          <End Type="FEIDB.Appointment" Role="Appointment" Multiplicity="*" />
-        </Association>
-        <Association Name="AdministratorUser">
-          <End Type="FEIDB.Administrator" Role="Administrator" Multiplicity="1" />
-          <End Type="FEIDB.User" Role="User" Multiplicity="1" />
-        </Association>
-        <Association Name="StudentUser">
-          <End Type="FEIDB.Student" Role="Student" Multiplicity="1" />
-          <End Type="FEIDB.User" Role="User" Multiplicity="1" />
-        </Association>
         <EntityType Name="Procedure">
           <Key>
             <PropertyRef Name="IdProcedure" />
           </Key>
           <Property Name="IdProcedure" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" />
-          <NavigationProperty Name="Appointments" Relationship="FEIDB.ProcedureAppointment" FromRole="Procedure" ToRole="Appointment" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Appointments" Relationship="Self.FK_ProcedureAppointment" FromRole="Procedures" ToRole="Appointments" />
         </EntityType>
-        <Association Name="ProcedureAppointment">
-          <End Type="FEIDB.Procedure" Role="Procedure" Multiplicity="1" />
-          <End Type="FEIDB.Appointment" Role="Appointment" Multiplicity="*" />
+        <EntityType Name="Tutor">
+          <Key>
+            <PropertyRef Name="IdTutor" />
+          </Key>
+          <Property Name="IdTutor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Students" Relationship="Self.FK_TutorStudent" FromRole="Tutors" ToRole="Students" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="IdUser" />
+          </Key>
+          <Property Name="IdUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Administrators" Relationship="Self.FK_AdministratorUser" FromRole="Users" ToRole="Administrators" />
+          <NavigationProperty Name="Students" Relationship="Self.FK_StudentUser" FromRole="Users" ToRole="Students" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="IdStudent" />
+            <PropertyRef Name="FullName" />
+            <PropertyRef Name="Tutor_IdTutor" />
+            <PropertyRef Name="Career_IdCareer" />
+            <PropertyRef Name="Users_IdUser" />
+          </Key>
+          <Property Name="IdStudent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tutor_IdTutor" Type="Int32" Nullable="false" />
+          <Property Name="Career_IdCareer" Type="Int32" Nullable="false" />
+          <Property Name="Users_IdUser" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Career" Relationship="Self.FK_CareerStudent" FromRole="Students" ToRole="Careers" />
+          <NavigationProperty Name="Tutor" Relationship="Self.FK_TutorStudent" FromRole="Students" ToRole="Tutors" />
+          <NavigationProperty Name="User" Relationship="Self.FK_StudentUser" FromRole="Students" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="GetAppointmentInfo">
+          <Key>
+            <PropertyRef Name="AttendedDate" />
+            <PropertyRef Name="Duration" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="FullName" />
+            <PropertyRef Name="IdStudent" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="CareerName" />
+            <PropertyRef Name="Expr1" />
+          </Key>
+          <Property Name="AttendedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Duration" Type="Int64" Nullable="false" />
+          <Property Name="Status" Type="Int16" Nullable="false" />
+          <Property Name="FullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdStudent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CareerName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Expr1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GetStudentInfo">
+          <Key>
+            <PropertyRef Name="IdStudent" />
+            <PropertyRef Name="FullName" />
+            <PropertyRef Name="Tutor_IdTutor" />
+            <PropertyRef Name="Career_IdCareer" />
+            <PropertyRef Name="Password" />
+          </Key>
+          <Property Name="IdStudent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tutor_IdTutor" Type="Int32" Nullable="false" />
+          <Property Name="Career_IdCareer" Type="Int32" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_AdministratorUser">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Administrators" Type="Self.Administrator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="Administrators">
+              <PropertyRef Name="Users_IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ProcedureAppointment">
+          <End Role="Procedures" Type="Self.Procedure" Multiplicity="1" />
+          <End Role="Appointments" Type="Self.Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Procedures">
+              <PropertyRef Name="IdProcedure" />
+            </Principal>
+            <Dependent Role="Appointments">
+              <PropertyRef Name="Procedure_IdProcedure" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CareerStudent">
+          <End Role="Careers" Type="Self.Career" Multiplicity="1" />
+          <End Role="Students" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Careers">
+              <PropertyRef Name="IdCareer" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="Career_IdCareer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TutorStudent">
+          <End Role="Tutors" Type="Self.Tutor" Multiplicity="1" />
+          <End Role="Students" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tutors">
+              <PropertyRef Name="IdTutor" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="Tutor_IdTutor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentUser">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Students" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="Users_IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FEIDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Administrators" EntityType="Self.Administrator" />
+          <EntitySet Name="Appointments" EntityType="Self.Appointment" />
+          <EntitySet Name="Careers" EntityType="Self.Career" />
+          <EntitySet Name="Procedures" EntityType="Self.Procedure" />
+          <EntitySet Name="Tutors" EntityType="Self.Tutor" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="Students" EntityType="Self.Student" />
+          <EntitySet Name="GetAppointmentInfoes" EntityType="Self.GetAppointmentInfo" />
+          <EntitySet Name="GetStudentInfoes" EntityType="Self.GetStudentInfo" />
+          <AssociationSet Name="FK_AdministratorUser" Association="Self.FK_AdministratorUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Administrators" EntitySet="Administrators" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProcedureAppointment" Association="Self.FK_ProcedureAppointment">
+            <End Role="Procedures" EntitySet="Procedures" />
+            <End Role="Appointments" EntitySet="Appointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CareerStudent" Association="Self.FK_CareerStudent">
+            <End Role="Careers" EntitySet="Careers" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TutorStudent" Association="Self.FK_TutorStudent">
+            <End Role="Tutors" EntitySet="Tutors" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentUser" Association="Self.FK_StudentUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="FEIDBStoreContainer" CdmEntityContainer="FEIDBEntities">
-    <EntitySetMapping Name="Users">
-      <EntityTypeMapping TypeName="IsTypeOf(FEIDB.User)">
-        <MappingFragment StoreEntitySet="Users">
-          <ScalarProperty Name="IdUser" ColumnName="IdUser" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Tutors">
-      <EntityTypeMapping TypeName="IsTypeOf(FEIDB.Tutor)">
-        <MappingFragment StoreEntitySet="Tutors">
-          <ScalarProperty Name="IdTutor" ColumnName="IdTutor" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Appointments">
-      <EntityTypeMapping TypeName="IsTypeOf(FEIDB.Appointment)">
-        <MappingFragment StoreEntitySet="Appointments">
-          <ScalarProperty Name="IdAppointment" ColumnName="IdAppointment" />
-          <ScalarProperty Name="AttendedDate" ColumnName="AttendedDate" />
-          <ScalarProperty Name="Duration" ColumnName="Duration" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="NotAttendedReason" ColumnName="NotAttendedReason" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Careers">
-      <EntityTypeMapping TypeName="IsTypeOf(FEIDB.Career)">
-        <MappingFragment StoreEntitySet="Careers">
-          <ScalarProperty Name="IdCareer" ColumnName="IdCareer" />
-          <ScalarProperty Name="CareerName" ColumnName="CareerName" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Administrators">
-      <EntityTypeMapping TypeName="IsTypeOf(FEIDB.Administrator)">
-        <MappingFragment StoreEntitySet="Administrators">
-          <ScalarProperty Name="IdAdministrator" ColumnName="IdAdministrator" />
-          <ScalarProperty Name="FullName" ColumnName="FullName" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Students">
-      <EntityTypeMapping TypeName="IsTypeOf(FEIDB.Student)">
-        <MappingFragment StoreEntitySet="Students">
-          <ScalarProperty Name="IdStudent" ColumnName="IdStudent" />
-          <ScalarProperty Name="FullName" ColumnName="FullName" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Procedures">
-      <EntityTypeMapping TypeName="IsTypeOf(FEIDB.Procedure)">
-        <MappingFragment StoreEntitySet="Procedures">
-          <ScalarProperty Name="IdProcedure" ColumnName="IdProcedure" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <AssociationSetMapping Name="TutorStudent" TypeName="FEIDB.TutorStudent" StoreEntitySet="Students">
-      <EndProperty Name="Tutor">
-        <ScalarProperty Name="IdTutor" ColumnName="Tutor_IdTutor" />
-      </EndProperty>
-      <EndProperty Name="Student">
-        <ScalarProperty Name="IdStudent" ColumnName="IdStudent" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="CareerStudent" TypeName="FEIDB.CareerStudent" StoreEntitySet="Students">
-      <EndProperty Name="Career">
-        <ScalarProperty Name="IdCareer" ColumnName="Career_IdCareer" />
-      </EndProperty>
-      <EndProperty Name="Student">
-        <ScalarProperty Name="IdStudent" ColumnName="IdStudent" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="StudentAppointment" TypeName="FEIDB.StudentAppointment" StoreEntitySet="Appointments">
-      <EndProperty Name="Student">
-        <ScalarProperty Name="IdStudent" ColumnName="Student_IdStudent" />
-      </EndProperty>
-      <EndProperty Name="Appointment">
-        <ScalarProperty Name="IdAppointment" ColumnName="IdAppointment" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="AdministratorUser" TypeName="FEIDB.AdministratorUser" StoreEntitySet="Administrators">
-      <EndProperty Name="User">
-        <ScalarProperty Name="IdUser" ColumnName="Users_IdUser" />
-      </EndProperty>
-      <EndProperty Name="Administrator">
-        <ScalarProperty Name="IdAdministrator" ColumnName="IdAdministrator" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="StudentUser" TypeName="FEIDB.StudentUser" StoreEntitySet="Students">
-      <EndProperty Name="User">
-        <ScalarProperty Name="IdUser" ColumnName="Users_IdUser" />
-      </EndProperty>
-      <EndProperty Name="Student">
-        <ScalarProperty Name="IdStudent" ColumnName="IdStudent" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="ProcedureAppointment" TypeName="FEIDB.ProcedureAppointment" StoreEntitySet="Appointments">
-      <EndProperty Name="Procedure">
-        <ScalarProperty Name="IdProcedure" ColumnName="Procedure_IdProcedure" />
-      </EndProperty>
-      <EndProperty Name="Appointment">
-        <ScalarProperty Name="IdAppointment" ColumnName="IdAppointment" />
-      </EndProperty>
-    </AssociationSetMapping>
-  </EntityContainerMapping>
-</Mapping></edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FEIDBModelStoreContainer" CdmEntityContainer="FEIDBEntities">
+          <EntitySetMapping Name="Administrators">
+            <EntityTypeMapping TypeName="FEIDBModel.Administrator">
+              <MappingFragment StoreEntitySet="Administrators">
+                <ScalarProperty Name="IdAdministrator" ColumnName="IdAdministrator" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Users_IdUser" ColumnName="Users_IdUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Appointments">
+            <EntityTypeMapping TypeName="FEIDBModel.Appointment">
+              <MappingFragment StoreEntitySet="Appointments">
+                <ScalarProperty Name="IdAppointment" ColumnName="IdAppointment" />
+                <ScalarProperty Name="AttendedDate" ColumnName="AttendedDate" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="NotAttendedReason" ColumnName="NotAttendedReason" />
+                <ScalarProperty Name="Student_IdStudent" ColumnName="Student_IdStudent" />
+                <ScalarProperty Name="Procedure_IdProcedure" ColumnName="Procedure_IdProcedure" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Careers">
+            <EntityTypeMapping TypeName="FEIDBModel.Career">
+              <MappingFragment StoreEntitySet="Careers">
+                <ScalarProperty Name="IdCareer" ColumnName="IdCareer" />
+                <ScalarProperty Name="CareerName" ColumnName="CareerName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Procedures">
+            <EntityTypeMapping TypeName="FEIDBModel.Procedure">
+              <MappingFragment StoreEntitySet="Procedures">
+                <ScalarProperty Name="IdProcedure" ColumnName="IdProcedure" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tutors">
+            <EntityTypeMapping TypeName="FEIDBModel.Tutor">
+              <MappingFragment StoreEntitySet="Tutors">
+                <ScalarProperty Name="IdTutor" ColumnName="IdTutor" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="FEIDBModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="FEIDBModel.Student">
+              <MappingFragment StoreEntitySet="Students">
+                <ScalarProperty Name="IdStudent" ColumnName="IdStudent" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Tutor_IdTutor" ColumnName="Tutor_IdTutor" />
+                <ScalarProperty Name="Career_IdCareer" ColumnName="Career_IdCareer" />
+                <ScalarProperty Name="Users_IdUser" ColumnName="Users_IdUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GetAppointmentInfoes">
+            <EntityTypeMapping TypeName="FEIDBModel.GetAppointmentInfo">
+              <MappingFragment StoreEntitySet="GetAppointmentInfo">
+                <ScalarProperty Name="AttendedDate" ColumnName="AttendedDate" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="IdStudent" ColumnName="IdStudent" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CareerName" ColumnName="CareerName" />
+                <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GetStudentInfoes">
+            <EntityTypeMapping TypeName="FEIDBModel.GetStudentInfo">
+              <MappingFragment StoreEntitySet="GetStudentInfo">
+                <ScalarProperty Name="IdStudent" ColumnName="IdStudent" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Tutor_IdTutor" ColumnName="Tutor_IdTutor" />
+                <ScalarProperty Name="Career_IdCareer" ColumnName="Career_IdCareer" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
-  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
-    <edmx:Connection>
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
       </DesignerInfoPropertySet>
-    </edmx:Connection>
-    <edmx:Options>
+    </Connection>
+    <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
-        <DesignerProperty Name="UseLegacyProvider" Value="False" />
       </DesignerInfoPropertySet>
-    </edmx:Options>
+    </Options>
     <!-- Diagram content (shape and connector positions) -->
-    <edmx:Diagrams>
-    </edmx:Diagrams>
-  </edmx:Designer>
+    <Diagrams></Diagrams>
+  </Designer>
 </edmx:Edmx>
