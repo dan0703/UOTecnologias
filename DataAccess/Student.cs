@@ -14,12 +14,21 @@ namespace DataAccess
     
     public partial class Student
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Student()
+        {
+            this.Appointments = new HashSet<Appointment>();
+        }
+    
         public string IdStudent { get; set; }
         public string FullName { get; set; }
         public int Tutor_IdTutor { get; set; }
+        public int User_IdUser { get; set; }
         public int Career_IdCareer { get; set; }
-        public int Users_IdUser { get; set; }
+        public string Matricula { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Appointment> Appointments { get; set; }
         public virtual Career Career { get; set; }
         public virtual Tutor Tutor { get; set; }
         public virtual User User { get; set; }

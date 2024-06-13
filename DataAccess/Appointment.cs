@@ -23,5 +23,6 @@ namespace DataAccess
         public int Procedure_IdProcedure { get; set; }
     
         public virtual Procedure Procedure { get; set; }
+        public virtual Student Student { get; set; }
     }
 }

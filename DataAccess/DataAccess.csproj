@@ -76,9 +76,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>FEIDB.edmx</DependentUpon>
     </Compile>
-    <Compile Include="GetAppointmentInfo.cs">
-      <DependentUpon>FEIDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="GetStudentInfo.cs">
       <DependentUpon>FEIDB.tt</DependentUpon>
     </Compile>
@@ -94,6 +91,9 @@
       <DependentUpon>FEIDB.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
+      <DependentUpon>FEIDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewStudentInfo.cs">
       <DependentUpon>FEIDB.tt</DependentUpon>
     </Compile>
   </ItemGroup>

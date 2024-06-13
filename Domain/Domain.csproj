@@ -43,10 +43,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Career.cs" />
     <Compile Include="Class1.cs" />
-    <Compile Include="IViewStudentInfo.cs" />
+    <Compile Include="Intafaces\ICareer.cs" />
+    <Compile Include="Intafaces\IStudent.cs" />
+    <Compile Include="Intafaces\ITutor.cs" />
+    <Compile Include="Intafaces\IViewStudentInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Student.cs" />
+    <Compile Include="Tutor.cs" />
     <Compile Include="ViewStudentInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

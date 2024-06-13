@@ -29,10 +29,10 @@ namespace DataAccess
         public virtual DbSet<Appointment> Appointments { get; set; }
         public virtual DbSet<Career> Careers { get; set; }
         public virtual DbSet<Procedure> Procedures { get; set; }
+        public virtual DbSet<Student> Students { get; set; }
         public virtual DbSet<Tutor> Tutors { get; set; }
         public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<Student> Students { get; set; }
-        public virtual DbSet<GetAppointmentInfo> GetAppointmentInfoes { get; set; }
         public virtual DbSet<GetStudentInfo> GetStudentInfoes { get; set; }
+        public virtual DbSet<ViewStudentInfo> ViewStudentInfoes { get; set; }
     }
 }

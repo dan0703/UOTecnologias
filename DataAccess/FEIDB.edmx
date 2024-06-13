@@ -12,6 +12,7 @@
           <Property Name="IdAdministrator" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FullName" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Users_IdUser" Type="int" Nullable="false" />
+          <Property Name="User_IdUser" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Appointments">
           <Key>
@@ -22,7 +23,7 @@
           <Property Name="Duration" Type="bigint" Nullable="false" />
           <Property Name="Status" Type="smallint" Nullable="false" />
           <Property Name="NotAttendedReason" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Student_IdStudent" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Student_IdStudent" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="Procedure_IdProcedure" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Careers">
@@ -32,6 +33,22 @@
           <Property Name="IdCareer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CareerName" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'FEIDB.dbo.GetStudentInfoes' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="GetStudentInfoes">
+          <Key>
+            <PropertyRef Name="IdStudent" />
+            <PropertyRef Name="FullName" />
+            <PropertyRef Name="Tutor_IdTutor" />
+            <PropertyRef Name="Career_IdCareer" />
+            <PropertyRef Name="Password" />
+          </Key>
+          <Property Name="IdStudent" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Tutor_IdTutor" Type="int" Nullable="false" />
+          <Property Name="Career_IdCareer" Type="int" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
         <EntityType Name="Procedures">
           <Key>
             <PropertyRef Name="IdProcedure" />
@@ -39,21 +56,16 @@
           <Property Name="IdProcedure" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'FEIDB.dbo.Students' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="Students">
           <Key>
             <PropertyRef Name="IdStudent" />
-            <PropertyRef Name="FullName" />
-            <PropertyRef Name="Tutor_IdTutor" />
-            <PropertyRef Name="Career_IdCareer" />
-            <PropertyRef Name="Users_IdUser" />
           </Key>
-          <Property Name="IdStudent" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IdStudent" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="FullName" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Tutor_IdTutor" Type="int" Nullable="false" />
+          <Property Name="User_IdUser" Type="int" Nullable="false" />
           <Property Name="Career_IdCareer" Type="int" Nullable="false" />
-          <Property Name="Users_IdUser" Type="int" Nullable="false" />
+          <Property Name="Matricula" Type="nvarchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="Tutors">
           <Key>
@@ -70,55 +82,23 @@ advertencia 6002: La tabla o vista 'FEIDB.dbo.Students' no tiene definida ningun
           <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'FEIDB.dbo.GetAppointmentInfo' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
-        <EntityType Name="GetAppointmentInfo">
-          <Key>
-            <PropertyRef Name="AttendedDate" />
-            <PropertyRef Name="Duration" />
-            <PropertyRef Name="Status" />
-            <PropertyRef Name="FullName" />
-            <PropertyRef Name="IdStudent" />
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="CareerName" />
-            <PropertyRef Name="Expr1" />
-          </Key>
-          <Property Name="AttendedDate" Type="datetime" Nullable="false" />
-          <Property Name="Duration" Type="bigint" Nullable="false" />
-          <Property Name="Status" Type="smallint" Nullable="false" />
-          <Property Name="FullName" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="IdStudent" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="CareerName" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Expr1" Type="nvarchar(max)" Nullable="false" />
-        </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'FEIDB.dbo.GetStudentInfo' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
-        <EntityType Name="GetStudentInfo">
+advertencia 6002: La tabla o vista 'FEIDB.dbo.ViewStudentInfoes' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="ViewStudentInfoes">
           <Key>
             <PropertyRef Name="IdStudent" />
             <PropertyRef Name="FullName" />
-            <PropertyRef Name="Tutor_IdTutor" />
             <PropertyRef Name="Career_IdCareer" />
+            <PropertyRef Name="Tutor_IdTutor" />
+            <PropertyRef Name="IdUser" />
             <PropertyRef Name="Password" />
           </Key>
-          <Property Name="IdStudent" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IdStudent" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="FullName" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Tutor_IdTutor" Type="int" Nullable="false" />
           <Property Name="Career_IdCareer" Type="int" Nullable="false" />
+          <Property Name="Tutor_IdTutor" Type="int" Nullable="false" />
+          <Property Name="IdUser" Type="int" Nullable="false" />
           <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
-        <Association Name="FK_AdministratorUser">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="Administrators" Type="Self.Administrators" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="IdUser" />
-            </Principal>
-            <Dependent Role="Administrators">
-              <PropertyRef Name="Users_IdUser" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_CareerStudent">
           <End Role="Careers" Type="Self.Careers" Multiplicity="1" />
           <End Role="Students" Type="Self.Students" Multiplicity="*" />
@@ -143,15 +123,15 @@ advertencia 6002: La tabla o vista 'FEIDB.dbo.GetStudentInfo' no tiene definida 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_StudentUser">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="Students" Type="Self.Students" Multiplicity="*" />
+        <Association Name="FK_StudentAppointment">
+          <End Role="Students" Type="Self.Students" Multiplicity="1" />
+          <End Role="Appointments" Type="Self.Appointments" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="IdUser" />
+            <Principal Role="Students">
+              <PropertyRef Name="IdStudent" />
             </Principal>
-            <Dependent Role="Students">
-              <PropertyRef Name="Users_IdUser" />
+            <Dependent Role="Appointments">
+              <PropertyRef Name="Student_IdStudent" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -167,47 +147,57 @@ advertencia 6002: La tabla o vista 'FEIDB.dbo.GetStudentInfo' no tiene definida 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_UserAdministrator">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Administrators" Type="Self.Administrators" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="Administrators">
+              <PropertyRef Name="User_IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserStudent">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Students" Type="Self.Students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="User_IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="FEIDBModelStoreContainer">
           <EntitySet Name="Administrators" EntityType="Self.Administrators" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Appointments" EntityType="Self.Appointments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Careers" EntityType="Self.Careers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Procedures" EntityType="Self.Procedures" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tutors" EntityType="Self.Tutors" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Students" EntityType="Self.Students" store:Type="Tables" store:Schema="dbo">
+          <EntitySet Name="GetStudentInfoes" EntityType="Self.GetStudentInfoes" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [Students].[IdStudent] AS [IdStudent], 
-    [Students].[FullName] AS [FullName], 
-    [Students].[Tutor_IdTutor] AS [Tutor_IdTutor], 
-    [Students].[Career_IdCareer] AS [Career_IdCareer], 
-    [Students].[Users_IdUser] AS [Users_IdUser]
-    FROM [dbo].[Students] AS [Students]</DefiningQuery>
+    [GetStudentInfoes].[IdStudent] AS [IdStudent], 
+    [GetStudentInfoes].[FullName] AS [FullName], 
+    [GetStudentInfoes].[Tutor_IdTutor] AS [Tutor_IdTutor], 
+    [GetStudentInfoes].[Career_IdCareer] AS [Career_IdCareer], 
+    [GetStudentInfoes].[Password] AS [Password]
+    FROM [dbo].[GetStudentInfoes] AS [GetStudentInfoes]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="GetAppointmentInfo" EntityType="Self.GetAppointmentInfo" store:Type="Views" store:Schema="dbo">
+          <EntitySet Name="ViewStudentInfoes" EntityType="Self.ViewStudentInfoes" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [GetAppointmentInfo].[AttendedDate] AS [AttendedDate], 
-    [GetAppointmentInfo].[Duration] AS [Duration], 
-    [GetAppointmentInfo].[Status] AS [Status], 
-    [GetAppointmentInfo].[FullName] AS [FullName], 
-    [GetAppointmentInfo].[IdStudent] AS [IdStudent], 
-    [GetAppointmentInfo].[Name] AS [Name], 
-    [GetAppointmentInfo].[CareerName] AS [CareerName], 
-    [GetAppointmentInfo].[Expr1] AS [Expr1]
-    FROM [dbo].[GetAppointmentInfo] AS [GetAppointmentInfo]</DefiningQuery>
+    [ViewStudentInfoes].[IdStudent] AS [IdStudent], 
+    [ViewStudentInfoes].[FullName] AS [FullName], 
+    [ViewStudentInfoes].[Career_IdCareer] AS [Career_IdCareer], 
+    [ViewStudentInfoes].[Tutor_IdTutor] AS [Tutor_IdTutor], 
+    [ViewStudentInfoes].[IdUser] AS [IdUser], 
+    [ViewStudentInfoes].[Password] AS [Password]
+    FROM [dbo].[ViewStudentInfoes] AS [ViewStudentInfoes]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="GetStudentInfo" EntityType="Self.GetStudentInfo" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [GetStudentInfo].[IdStudent] AS [IdStudent], 
-    [GetStudentInfo].[FullName] AS [FullName], 
-    [GetStudentInfo].[Tutor_IdTutor] AS [Tutor_IdTutor], 
-    [GetStudentInfo].[Career_IdCareer] AS [Career_IdCareer], 
-    [GetStudentInfo].[Password] AS [Password]
-    FROM [dbo].[GetStudentInfo] AS [GetStudentInfo]</DefiningQuery>
-          </EntitySet>
-          <AssociationSet Name="FK_AdministratorUser" Association="Self.FK_AdministratorUser">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Administrators" EntitySet="Administrators" />
-          </AssociationSet>
           <AssociationSet Name="FK_CareerStudent" Association="Self.FK_CareerStudent">
             <End Role="Careers" EntitySet="Careers" />
             <End Role="Students" EntitySet="Students" />
@@ -216,12 +206,20 @@ advertencia 6002: La tabla o vista 'FEIDB.dbo.GetStudentInfo' no tiene definida 
             <End Role="Procedures" EntitySet="Procedures" />
             <End Role="Appointments" EntitySet="Appointments" />
           </AssociationSet>
-          <AssociationSet Name="FK_StudentUser" Association="Self.FK_StudentUser">
-            <End Role="Users" EntitySet="Users" />
+          <AssociationSet Name="FK_StudentAppointment" Association="Self.FK_StudentAppointment">
             <End Role="Students" EntitySet="Students" />
+            <End Role="Appointments" EntitySet="Appointments" />
           </AssociationSet>
           <AssociationSet Name="FK_TutorStudent" Association="Self.FK_TutorStudent">
             <End Role="Tutors" EntitySet="Tutors" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserAdministrator" Association="Self.FK_UserAdministrator">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Administrators" EntitySet="Administrators" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserStudent" Association="Self.FK_UserStudent">
+            <End Role="Users" EntitySet="Users" />
             <End Role="Students" EntitySet="Students" />
           </AssociationSet>
         </EntityContainer>
@@ -237,7 +235,8 @@ advertencia 6002: La tabla o vista 'FEIDB.dbo.GetStudentInfo' no tiene definida 
           <Property Name="IdAdministrator" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Users_IdUser" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="User" Relationship="Self.FK_AdministratorUser" FromRole="Administrators" ToRole="Users" />
+          <Property Name="User_IdUser" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_UserAdministrator" FromRole="Administrators" ToRole="Users" />
         </EntityType>
         <EntityType Name="Appointment">
           <Key>
@@ -248,9 +247,10 @@ advertencia 6002: La tabla o vista 'FEIDB.dbo.GetStudentInfo' no tiene definida 
           <Property Name="Duration" Type="Int64" Nullable="false" />
           <Property Name="Status" Type="Int16" Nullable="false" />
           <Property Name="NotAttendedReason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Student_IdStudent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Student_IdStudent" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Procedure_IdProcedure" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Procedure" Relationship="Self.FK_ProcedureAppointment" FromRole="Appointments" ToRole="Procedures" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_StudentAppointment" FromRole="Appointments" ToRole="Students" />
         </EntityType>
         <EntityType Name="Career">
           <Key>
@@ -268,6 +268,21 @@ advertencia 6002: La tabla o vista 'FEIDB.dbo.GetStudentInfo' no tiene definida 
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Appointments" Relationship="Self.FK_ProcedureAppointment" FromRole="Procedures" ToRole="Appointments" />
         </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="IdStudent" />
+          </Key>
+          <Property Name="IdStudent" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tutor_IdTutor" Type="Int32" Nullable="false" />
+          <Property Name="User_IdUser" Type="Int32" Nullable="false" />
+          <Property Name="Career_IdCareer" Type="Int32" Nullable="false" />
+          <Property Name="Matricula" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Appointments" Relationship="Self.FK_StudentAppointment" FromRole="Students" ToRole="Appointments" />
+          <NavigationProperty Name="Career" Relationship="Self.FK_CareerStudent" FromRole="Students" ToRole="Careers" />
+          <NavigationProperty Name="Tutor" Relationship="Self.FK_TutorStudent" FromRole="Students" ToRole="Tutors" />
+          <NavigationProperty Name="User" Relationship="Self.FK_UserStudent" FromRole="Students" ToRole="Users" />
+        </EntityType>
         <EntityType Name="Tutor">
           <Key>
             <PropertyRef Name="IdTutor" />
@@ -282,45 +297,8 @@ advertencia 6002: La tabla o vista 'FEIDB.dbo.GetStudentInfo' no tiene definida 
           </Key>
           <Property Name="IdUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Administrators" Relationship="Self.FK_AdministratorUser" FromRole="Users" ToRole="Administrators" />
-          <NavigationProperty Name="Students" Relationship="Self.FK_StudentUser" FromRole="Users" ToRole="Students" />
-        </EntityType>
-        <EntityType Name="Student">
-          <Key>
-            <PropertyRef Name="IdStudent" />
-            <PropertyRef Name="FullName" />
-            <PropertyRef Name="Tutor_IdTutor" />
-            <PropertyRef Name="Career_IdCareer" />
-            <PropertyRef Name="Users_IdUser" />
-          </Key>
-          <Property Name="IdStudent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="FullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Tutor_IdTutor" Type="Int32" Nullable="false" />
-          <Property Name="Career_IdCareer" Type="Int32" Nullable="false" />
-          <Property Name="Users_IdUser" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Career" Relationship="Self.FK_CareerStudent" FromRole="Students" ToRole="Careers" />
-          <NavigationProperty Name="Tutor" Relationship="Self.FK_TutorStudent" FromRole="Students" ToRole="Tutors" />
-          <NavigationProperty Name="User" Relationship="Self.FK_StudentUser" FromRole="Students" ToRole="Users" />
-        </EntityType>
-        <EntityType Name="GetAppointmentInfo">
-          <Key>
-            <PropertyRef Name="AttendedDate" />
-            <PropertyRef Name="Duration" />
-            <PropertyRef Name="Status" />
-            <PropertyRef Name="FullName" />
-            <PropertyRef Name="IdStudent" />
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="CareerName" />
-            <PropertyRef Name="Expr1" />
-          </Key>
-          <Property Name="AttendedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Duration" Type="Int64" Nullable="false" />
-          <Property Name="Status" Type="Int16" Nullable="false" />
-          <Property Name="FullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IdStudent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CareerName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Expr1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Administrators" Relationship="Self.FK_UserAdministrator" FromRole="Users" ToRole="Administrators" />
+          <NavigationProperty Name="Students" Relationship="Self.FK_UserStudent" FromRole="Users" ToRole="Students" />
         </EntityType>
         <EntityType Name="GetStudentInfo">
           <Key>
@@ -336,7 +314,23 @@ advertencia 6002: La tabla o vista 'FEIDB.dbo.GetStudentInfo' no tiene definida 
           <Property Name="Career_IdCareer" Type="Int32" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
-        <Association Name="FK_AdministratorUser">
+        <EntityType Name="ViewStudentInfo">
+          <Key>
+            <PropertyRef Name="IdStudent" />
+            <PropertyRef Name="FullName" />
+            <PropertyRef Name="Career_IdCareer" />
+            <PropertyRef Name="Tutor_IdTutor" />
+            <PropertyRef Name="IdUser" />
+            <PropertyRef Name="Password" />
+          </Key>
+          <Property Name="IdStudent" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Career_IdCareer" Type="Int32" Nullable="false" />
+          <Property Name="Tutor_IdTutor" Type="Int32" Nullable="false" />
+          <Property Name="IdUser" Type="Int32" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_UserAdministrator">
           <End Role="Users" Type="Self.User" Multiplicity="1" />
           <End Role="Administrators" Type="Self.Administrator" Multiplicity="*" />
           <ReferentialConstraint>
@@ -344,7 +338,7 @@ advertencia 6002: La tabla o vista 'FEIDB.dbo.GetStudentInfo' no tiene definida 
               <PropertyRef Name="IdUser" />
             </Principal>
             <Dependent Role="Administrators">
-              <PropertyRef Name="Users_IdUser" />
+              <PropertyRef Name="User_IdUser" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -357,6 +351,18 @@ advertencia 6002: La tabla o vista 'FEIDB.dbo.GetStudentInfo' no tiene definida 
             </Principal>
             <Dependent Role="Appointments">
               <PropertyRef Name="Procedure_IdProcedure" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentAppointment">
+          <End Role="Students" Type="Self.Student" Multiplicity="1" />
+          <End Role="Appointments" Type="Self.Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="IdStudent" />
+            </Principal>
+            <Dependent Role="Appointments">
+              <PropertyRef Name="Student_IdStudent" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -384,7 +390,7 @@ advertencia 6002: La tabla o vista 'FEIDB.dbo.GetStudentInfo' no tiene definida 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_StudentUser">
+        <Association Name="FK_UserStudent">
           <End Role="Users" Type="Self.User" Multiplicity="1" />
           <End Role="Students" Type="Self.Student" Multiplicity="*" />
           <ReferentialConstraint>
@@ -392,7 +398,7 @@ advertencia 6002: La tabla o vista 'FEIDB.dbo.GetStudentInfo' no tiene definida 
               <PropertyRef Name="IdUser" />
             </Principal>
             <Dependent Role="Students">
-              <PropertyRef Name="Users_IdUser" />
+              <PropertyRef Name="User_IdUser" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -401,17 +407,21 @@ advertencia 6002: La tabla o vista 'FEIDB.dbo.GetStudentInfo' no tiene definida 
           <EntitySet Name="Appointments" EntityType="Self.Appointment" />
           <EntitySet Name="Careers" EntityType="Self.Career" />
           <EntitySet Name="Procedures" EntityType="Self.Procedure" />
+          <EntitySet Name="Students" EntityType="Self.Student" />
           <EntitySet Name="Tutors" EntityType="Self.Tutor" />
           <EntitySet Name="Users" EntityType="Self.User" />
-          <EntitySet Name="Students" EntityType="Self.Student" />
-          <EntitySet Name="GetAppointmentInfoes" EntityType="Self.GetAppointmentInfo" />
           <EntitySet Name="GetStudentInfoes" EntityType="Self.GetStudentInfo" />
-          <AssociationSet Name="FK_AdministratorUser" Association="Self.FK_AdministratorUser">
+          <EntitySet Name="ViewStudentInfoes" EntityType="Self.ViewStudentInfo" />
+          <AssociationSet Name="FK_UserAdministrator" Association="Self.FK_UserAdministrator">
             <End Role="Users" EntitySet="Users" />
             <End Role="Administrators" EntitySet="Administrators" />
           </AssociationSet>
           <AssociationSet Name="FK_ProcedureAppointment" Association="Self.FK_ProcedureAppointment">
             <End Role="Procedures" EntitySet="Procedures" />
+            <End Role="Appointments" EntitySet="Appointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentAppointment" Association="Self.FK_StudentAppointment">
+            <End Role="Students" EntitySet="Students" />
             <End Role="Appointments" EntitySet="Appointments" />
           </AssociationSet>
           <AssociationSet Name="FK_CareerStudent" Association="Self.FK_CareerStudent">
@@ -422,7 +432,7 @@ advertencia 6002: La tabla o vista 'FEIDB.dbo.GetStudentInfo' no tiene definida 
             <End Role="Tutors" EntitySet="Tutors" />
             <End Role="Students" EntitySet="Students" />
           </AssociationSet>
-          <AssociationSet Name="FK_StudentUser" Association="Self.FK_StudentUser">
+          <AssociationSet Name="FK_UserStudent" Association="Self.FK_UserStudent">
             <End Role="Users" EntitySet="Users" />
             <End Role="Students" EntitySet="Students" />
           </AssociationSet>
@@ -439,6 +449,7 @@ advertencia 6002: La tabla o vista 'FEIDB.dbo.GetStudentInfo' no tiene definida 
                 <ScalarProperty Name="IdAdministrator" ColumnName="IdAdministrator" />
                 <ScalarProperty Name="FullName" ColumnName="FullName" />
                 <ScalarProperty Name="Users_IdUser" ColumnName="Users_IdUser" />
+                <ScalarProperty Name="User_IdUser" ColumnName="User_IdUser" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -471,6 +482,18 @@ advertencia 6002: La tabla o vista 'FEIDB.dbo.GetStudentInfo' no tiene definida 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="FEIDBModel.Student">
+              <MappingFragment StoreEntitySet="Students">
+                <ScalarProperty Name="IdStudent" ColumnName="IdStudent" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Tutor_IdTutor" ColumnName="Tutor_IdTutor" />
+                <ScalarProperty Name="User_IdUser" ColumnName="User_IdUser" />
+                <ScalarProperty Name="Career_IdCareer" ColumnName="Career_IdCareer" />
+                <ScalarProperty Name="Matricula" ColumnName="Matricula" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Tutors">
             <EntityTypeMapping TypeName="FEIDBModel.Tutor">
               <MappingFragment StoreEntitySet="Tutors">
@@ -487,38 +510,25 @@ advertencia 6002: La tabla o vista 'FEIDB.dbo.GetStudentInfo' no tiene definida 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Students">
-            <EntityTypeMapping TypeName="FEIDBModel.Student">
-              <MappingFragment StoreEntitySet="Students">
-                <ScalarProperty Name="IdStudent" ColumnName="IdStudent" />
-                <ScalarProperty Name="FullName" ColumnName="FullName" />
-                <ScalarProperty Name="Tutor_IdTutor" ColumnName="Tutor_IdTutor" />
-                <ScalarProperty Name="Career_IdCareer" ColumnName="Career_IdCareer" />
-                <ScalarProperty Name="Users_IdUser" ColumnName="Users_IdUser" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="GetAppointmentInfoes">
-            <EntityTypeMapping TypeName="FEIDBModel.GetAppointmentInfo">
-              <MappingFragment StoreEntitySet="GetAppointmentInfo">
-                <ScalarProperty Name="AttendedDate" ColumnName="AttendedDate" />
-                <ScalarProperty Name="Duration" ColumnName="Duration" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="FullName" ColumnName="FullName" />
-                <ScalarProperty Name="IdStudent" ColumnName="IdStudent" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="CareerName" ColumnName="CareerName" />
-                <ScalarProperty Name="Expr1" ColumnName="Expr1" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="GetStudentInfoes">
             <EntityTypeMapping TypeName="FEIDBModel.GetStudentInfo">
-              <MappingFragment StoreEntitySet="GetStudentInfo">
+              <MappingFragment StoreEntitySet="GetStudentInfoes">
                 <ScalarProperty Name="IdStudent" ColumnName="IdStudent" />
                 <ScalarProperty Name="FullName" ColumnName="FullName" />
                 <ScalarProperty Name="Tutor_IdTutor" ColumnName="Tutor_IdTutor" />
                 <ScalarProperty Name="Career_IdCareer" ColumnName="Career_IdCareer" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewStudentInfoes">
+            <EntityTypeMapping TypeName="FEIDBModel.ViewStudentInfo">
+              <MappingFragment StoreEntitySet="ViewStudentInfoes">
+                <ScalarProperty Name="IdStudent" ColumnName="IdStudent" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Career_IdCareer" ColumnName="Career_IdCareer" />
+                <ScalarProperty Name="Tutor_IdTutor" ColumnName="Tutor_IdTutor" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
               </MappingFragment>
             </EntityTypeMapping>

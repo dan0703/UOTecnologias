@@ -19,11 +19,6 @@ namespace Host
                 host.Open();
 
                 Console.WriteLine("Host is starting");
-                using (FEIDBEntities context = new FEIDBEntities())
-                {
-                    var foundUser = context.GetStudentInfoes.Where(x => x.IdStudent == "zs20015706").FirstOrDefault();
-                    Console.WriteLine(foundUser.FullName);
-                }
                 Console.ReadLine();
             }
         }

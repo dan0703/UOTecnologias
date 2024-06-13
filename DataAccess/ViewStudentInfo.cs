@@ -12,15 +12,13 @@ namespace DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class GetAppointmentInfo
+    public partial class ViewStudentInfo
     {
-        public System.DateTime AttendedDate { get; set; }
-        public long Duration { get; set; }
-        public short Status { get; set; }
-        public string FullName { get; set; }
         public string IdStudent { get; set; }
-        public string Name { get; set; }
-        public string CareerName { get; set; }
-        public string Expr1 { get; set; }
+        public string FullName { get; set; }
+        public int Career_IdCareer { get; set; }
+        public int Tutor_IdTutor { get; set; }
+        public int IdUser { get; set; }
+        public string Password { get; set; }
     }
 }
