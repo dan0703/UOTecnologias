@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FEIService
+﻿namespace FEIService
 {
     public class Constants
     {
-        public const int Pending = 0;
-        public const int Attended = 1;
-        public const int CanceledByStudent = 2;
-        public const int CanceledBySecretary = 3;
-        public const int InProgress = 4;
-        public const int NotAttended = 5;
+        public static int Pending = 0;
+        public static int Attended = 1;
+        public static int CanceledByStudent = 2;
+        public static int CanceledBySecretary = 3;
+        public static int InProgress = 4;
+        public static int NotAttended = 5;
     }
 }

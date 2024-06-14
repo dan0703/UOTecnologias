@@ -7,11 +7,8 @@ using System.Data.Entity;
 using System.Data.Entity.Core;
 using System.Data.Entity.Validation;
 using System.Linq;
-using System.Runtime.Remoting.Contexts;
-using System.Security.Principal;
 using System.ServiceModel;
 using System.Threading;
-using System.Timers;
 using ViewAppointment = Domain.ViewAppointment;
 
 namespace Service
@@ -219,7 +216,8 @@ namespace Service
                             var existingStudent = context.Students.FirstOrDefault(s => s.IdStudent == newStudent.IdStudent);
                             if (existingStudent != null)
                             {
-                                throw new Exception("Student already exists with the same IdStudent.");
+                                
+                                throw new ArgumentNullException("Ya existe un registro con esa matricula");
                             }
 
                             context.Students.Add(newStudent);
@@ -395,7 +393,7 @@ namespace Service
                                 var elapsedTime = DateTime.Now - startTime;
                                 existingAppointment.Duration = (int)elapsedTime.TotalSeconds;
                             }
-                            existingAppointment.Status = Constants.CanceledByStudent;
+                            existingAppointment.Status = (short)Constants.CanceledByStudent;
                             existingAppointment.NotAttendedReason = reason; 
                             context.SaveChanges();
                         }
@@ -455,8 +453,14 @@ namespace Service
         {
             var appointmentToRemove = appointmentList.FirstOrDefault(x => x.student_IdStudent == idStudent);
 
+            
             if (appointmentToRemove != null)
             {
+                if (studentList.ContainsKey(appointmentToRemove.student_IdStudent))
+                {
+                    studentList[appointmentToRemove.student_IdStudent].appointmentCallback.NotifyCancellation(reason);
+                }
+                appointmentList.Remove(appointmentToRemove);
                 using (FEIDBEntities context = new FEIDBEntities())
                 {
                     try
@@ -467,7 +471,7 @@ namespace Service
                         if (existingAppointment != null)
                         {
                             existingAppointment.Duration = 0;
-                            existingAppointment.Status = Constants.CanceledBySecretary;
+                            existingAppointment.Status = (short)Constants.CanceledBySecretary;
                             existingAppointment.NotAttendedReason = reason;
                             context.SaveChanges();
                         }
@@ -501,6 +505,7 @@ namespace Service
             if (appointmentToRemove != null)
             {
                 appointmentList.Remove(appointmentToRemove);
+
             }
             using (FEIDBEntities context = new FEIDBEntities())
             {
@@ -516,7 +521,7 @@ namespace Service
                             var elapsedTime = DateTime.Now - startTime;
                             existingAppointment.Duration = (int)elapsedTime.TotalSeconds;
                         }
-                        existingAppointment.Status = Constants.Attended;
+                        existingAppointment.Status = (short)Constants.Attended;
                         context.SaveChanges();
                     }
                     else
@@ -549,6 +554,7 @@ namespace Service
             if (appointmentToRemove != null)
             {
                 appointmentList.Remove(appointmentToRemove);
+                
             }
             using (FEIDBEntities context = new FEIDBEntities())
             {
@@ -560,9 +566,13 @@ namespace Service
                     if (existingAppointment != null)
                     {
                         existingAppointment.Duration = 0;
-                        existingAppointment.Status = Constants.NotAttended;
+                        existingAppointment.Status = (short)Constants.NotAttended;
                         existingAppointment.NotAttendedReason = reason;
                         context.SaveChanges();
+                        if (studentList.ContainsKey(existingAppointment.Student_IdStudent))
+                        {
+                            studentList[existingAppointment.Student_IdStudent].appointmentCallback.NotifyCancellation(reason);
+                        }
                     }
                     else
                     {

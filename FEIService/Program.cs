@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace FEIService
 {
-    internal class Program
+    public class Program
     {
         static void Main(string[] args)
         {
+            // El metodo principal esta vacio intencionalmente
+            
         }
     }
 }
