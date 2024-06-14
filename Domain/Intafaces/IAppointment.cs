@@ -18,6 +18,21 @@ namespace Domain
         void LeaveAppointment(string studentId, string reason);
 
         [OperationContract]
+        void CancelAppointment(int idAppointment, string reason, string idStudent);
+
+        [OperationContract]
+        void MarkAppointmentAsAttended(int idAppointment);
+
+        [OperationContract]
+        void MarkAppointmentAsNotAttended(int idAppointment, string reason);
+
+        [OperationContract]
+        List<ViewStudentsQueueReport> GetStudentsQueueReport();
+
+        [OperationContract]
+        List<ViewAppointment> GetAppointmentReportByDate(string date);
+
+        [OperationContract]
         void JoinToSesion(string idStudent);
 
     }

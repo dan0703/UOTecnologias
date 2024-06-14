@@ -9,8 +9,10 @@ namespace FEIService
     public class Constants
     {
         public const int Pending = 0;
+        public const int Attended = 1;
         public const int CanceledByStudent = 2;
         public const int CanceledBySecretary = 3;
-        public const int Attended = 1;
+        public const int InProgress = 4;
+        public const int NotAttended = 5;
     }
 }

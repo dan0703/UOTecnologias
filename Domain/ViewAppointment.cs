@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Domain
 {
     [DataContract]
-    public class Appointment
+    public class ViewAppointment
     {
         [DataMember]
         public int idAppointment { get; set; }
@@ -23,12 +23,22 @@ namespace Domain
         public int status { get; set; }
 
         [DataMember]
-        public string notAttendedReason { get; set; }
+        public string idStudent { get; set; }
 
         [DataMember]
-        public string student_IdStudent { get; set; }
+        public string fullName { get; set; }
 
         [DataMember]
-        public int procedure_IdProcedure { get; set; }
+        public string tutorName { get; set; }
+
+        [DataMember]
+        public int idTutor {  get; set; }
+
+        [DataMember]
+        public int idProcedure { get; set; }
+
+        [DataMember]
+        public string procedureName { get; set; }
+
     }
 }

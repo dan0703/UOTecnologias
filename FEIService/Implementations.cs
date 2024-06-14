@@ -7,10 +7,12 @@ using System.Data.Entity;
 using System.Data.Entity.Core;
 using System.Data.Entity.Validation;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Security.Principal;
 using System.ServiceModel;
 using System.Threading;
 using System.Timers;
+using ViewAppointment = Domain.ViewAppointment;
 
 namespace Service
 {
@@ -306,20 +308,28 @@ namespace Service
         {
             if (appointmentList.FirstOrDefault(x => x.student_IdStudent == newAppointment.student_IdStudent) == null)
             {
+
                 appointmentList.Add(newAppointment);
                 using (FEIDBEntities context = new FEIDBEntities())
                 {
                     try
                     {
+                        int status = Constants.Pending;
+                        if (appointmentList.Count == 1)
+                        {
+                            status = Constants.InProgress;
+                        }
                         var newAppointmentAux = new DataAccess.Appointment()
                         {
+                            
                             AttendedDate = DateTime.Now,
                             Duration = 0,
-                            Status = Constants.Pending,
+                            Status = (short)status,
                             Student_IdStudent = newAppointment.student_IdStudent,
                             Procedure_IdProcedure = newAppointment.procedure_IdProcedure,
                             NotAttendedReason = "",
                         };
+                        
                         context.Appointments.Add(newAppointmentAux);
                         context.SaveChanges();
                     }
@@ -363,8 +373,52 @@ namespace Service
             if (appointmentToRemove != null)
             {
                 var wasFirstAppointment = (appointmentToRemove == appointmentList.First());
-
+                int status = Constants.Pending;
                 appointmentList.Remove(appointmentToRemove);
+                if (appointmentList.Count == 0)
+                {
+                    status = Constants.InProgress;
+                }
+                using (FEIDBEntities context = new FEIDBEntities())
+                {
+                    try
+                    {
+                        var existingAppointment = context.Appointments
+                                         .Where(a => a.Student_IdStudent == studentId && a.Status == status)
+                                         .OrderByDescending(a => a.IdAppointment)
+                                         .FirstOrDefault();
+
+                        if (existingAppointment != null)
+                        {
+                            if(existingAppointment.Status== Constants.InProgress)
+                            {
+                                var elapsedTime = DateTime.Now - startTime;
+                                existingAppointment.Duration = (int)elapsedTime.TotalSeconds;
+                            }
+                            existingAppointment.Status = Constants.CanceledByStudent;
+                            existingAppointment.NotAttendedReason = reason; 
+                            context.SaveChanges();
+                        }
+                        else
+                        {
+                            Console.WriteLine($"No se encontró ninguna cita con el id de estudiante {studentId}.");
+                        }
+                    }
+                    catch (DbEntityValidationException ex)
+                    {
+                        foreach (var entityValidationErrors in ex.EntityValidationErrors)
+                        {
+                            foreach (var validationError in entityValidationErrors.ValidationErrors)
+                            {
+                                Console.WriteLine($"Property: {validationError.PropertyName}, Error: {validationError.ErrorMessage}");
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Error al guardar en la base de datos: {ex.Message}");
+                    }
+                }
 
                 if (appointmentList.Count == 0)
                 {
@@ -397,6 +451,215 @@ namespace Service
             }
         }
 
+        public void CancelAppointment(int idAppointment, string reason, string idStudent)
+        {
+            var appointmentToRemove = appointmentList.FirstOrDefault(x => x.student_IdStudent == idStudent);
+
+            if (appointmentToRemove != null)
+            {
+                using (FEIDBEntities context = new FEIDBEntities())
+                {
+                    try
+                    {
+                        var existingAppointment = context.Appointments
+                                         .Where(x => x.IdAppointment == idAppointment).FirstOrDefault();
+
+                        if (existingAppointment != null)
+                        {
+                            existingAppointment.Duration = 0;
+                            existingAppointment.Status = Constants.CanceledBySecretary;
+                            existingAppointment.NotAttendedReason = reason;
+                            context.SaveChanges();
+                        }
+                        else
+                        {
+                            Console.WriteLine($"No se encontró ninguna cita con el id de turno {idAppointment}.");
+                        }
+                    }
+                    catch (DbEntityValidationException ex)
+                    {
+                        foreach (var entityValidationErrors in ex.EntityValidationErrors)
+                        {
+                            foreach (var validationError in entityValidationErrors.ValidationErrors)
+                            {
+                                Console.WriteLine($"Property: {validationError.PropertyName}, Error: {validationError.ErrorMessage}");
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Error al guardar en la base de datos: {ex.Message}");
+                    }
+                }
+            }
+            NotifyClients();
+        }
+
+        public void MarkAppointmentAsAttended(int idAppointment)
+        {
+            var appointmentToRemove = appointmentList.FirstOrDefault(x => x.idAppointment == idAppointment);
+            if (appointmentToRemove != null)
+            {
+                appointmentList.Remove(appointmentToRemove);
+            }
+            using (FEIDBEntities context = new FEIDBEntities())
+            {
+                try
+                {
+                    var existingAppointment = context.Appointments
+                                     .Where(x => x.IdAppointment == idAppointment).FirstOrDefault();
+
+                    if (existingAppointment != null)
+                    {
+                        if (existingAppointment.Status == Constants.InProgress)
+                        {
+                            var elapsedTime = DateTime.Now - startTime;
+                            existingAppointment.Duration = (int)elapsedTime.TotalSeconds;
+                        }
+                        existingAppointment.Status = Constants.Attended;
+                        context.SaveChanges();
+                    }
+                    else
+                    {
+                        Console.WriteLine($"No se encontró ninguna cita con el id de turno {idAppointment}.");
+                    }
+                }
+                catch (DbEntityValidationException ex)
+                {
+                    foreach (var entityValidationErrors in ex.EntityValidationErrors)
+                    {
+                        foreach (var validationError in entityValidationErrors.ValidationErrors)
+                        {
+                            Console.WriteLine($"Property: {validationError.PropertyName}, Error: {validationError.ErrorMessage}");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error al guardar en la base de datos: {ex.Message}");
+                }
+            }
+
+            NotifyClients();
+        }
+
+        public void MarkAppointmentAsNotAttended(int idAppointment, string reason)
+        {
+            var appointmentToRemove = appointmentList.FirstOrDefault(x => x.idAppointment == idAppointment);
+            if (appointmentToRemove != null)
+            {
+                appointmentList.Remove(appointmentToRemove);
+            }
+            using (FEIDBEntities context = new FEIDBEntities())
+            {
+                try
+                {
+                    var existingAppointment = context.Appointments
+                                     .Where(x => x.IdAppointment == idAppointment).FirstOrDefault();
+
+                    if (existingAppointment != null)
+                    {
+                        existingAppointment.Duration = 0;
+                        existingAppointment.Status = Constants.NotAttended;
+                        existingAppointment.NotAttendedReason = reason;
+                        context.SaveChanges();
+                    }
+                    else
+                    {
+                        Console.WriteLine($"No se encontró ninguna cita con el id de turno {idAppointment}.");
+                    }
+                }
+                catch (DbEntityValidationException ex)
+                {
+                    foreach (var entityValidationErrors in ex.EntityValidationErrors)
+                    {
+                        foreach (var validationError in entityValidationErrors.ValidationErrors)
+                        {
+                            Console.WriteLine($"Property: {validationError.PropertyName}, Error: {validationError.ErrorMessage}");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error al guardar en la base de datos: {ex.Message}");
+                }
+            }
+
+            NotifyClients();
+        }
+
+        public List<Domain.ViewStudentsQueueReport> GetStudentsQueueReport()
+        {
+            List<Domain.ViewStudentsQueueReport> studentsReport = new List<Domain.ViewStudentsQueueReport> ();
+            using (FEIDBEntities context = new FEIDBEntities())
+            {
+                try
+                {
+                    
+                    var studentsQueue = context.ViewStudentsQueueReports
+                    .Where(x => x.Status== Constants.InProgress)
+                    .ToList();
+
+                    foreach (var student in studentsQueue)
+                    {
+                        Domain.ViewStudentsQueueReport reportItem = new Domain.ViewStudentsQueueReport()
+                        {
+                            idAppointment = student.IdAppointment,
+                            attendedDate = student.AttendedDate,
+                            status = student.Status,
+                            idStudent = student.IdStudent,
+                            studentName = student.FullName,
+                        };
+                        studentsReport.Add(reportItem);
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+            }
+            return studentsReport;
+        }
+
+        public List<Domain.ViewAppointment> GetAppointmentReportByDate(string date)
+        {
+            List <Domain.ViewAppointment> report = new List<Domain.ViewAppointment> ();
+            using (FEIDBEntities context = new FEIDBEntities())
+            {
+                try
+                {
+                    DateTime targetDate = DateTime.Parse(date);
+                    var appointments = context.ViewAppointments
+                    .Where(x => DbFunctions.TruncateTime(x.AttendedDate) == targetDate.Date)
+                    .ToList();
+
+                    foreach (var appointment in appointments)
+                    {
+                        ViewAppointment reportItem = new ViewAppointment()
+                        {
+                            idAppointment = appointment.IdAppointment,
+                            attendedDate = targetDate,
+                            duration = (int)appointment.Duration,
+                            status = appointment.Status,
+                            idStudent = appointment.IdStudent,
+                            fullName = appointment.FullName,
+                            tutorName = appointment.Name,
+                            idTutor = appointment.IdTutor,
+                            idProcedure = appointment.IdProcedure,
+                            procedureName = appointment.Expr1,
+                        };
+                        report.Add(reportItem);
+                    }
+                    
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+            }
+            return report;
+        }
     }
 
 
@@ -415,6 +678,7 @@ namespace Service
                     {
                         Domain.Procedure procedureInfo = new Domain.Procedure()
                         {
+
                             idProcedure = procedure.IdProcedure,
                             name = procedure.Name
 

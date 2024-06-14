@@ -57,7 +57,9 @@
     <Compile Include="Student.cs" />
     <Compile Include="StudentCallbackChanels.cs" />
     <Compile Include="Tutor.cs" />
+    <Compile Include="ViewAppointment.cs" />
     <Compile Include="ViewStudentInfo.cs" />
+    <Compile Include="ViewStudentsQueueReport.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
