@@ -216,7 +216,6 @@ namespace Service
                             var existingStudent = context.Students.FirstOrDefault(s => s.IdStudent == newStudent.IdStudent);
                             if (existingStudent != null)
                             {
-                                
                                 throw new ArgumentNullException("Ya existe un registro con esa matricula");
                             }
 
@@ -306,16 +305,16 @@ namespace Service
         {
             if (appointmentList.FirstOrDefault(x => x.student_IdStudent == newAppointment.student_IdStudent) == null)
             {
-
-                appointmentList.Add(newAppointment);
                 using (FEIDBEntities context = new FEIDBEntities())
                 {
                     try
                     {
+                        appointmentList.Add(newAppointment);
                         int status = Constants.Pending;
                         if (appointmentList.Count == 1)
                         {
                             status = Constants.InProgress;
+                            appointmentList.Remove(newAppointment);
                         }
                         var newAppointmentAux = new DataAccess.Appointment()
                         {
@@ -330,6 +329,7 @@ namespace Service
                         
                         context.Appointments.Add(newAppointmentAux);
                         context.SaveChanges();
+                        newAppointment.idAppointment = newAppointmentAux.IdAppointment;
                     }
                     catch (DbEntityValidationException ex)
                     {
@@ -352,6 +352,8 @@ namespace Service
                     isTimerStoped = false;
                     StartTimer();
                 }
+                appointmentList.Add(newAppointment);
+
             }
             NotifyClients();
         }
@@ -449,10 +451,9 @@ namespace Service
             }
         }
 
-        public void CancelAppointment(int idAppointment, string reason, string idStudent)
+        public void CancelAppointment(int idAppointment, string reason)
         {
-            var appointmentToRemove = appointmentList.FirstOrDefault(x => x.student_IdStudent == idStudent);
-
+            var appointmentToRemove = appointmentList.FirstOrDefault(x => x.idAppointment == idAppointment);
             
             if (appointmentToRemove != null)
             {
@@ -461,39 +462,40 @@ namespace Service
                     studentList[appointmentToRemove.student_IdStudent].appointmentCallback.NotifyCancellation(reason);
                 }
                 appointmentList.Remove(appointmentToRemove);
-                using (FEIDBEntities context = new FEIDBEntities())
+                
+            }
+            using (FEIDBEntities context = new FEIDBEntities())
+            {
+                try
                 {
-                    try
-                    {
-                        var existingAppointment = context.Appointments
-                                         .Where(x => x.IdAppointment == idAppointment).FirstOrDefault();
+                    var existingAppointment = context.Appointments
+                                     .Where(x => x.IdAppointment == idAppointment).FirstOrDefault();
 
-                        if (existingAppointment != null)
-                        {
-                            existingAppointment.Duration = 0;
-                            existingAppointment.Status = (short)Constants.CanceledBySecretary;
-                            existingAppointment.NotAttendedReason = reason;
-                            context.SaveChanges();
-                        }
-                        else
-                        {
-                            Console.WriteLine($"No se encontró ninguna cita con el id de turno {idAppointment}.");
-                        }
-                    }
-                    catch (DbEntityValidationException ex)
+                    if (existingAppointment != null)
                     {
-                        foreach (var entityValidationErrors in ex.EntityValidationErrors)
+                        existingAppointment.Duration = 0;
+                        existingAppointment.Status = (short)Constants.CanceledBySecretary;
+                        existingAppointment.NotAttendedReason = reason;
+                        context.SaveChanges();
+                    }
+                    else
+                    {
+                        Console.WriteLine($"No se encontró ninguna cita con el id de turno {idAppointment}.");
+                    }
+                }
+                catch (DbEntityValidationException ex)
+                {
+                    foreach (var entityValidationErrors in ex.EntityValidationErrors)
+                    {
+                        foreach (var validationError in entityValidationErrors.ValidationErrors)
                         {
-                            foreach (var validationError in entityValidationErrors.ValidationErrors)
-                            {
-                                Console.WriteLine($"Property: {validationError.PropertyName}, Error: {validationError.ErrorMessage}");
-                            }
+                            Console.WriteLine($"Property: {validationError.PropertyName}, Error: {validationError.ErrorMessage}");
                         }
                     }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine($"Error al guardar en la base de datos: {ex.Message}");
-                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error al guardar en la base de datos: {ex.Message}");
                 }
             }
             NotifyClients();
@@ -523,6 +525,8 @@ namespace Service
                         }
                         existingAppointment.Status = (short)Constants.Attended;
                         context.SaveChanges();
+                        Console.WriteLine($"Se ha marcado la cita como atendida {idAppointment} del estudiante con matricula: {existingAppointment.Student_IdStudent}.");
+
                     }
                     else
                     {
@@ -607,7 +611,7 @@ namespace Service
                 {
                     
                     var studentsQueue = context.ViewStudentsQueueReports
-                    .Where(x => x.Status== Constants.InProgress)
+                    .Where(x => x.Status== Constants.Pending)
                     .ToList();
 
                     foreach (var student in studentsQueue)
@@ -632,24 +636,23 @@ namespace Service
             return studentsReport;
         }
 
-        public List<Domain.ViewAppointment> GetAppointmentReportByDate(string date)
+        public List<Domain.ViewAppointment> GetAppointmentReportByDate(DateTime date)
         {
             List <Domain.ViewAppointment> report = new List<Domain.ViewAppointment> ();
             using (FEIDBEntities context = new FEIDBEntities())
             {
                 try
                 {
-                    DateTime targetDate = DateTime.Parse(date);
                     var appointments = context.ViewAppointments
-                    .Where(x => DbFunctions.TruncateTime(x.AttendedDate) == targetDate.Date)
-                    .ToList();
+                                    .Where(x => DbFunctions.TruncateTime(x.AttendedDate) == date.Date)
+                                    .ToList();
 
                     foreach (var appointment in appointments)
                     {
                         ViewAppointment reportItem = new ViewAppointment()
                         {
                             idAppointment = appointment.IdAppointment,
-                            attendedDate = targetDate,
+                            attendedDate = appointment.AttendedDate,
                             duration = (int)appointment.Duration,
                             status = appointment.Status,
                             idStudent = appointment.IdStudent,

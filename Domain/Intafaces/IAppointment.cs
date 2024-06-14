@@ -5,6 +5,9 @@ using System.ServiceModel;
 
 namespace Domain
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [ServiceContract(CallbackContract = typeof(IAppointmentCallback))]
     public interface IAppointment
     {
@@ -18,7 +21,7 @@ namespace Domain
         void LeaveAppointment(string studentId, string reason);
 
         [OperationContract]
-        void CancelAppointment(int idAppointment, string reason, string idStudent);
+        void CancelAppointment(int idAppointment, string reason);
 
         [OperationContract]
         void MarkAppointmentAsAttended(int idAppointment);
@@ -30,7 +33,7 @@ namespace Domain
         List<ViewStudentsQueueReport> GetStudentsQueueReport();
 
         [OperationContract]
-        List<ViewAppointment> GetAppointmentReportByDate(string date);
+        List<ViewAppointment> GetAppointmentReportByDate(DateTime date);
 
         [OperationContract]
         void JoinToSesion(string idStudent);
