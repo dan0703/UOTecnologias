@@ -13,8 +13,17 @@ using ViewAppointment = Domain.ViewAppointment;
 
 namespace Service
 {
+    /// <summary>
+    /// Clase parcial que implementa la interfaz IViewStudentInfo para proporcionar operaciones relacionadas con estudiantes.
+    /// </summary>
     public partial class Implementations : IViewStudentInfo
     {
+        /// <summary>
+        /// Intenta autenticar a un estudiante basado en su identificación y contraseña.
+        /// </summary>
+        /// <param name="studentId">La matrícula del estudiante.</param>
+        /// <param name="password">La contraseña del estudiante.</param>
+        /// <returns>La información del estudiante si la autenticación es exitosa; de lo contrario, null.</returns>
         public Domain.ViewStudentInfo LogIn(string studentId, string password)
         {
             Domain.ViewStudentInfo studentInfo = null;
@@ -54,8 +63,17 @@ namespace Service
             return studentInfo;
         }
     }
+
+    /// <summary>
+    /// Clase parcial que implementa la interfaz ITutor para proporcionar operaciones relacionadas con tutores.
+    /// </summary>
     public partial class Implementations : ITutor
     {
+        /// <summary>
+        /// Obtiene un tutor por su ID.
+        /// </summary>
+        /// <param name="idTutor">El ID del tutor.</param>
+        /// <returns>Objeto Tutor si se encuentra; de lo contrario, null.</returns>
         public Domain.Tutor GetTutorById(int idTutor)
         {
             Domain.Tutor tutor = null;
@@ -84,6 +102,10 @@ namespace Service
             return tutor;
         }
 
+        /// <summary>
+        /// Obtiene una lista de todos los tutores.
+        /// </summary>
+        /// <returns>Lista de objetos Tutor.</returns>
         public List<Domain.Tutor> GetTutorsList()
         {
             List<Domain.Tutor> tutorList = new List<Domain.Tutor>();
@@ -119,8 +141,16 @@ namespace Service
             return tutorList;
         }
     }
+
+    /// <summary>
+    /// Clase parcial que implementa la interfaz ICareer para proporcionar operaciones relacionadas con carreras.
+    /// </summary>
     public partial class Implementations : ICareer
     {
+        /// <summary>
+        /// Obtiene una lista de todas las carreras disponibles.
+        /// </summary>
+        /// <returns>Lista de objetos Career que representan todas las carreras.</returns>
         public List<Domain.Career> GetCareerList()
         {
             List<Domain.Career> careerList = new List<Domain.Career>();
@@ -152,8 +182,16 @@ namespace Service
         }
     }
 
+    /// <summary>
+    /// Clase parcial que implementa la interfaz IStudent para proporcionar operaciones relacionadas con estudiantes.
+    /// </summary>
     public partial class Implementations : IStudent
     {
+        /// <summary>
+        /// Obtiene información de un estudiante por su ID de estudiante.
+        /// </summary>
+        /// <param name="idStudent">ID del estudiante a buscar.</param>
+        /// <returns>Objeto Student que representa la información del estudiante encontrado.</returns>
         public Domain.Student GetStudentNameById(string idStudent)
         {
             Domain.Student student = null;
@@ -184,6 +222,11 @@ namespace Service
             return student;
         }
 
+        /// <summary>
+        /// Registra un nuevo estudiante en la base de datos.
+        /// </summary>
+        /// <param name="student">Información del estudiante a registrar.</param>
+        /// <returns>True si el registro fue exitoso, False si ocurrió algún error.</returns>
         public bool RegisterStudent(Domain.ViewStudentInfo student)
         {
             bool isSuccessful = false;
@@ -249,6 +292,9 @@ namespace Service
         }
     }
 
+    /// <summary>
+    /// Clase parcial que implementa la interfaz IAppointment para gestionar citas y notificaciones.
+    /// </summary>
     [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Reentrant)]
     public partial class Implementations : IAppointment
     {
@@ -256,23 +302,37 @@ namespace Service
         private static readonly List<Domain.Appointment> appointmentList = new List<Domain.Appointment>();
         private static System.Threading.Timer timer;
         private static DateTime startTime;
-        private static bool isTimerStoped = false; 
+        private static bool isTimerStoped = false;
 
+        /// <summary>
+        /// Constructor de la clase Implementations.
+        /// Inicializa el temporizador para notificar a los clientes.
+        /// </summary>
         public Implementations()
         {
             timer = new System.Threading.Timer(TimerElapsed, null, Timeout.Infinite, 1000);
         }
+
+        /// <summary>
+        /// Método para iniciar el temporizador.
+        /// </summary>
         private static void StartTimer()
         {
             startTime = DateTime.Now;
             timer.Change(0, 1000); 
         }
 
+        /// <summary>
+        /// Método para detener el temporizador.
+        /// </summary>
         private static void StopTimer()
         {
             timer.Change(Timeout.Infinite, 1000); 
         }
 
+        /// <summary>
+        /// Método invocado por el temporizador para notificar el tiempo transcurrido a los clientes.
+        /// </summary>
         private static void TimerElapsed(object state)
         {
             if (!isTimerStoped)
@@ -292,6 +352,9 @@ namespace Service
             }
         }
 
+        /// <summary>
+        /// Notifica a todos los clientes con la lista actual de citas.
+        /// </summary>
         private void NotifyClients()
         {
             var students = studentList.Select(x => x.Key).ToList();
@@ -301,6 +364,10 @@ namespace Service
             }
         }
 
+        /// <summary>
+        /// Registra una nueva cita.
+        /// </summary>
+        /// <param name="newAppointment">Datos de la nueva cita.</param>
         public void AppointmentRequest(Domain.Appointment newAppointment)
         {
             if (appointmentList.FirstOrDefault(x => x.student_IdStudent == newAppointment.student_IdStudent) == null)
@@ -358,14 +425,20 @@ namespace Service
             NotifyClients();
         }
 
-
+        /// <summary>
+        /// Obtiene todas las citas almacenadas.
+        /// </summary>
+        /// <returns>Lista de citas.</returns>
         public List<Domain.Appointment> GetAllAppointments()
         {
             return appointmentList;
         }
 
-
-
+        /// <summary>
+        /// Deja una cita específica.
+        /// </summary>
+        /// <param name="studentId">ID del estudiante.</param>
+        /// <param name="reason">Motivo de la cancelación.</param>
         public void LeaveAppointment(string studentId, string reason)
         {
             var appointmentToRemove = appointmentList.FirstOrDefault(x => x.student_IdStudent == studentId);
@@ -435,6 +508,10 @@ namespace Service
             NotifyClients();
         }
 
+        /// <summary>
+        /// Agrega un nuevo cliente a la sesión de citas.
+        /// </summary>
+        /// <param name="idStudent">ID del estudiante.</param>
         void IAppointment.JoinToSesion(string idStudent)
         {
             StudentCallbackChanels studentCallbackChanels = new StudentCallbackChanels()
@@ -451,6 +528,11 @@ namespace Service
             }
         }
 
+        /// <summary>
+        /// Cancela la cita de un estudiante con el motivo especificado.
+        /// </summary>
+        /// <param name="idAppointment">ID de la cita a cancelar.</param>
+        /// <param name="reason">Motivo de la cancelación.</param>
         public void CancelAppointment(int idAppointment, string reason)
         {
             var appointmentToRemove = appointmentList.FirstOrDefault(x => x.idAppointment == idAppointment);
@@ -500,7 +582,11 @@ namespace Service
             }
             NotifyClients();
         }
-
+        /// <summary>
+        /// Marca una cita como no atendida con el motivo especificado.
+        /// </summary>
+        /// <param name="idAppointment">ID de la cita a marcar.</param>
+        /// <param name="reason">Motivo de no asistencia.</param>
         public void MarkAppointmentAsAttended(int idAppointment)
         {
             var appointmentToRemove = appointmentList.FirstOrDefault(x => x.idAppointment == idAppointment);
@@ -552,6 +638,11 @@ namespace Service
             NotifyClients();
         }
 
+        /// <summary>
+        /// Marca una cita como no atendida con el motivo especificado.
+        /// </summary>
+        /// <param name="idAppointment">ID de la cita a marcar.</param>
+        /// <param name="reason">Motivo de no asistencia.</param>
         public void MarkAppointmentAsNotAttended(int idAppointment, string reason)
         {
             var appointmentToRemove = appointmentList.FirstOrDefault(x => x.idAppointment == idAppointment);
@@ -602,6 +693,10 @@ namespace Service
             NotifyClients();
         }
 
+        /// <summary>
+        /// Obtiene un reporte de los estudiantes en cola de espera.
+        /// </summary>
+        /// <returns>Lista de reportes de estudiantes en cola de espera.</returns>
         public List<Domain.ViewStudentsQueueReport> GetStudentsQueueReport()
         {
             List<Domain.ViewStudentsQueueReport> studentsReport = new List<Domain.ViewStudentsQueueReport> ();
@@ -636,6 +731,11 @@ namespace Service
             return studentsReport;
         }
 
+        /// <summary>
+        /// Obtiene un reporte de citas por fecha específica.
+        /// </summary>
+        /// <param name="date">Fecha para la cual se desea obtener el reporte.</param>
+        /// <returns>Lista de reportes de citas.</returns>
         public List<Domain.ViewAppointment> GetAppointmentReportByDate(DateTime date)
         {
             List <Domain.ViewAppointment> report = new List<Domain.ViewAppointment> ();
@@ -676,11 +776,18 @@ namespace Service
     }
 
 
-
+    /// <summary>
+    /// Clase parcial que implementa la interfaz IAppointment para gestionar citas y notificaciones.
+    /// </summary>
     public partial class Implementations : IProcedure
     {
         public List<Domain.Procedure> GetProcedureList()
         {
+
+            /// <summary>
+            /// Obtiene una lista de todos los tipos de tramites disponibles.
+            /// </summary>
+            /// <returns>Lista de objetos Domain.Procedure que representan los tramites.</returns>
             List<Domain.Procedure> procedureList = new List<Domain.Procedure>();
             using (FEIDBEntities context = new FEIDBEntities())
             {

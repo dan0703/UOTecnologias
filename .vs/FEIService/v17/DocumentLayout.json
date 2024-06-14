@@ -3,32 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\danse\\source\\repos\\FEIService\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{04C552B3-B7F0-4642-8E5E-E4F3606D67C6}|FEIService\\Service.csproj|C:\\Users\\danse\\source\\repos\\FEIService\\feiservice\\implementations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{04C552B3-B7F0-4642-8E5E-E4F3606D67C6}|FEIService\\Service.csproj|c:\\users\\danse\\source\\repos\\feiservice\\feiservice\\implementations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{04C552B3-B7F0-4642-8E5E-E4F3606D67C6}|FEIService\\Service.csproj|solutionrelative:feiservice\\implementations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{60295C8D-3DB2-49A4-93A8-01B3B9C26770}|Domain\\Domain.csproj|C:\\Users\\danse\\source\\repos\\FEIService\\domain\\intafaces\\itutor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{60295C8D-3DB2-49A4-93A8-01B3B9C26770}|Domain\\Domain.csproj|solutionrelative:domain\\intafaces\\itutor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{60295C8D-3DB2-49A4-93A8-01B3B9C26770}|Domain\\Domain.csproj|C:\\Users\\danse\\source\\repos\\FEIService\\domain\\intafaces\\icareer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{60295C8D-3DB2-49A4-93A8-01B3B9C26770}|Domain\\Domain.csproj|solutionrelative:domain\\intafaces\\icareer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{49F8B099-B27E-4F43-A052-FCE823AFED91}|DataAccess\\DataAccess.csproj|c:\\users\\danse\\source\\repos\\feiservice\\dataaccess\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{49F8B099-B27E-4F43-A052-FCE823AFED91}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{49F8B099-B27E-4F43-A052-FCE823AFED91}|DataAccess\\DataAccess.csproj|c:\\users\\danse\\source\\repos\\feiservice\\dataaccess\\feidb.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
-      "RelativeMoniker": "D:0:0:{49F8B099-B27E-4F43-A052-FCE823AFED91}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\feidb.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{60295C8D-3DB2-49A4-93A8-01B3B9C26770}|Domain\\Domain.csproj|C:\\Users\\danse\\source\\repos\\FEIService\\domain\\intafaces\\istudent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{60295C8D-3DB2-49A4-93A8-01B3B9C26770}|Domain\\Domain.csproj|solutionrelative:domain\\intafaces\\istudent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{49F8B099-B27E-4F43-A052-FCE823AFED91}|DataAccess\\DataAccess.csproj|C:\\Users\\danse\\source\\repos\\FEIService\\dataaccess\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{49F8B099-B27E-4F43-A052-FCE823AFED91}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,7 +14,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -54,91 +30,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ITutor.cs",
-              "DocumentMoniker": "C:\\Users\\danse\\source\\repos\\FEIService\\Domain\\Intafaces\\ITutor.cs",
-              "RelativeDocumentMoniker": "Domain\\Intafaces\\ITutor.cs",
-              "ToolTip": "C:\\Users\\danse\\source\\repos\\FEIService\\Domain\\Intafaces\\ITutor.cs",
-              "RelativeToolTip": "Domain\\Intafaces\\ITutor.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAkAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-13T08:33:08.658Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "App.Config",
-              "DocumentMoniker": "C:\\Users\\danse\\source\\repos\\FEIService\\DataAccess\\App.Config",
-              "RelativeDocumentMoniker": "DataAccess\\App.Config",
-              "ToolTip": "C:\\Users\\danse\\source\\repos\\FEIService\\DataAccess\\App.Config",
-              "RelativeToolTip": "DataAccess\\App.Config",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2024-06-13T12:24:11.454Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "FEIDB.edmx [Diagram1]",
-              "DocumentMoniker": "C:\\Users\\danse\\source\\repos\\FEIService\\DataAccess\\FEIDB.edmx",
-              "RelativeDocumentMoniker": "DataAccess\\FEIDB.edmx",
-              "ToolTip": "C:\\Users\\danse\\source\\repos\\FEIService\\DataAccess\\FEIDB.edmx [Diagram1]",
-              "RelativeToolTip": "DataAccess\\FEIDB.edmx [Diagram1]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001116|",
-              "WhenOpened": "2024-06-13T12:20:30.93Z",
-              "EditorCaption": " [Diagram1]"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Implementations.cs",
               "DocumentMoniker": "C:\\Users\\danse\\source\\repos\\FEIService\\FEIService\\Implementations.cs",
               "RelativeDocumentMoniker": "FEIService\\Implementations.cs",
               "ToolTip": "C:\\Users\\danse\\source\\repos\\FEIService\\FEIService\\Implementations.cs",
               "RelativeToolTip": "FEIService\\Implementations.cs",
-              "ViewState": "AQIAAAcAAAAAAAAAAAAiwBoAAABJAAAA",
+              "ViewState": "AQIAAAIDAAAAAAAAAAAAABsDAABJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-13T10:58:37.883Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "packages.config",
-              "DocumentMoniker": "C:\\Users\\danse\\source\\repos\\FEIService\\DataAccess\\packages.config",
-              "RelativeDocumentMoniker": "DataAccess\\packages.config",
-              "ToolTip": "C:\\Users\\danse\\source\\repos\\FEIService\\DataAccess\\packages.config",
-              "RelativeToolTip": "DataAccess\\packages.config",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAMAAAALAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2024-06-13T10:18:04.497Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "IStudent.cs",
-              "DocumentMoniker": "C:\\Users\\danse\\source\\repos\\FEIService\\Domain\\Intafaces\\IStudent.cs",
-              "RelativeDocumentMoniker": "Domain\\Intafaces\\IStudent.cs",
-              "ToolTip": "C:\\Users\\danse\\source\\repos\\FEIService\\Domain\\Intafaces\\IStudent.cs",
-              "RelativeToolTip": "Domain\\Intafaces\\IStudent.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAcAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-13T08:46:51.93Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ICareer.cs",
-              "DocumentMoniker": "C:\\Users\\danse\\source\\repos\\FEIService\\Domain\\Intafaces\\ICareer.cs",
-              "RelativeDocumentMoniker": "Domain\\Intafaces\\ICareer.cs",
-              "ToolTip": "C:\\Users\\danse\\source\\repos\\FEIService\\Domain\\Intafaces\\ICareer.cs",
-              "RelativeToolTip": "Domain\\Intafaces\\ICareer.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAbAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-13T08:32:23.644Z",
+              "WhenOpened": "2024-06-14T15:56:51.582Z",
               "EditorCaption": ""
             }
           ]

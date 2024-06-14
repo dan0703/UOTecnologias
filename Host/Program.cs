@@ -8,18 +8,30 @@ using Service;
 
 namespace Host
 {
+    /// <summary>
+    /// Clase principal del programa de administración del sistema.
+    /// </summary>
     public static class Program
     {
+        /// <summary>
+        /// Punto de entrada principal del programa.
+        /// </summary>
+        /// <param name="args">Argumentos de línea de comandos (no utilizados).</param>
         static void Main(string[] args)
         {
             using (ServiceHost host = new ServiceHost(typeof(Implementations)))
             {
+                // Iniciar el host del servicio
                 host.Open();
 
+                // Mostrar el menú principal
                 MainMenu();
             }
         }
 
+        /// <summary>
+        /// Muestra el menú principal y gestiona las opciones seleccionadas por el usuario.
+        /// </summary>
         private static void MainMenu()
         {
             while (true)
@@ -41,25 +53,25 @@ namespace Host
                     switch (option)
                     {
                         case 1:
-                            RegisterUsers();
+                            RegisterUsers();  // Llama al método para registrar usuarios
                             break;
                         case 2:
-                            MarkAsAttended();
+                            MarkAsAttended(); // Llama al método para marcar como atendidoa una cita
                             break;
                         case 3:
-                            MarkAsNotAttended();
+                            MarkAsNotAttended(); // Llama al método para marcar como no atendida una cita
                             break;
                         case 4:
-                            ReportQueue();
+                            ReportQueue(); // Llama al método para reportar la lista de estudiantes en cola
                             break;
                         case 5:
-                            CancelAppointment();
+                            CancelAppointment(); // Llama al método para cancelar un turno
                             break;
                         case 6:
-                            GenerateReportsByDate();
+                            GenerateReportsByDate(); // Llama al método para generar reportes por fecha
                             break;
                         case 0:
-                            return;
+                            return; // Sale del programa
                         default:
                             Console.WriteLine("Opción inválida. Presione cualquier tecla para intentar nuevamente...");
                             Console.ReadKey();
@@ -74,11 +86,15 @@ namespace Host
             }
         }
 
+        /// <summary>
+        /// Genera reportes de citas por fecha especificada por el usuario.
+        /// </summary>
         private static void GenerateReportsByDate()
         {
             DateTime reportDate = DateTime.MinValue;
             bool isValidDate = false;
 
+            // Solicitar y validar la fecha para el reporte
             while (!isValidDate)
             {
                 Console.Write("Ingrese la fecha para el reporte (yyyy-MM-dd): ");
@@ -97,13 +113,14 @@ namespace Host
             List<Domain.ViewAppointment> reportData= new List<Domain.ViewAppointment>();
             try
             {
-                reportData = serviceInstance.GetAppointmentReportByDate(reportDate);
+                reportData = serviceInstance.GetAppointmentReportByDate(reportDate); // Obtener el reporte de citas por fecha
+            
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error al obtener el reporte: {ex.Message}");
             }
-
+            // Mostrar los datos del reporte en la consola
             if (reportData.Count > 0)
             {
                 Console.WriteLine("Reporte de citas:");
@@ -117,9 +134,15 @@ namespace Host
             {
                 Console.WriteLine("No se encontraron citas para la fecha especificada.");
             }
-            PressAnyKey();
+            PressAnyKey(); // Esperar a que el usuario presione una tecla
 
         }
+
+        /// <summary>
+        /// Obtiene el nombre asociado a un estado de cita según su código.
+        /// </summary>
+        /// <param name="status">Código del estado de la cita.</param>
+        /// <returns>Nombre asociado al estado de la cita.</returns>
         private static string GetStatusName(int status)
         {
             string statusName;
@@ -132,7 +155,7 @@ namespace Host
                     statusName = "Atendido";
                     break;
                 case 2:
-                    statusName = "Cancelado por ele studiante";
+                    statusName = "Cancelado por el studiante";
                     break;
                 case 3:
                     statusName = "Cancelado por secretaria";
@@ -150,6 +173,9 @@ namespace Host
             return statusName;
         }
 
+        /// <summary>
+        /// Cancela una cita especificada por el usuario, solicitando el ID y la razón de cancelación.
+        /// </summary>
         private static void CancelAppointment()
         {
             Console.Write("Ingrese el ID de la cita a cancelar: ");
@@ -170,29 +196,33 @@ namespace Host
             Implementations serviceInstance = new Implementations();
             try
             {
-                serviceInstance.CancelAppointment(idAppointment, reason);
-                Console.WriteLine("Cita cancelada con éxito. Presione cualquier tecla para continuar...");
+                serviceInstance.CancelAppointment(idAppointment, reason); // Llamar al servicio para cancelar la cita
+                Console.WriteLine("Cita cancelada con éxito.");
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Ha ocurrido un error mientras se cancelaba la cita. Presione cualquier tecla para continuar...");
+                Console.WriteLine("Ha ocurrido un error mientras se cancelaba la cita." + ex.Message);
             }
-            PressAnyKey();
+            PressAnyKey(); // Esperar a que el usuario presione una tecla
         }
 
+        /// <summary>
+        /// Genera un reporte de la lista de estudiantes en cola para ser atendidos.
+        /// </summary>
         private static void ReportQueue()
         {
             Implementations serviceInstance = new Implementations();
             List<Domain.ViewStudentsQueueReport> reportData = new List<Domain.ViewStudentsQueueReport>();
             try
             {
-                reportData = serviceInstance.GetStudentsQueueReport();
+                reportData = serviceInstance.GetStudentsQueueReport(); // Obtener el reporte de estudiantes en cola
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error al obtener el reporte: {ex.Message}");
             }
 
+            // Mostrar los datos del reporte en la consola
             if (reportData.Count > 0)
             {
                 Console.WriteLine("Reporte de citas:");
@@ -206,9 +236,12 @@ namespace Host
             {
                 Console.WriteLine("No se encontraron citas pendientes");
             }
-            PressAnyKey();
+            PressAnyKey(); // Esperar a que el usuario presione una tecla
         }
 
+        /// <summary>
+        /// Marca una cita como no atendida, solicitando el ID y la razón de no atención.
+        /// </summary>
         private static void MarkAsNotAttended()
         {
             int idAppointment;
@@ -225,10 +258,13 @@ namespace Host
                 reason = Console.ReadLine();
             }
             Implementations serviceInstance = new Implementations();
-            serviceInstance.MarkAppointmentAsNotAttended(idAppointment, reason);
-            PressAnyKey();
+            serviceInstance.MarkAppointmentAsNotAttended(idAppointment, reason); // Marcar la cita como no atendida
+            PressAnyKey(); // Esperar a que el usuario presione una tecla
         }
 
+        /// <summary>
+        /// Marca una cita como atendida, solicitando el ID de la cita.
+        /// </summary>
         private static void MarkAsAttended()
         {
             Console.Write("Ingrese el ID de la cita a marcar como atendida: ");
@@ -240,10 +276,13 @@ namespace Host
             }
 
             Implementations serviceInstance = new Implementations();
-            serviceInstance.MarkAppointmentAsAttended(idAppointment);
-            PressAnyKey();
+            serviceInstance.MarkAppointmentAsAttended(idAppointment);// Marcar la cita como atendida
+            PressAnyKey(); // Esperar a que el usuario presione una tecla
         }
 
+        /// <summary>
+        /// Registra un nuevo estudiante en el sistema, solicitando información como nombre, matrícula, contraseña, etc.
+        /// </summary>
         private static void RegisterUsers()
         {
             Console.Write("Ingrese el nombre completo del estudiante: ");
@@ -256,7 +295,7 @@ namespace Host
 
             Console.Write("Ingrese la matricula del estudiante: ");
             string studentId = Console.ReadLine();
-            while (string.IsNullOrEmpty(studentId) || Regex.IsMatch(studentId, @"^zs\d{8}$"))
+            while (string.IsNullOrEmpty(studentId) || Regex.IsMatch(studentId, @"^zs\d{8}$")) // Validación de la matrícula
             {
                 Console.WriteLine("Por favor, ingrese una matricula valida:");
                 studentId = Console.ReadLine();
@@ -285,6 +324,8 @@ namespace Host
                 Console.WriteLine("Entrada no válida. Por favor, ingrese un ID tutor válido.");
                 Console.Write("Ingrese el ID del tutor: ");
             }
+
+            // Crear objeto con la información del estudiante
             Domain.ViewStudentInfo studentInfo = new Domain.ViewStudentInfo()
             {
                 password = Complements.EncryptPassword(password),
@@ -302,10 +343,13 @@ namespace Host
             {
                 Console.WriteLine("No se ha podido registrar al estudiante");
             }
-            PressAnyKey();
+            PressAnyKey(); // Esperar a que el usuario presione una tecla
 
         }
 
+        /// <summary>
+        /// Muestra un mensaje para presionar cualquier tecla para continuar.
+        /// </summary>
         private static void PressAnyKey()
         {
             Console.WriteLine("Presione cualquier tecla para continuar...");
