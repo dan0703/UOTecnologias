@@ -100,6 +100,52 @@ advertencia 6002: La tabla o vista 'FEIDB.dbo.ViewStudentInfoes' no tiene defini
           <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'FEIDB.dbo.ViewAppointment' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="ViewAppointment">
+          <Key>
+            <PropertyRef Name="IdAppointment" />
+            <PropertyRef Name="AttendedDate" />
+            <PropertyRef Name="Duration" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="IdStudent" />
+            <PropertyRef Name="FullName" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="IdTutor" />
+            <PropertyRef Name="IdProcedure" />
+            <PropertyRef Name="Expr1" />
+          </Key>
+          <Property Name="IdAppointment" Type="int" Nullable="false" />
+          <Property Name="AttendedDate" Type="datetime" Nullable="false" />
+          <Property Name="Duration" Type="bigint" Nullable="false" />
+          <Property Name="Status" Type="smallint" Nullable="false" />
+          <Property Name="IdStudent" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IdTutor" Type="int" Nullable="false" />
+          <Property Name="IdProcedure" Type="int" Nullable="false" />
+          <Property Name="Expr1" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'FEIDB.dbo.ViewAppointmentReport' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="ViewAppointmentReport">
+          <Key>
+            <PropertyRef Name="IdAppointment" />
+            <PropertyRef Name="AttendedDate" />
+            <PropertyRef Name="Duration" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="FullName" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="CareerName" />
+          </Key>
+          <Property Name="IdAppointment" Type="int" Nullable="false" />
+          <Property Name="AttendedDate" Type="datetime" Nullable="false" />
+          <Property Name="Duration" Type="bigint" Nullable="false" />
+          <Property Name="Status" Type="smallint" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CareerName" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'FEIDB.dbo.ViewStudent' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="ViewStudent">
           <Key>
@@ -120,6 +166,22 @@ advertencia 6002: La tabla o vista 'FEIDB.dbo.ViewStudent' no tiene definida nin
           <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
           <Property Name="IdUser" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'FEIDB.dbo.ViewStudentsQueueReport' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="ViewStudentsQueueReport">
+          <Key>
+            <PropertyRef Name="IdAppointment" />
+            <PropertyRef Name="AttendedDate" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="IdStudent" />
+            <PropertyRef Name="FullName" />
+          </Key>
+          <Property Name="IdAppointment" Type="int" Nullable="false" />
+          <Property Name="AttendedDate" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="smallint" Nullable="false" />
+          <Property Name="IdStudent" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <Association Name="FK_CareerStudent">
           <End Role="Careers" Type="Self.Careers" Multiplicity="1" />
@@ -220,6 +282,31 @@ advertencia 6002: La tabla o vista 'FEIDB.dbo.ViewStudent' no tiene definida nin
     [ViewStudentInfoes].[Password] AS [Password]
     FROM [dbo].[ViewStudentInfoes] AS [ViewStudentInfoes]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="ViewAppointment" EntityType="Self.ViewAppointment" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ViewAppointment].[IdAppointment] AS [IdAppointment], 
+    [ViewAppointment].[AttendedDate] AS [AttendedDate], 
+    [ViewAppointment].[Duration] AS [Duration], 
+    [ViewAppointment].[Status] AS [Status], 
+    [ViewAppointment].[IdStudent] AS [IdStudent], 
+    [ViewAppointment].[FullName] AS [FullName], 
+    [ViewAppointment].[Name] AS [Name], 
+    [ViewAppointment].[IdTutor] AS [IdTutor], 
+    [ViewAppointment].[IdProcedure] AS [IdProcedure], 
+    [ViewAppointment].[Expr1] AS [Expr1]
+    FROM [dbo].[ViewAppointment] AS [ViewAppointment]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ViewAppointmentReport" EntityType="Self.ViewAppointmentReport" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ViewAppointmentReport].[IdAppointment] AS [IdAppointment], 
+    [ViewAppointmentReport].[AttendedDate] AS [AttendedDate], 
+    [ViewAppointmentReport].[Duration] AS [Duration], 
+    [ViewAppointmentReport].[Status] AS [Status], 
+    [ViewAppointmentReport].[FullName] AS [FullName], 
+    [ViewAppointmentReport].[Name] AS [Name], 
+    [ViewAppointmentReport].[CareerName] AS [CareerName]
+    FROM [dbo].[ViewAppointmentReport] AS [ViewAppointmentReport]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="ViewStudent" EntityType="Self.ViewStudent" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [ViewStudent].[IdStudent] AS [IdStudent], 
@@ -231,6 +318,15 @@ advertencia 6002: La tabla o vista 'FEIDB.dbo.ViewStudent' no tiene definida nin
     [ViewStudent].[Password] AS [Password], 
     [ViewStudent].[IdUser] AS [IdUser]
     FROM [dbo].[ViewStudent] AS [ViewStudent]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ViewStudentsQueueReport" EntityType="Self.ViewStudentsQueueReport" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ViewStudentsQueueReport].[IdAppointment] AS [IdAppointment], 
+    [ViewStudentsQueueReport].[AttendedDate] AS [AttendedDate], 
+    [ViewStudentsQueueReport].[Status] AS [Status], 
+    [ViewStudentsQueueReport].[IdStudent] AS [IdStudent], 
+    [ViewStudentsQueueReport].[FullName] AS [FullName]
+    FROM [dbo].[ViewStudentsQueueReport] AS [ViewStudentsQueueReport]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_CareerStudent" Association="Self.FK_CareerStudent">
             <End Role="Careers" EntitySet="Careers" />
@@ -470,6 +566,9 @@ advertencia 6002: La tabla o vista 'FEIDB.dbo.ViewStudent' no tiene definida nin
             <End Role="Students" EntitySet="Students" />
           </AssociationSet>
           <EntitySet Name="ViewStudents" EntityType="FEIDBModel.ViewStudent" />
+          <EntitySet Name="ViewAppointments" EntityType="FEIDBModel.ViewAppointment" />
+          <EntitySet Name="ViewAppointmentReports" EntityType="FEIDBModel.ViewAppointmentReport" />
+          <EntitySet Name="ViewStudentsQueueReports" EntityType="FEIDBModel.ViewStudentsQueueReport" />
         </EntityContainer>
         <EntityType Name="ViewStudent">
           <Key>
@@ -490,6 +589,62 @@ advertencia 6002: La tabla o vista 'FEIDB.dbo.ViewStudent' no tiene definida nin
           <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IdUser" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ViewAppointment">
+          <Key>
+            <PropertyRef Name="IdAppointment" />
+            <PropertyRef Name="AttendedDate" />
+            <PropertyRef Name="Duration" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="IdStudent" />
+            <PropertyRef Name="FullName" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="IdTutor" />
+            <PropertyRef Name="IdProcedure" />
+            <PropertyRef Name="Expr1" />
+          </Key>
+          <Property Name="IdAppointment" Type="Int32" Nullable="false" />
+          <Property Name="AttendedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Duration" Type="Int64" Nullable="false" />
+          <Property Name="Status" Type="Int16" Nullable="false" />
+          <Property Name="IdStudent" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="FullName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdTutor" Type="Int32" Nullable="false" />
+          <Property Name="IdProcedure" Type="Int32" Nullable="false" />
+          <Property Name="Expr1" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ViewAppointmentReport">
+          <Key>
+            <PropertyRef Name="IdAppointment" />
+            <PropertyRef Name="AttendedDate" />
+            <PropertyRef Name="Duration" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="FullName" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="CareerName" />
+          </Key>
+          <Property Name="IdAppointment" Type="Int32" Nullable="false" />
+          <Property Name="AttendedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Duration" Type="Int64" Nullable="false" />
+          <Property Name="Status" Type="Int16" Nullable="false" />
+          <Property Name="FullName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CareerName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ViewStudentsQueueReport">
+          <Key>
+            <PropertyRef Name="IdAppointment" />
+            <PropertyRef Name="AttendedDate" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="IdStudent" />
+            <PropertyRef Name="FullName" />
+          </Key>
+          <Property Name="IdAppointment" Type="Int32" Nullable="false" />
+          <Property Name="AttendedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Status" Type="Int16" Nullable="false" />
+          <Property Name="IdStudent" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="FullName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -598,6 +753,46 @@ advertencia 6002: La tabla o vista 'FEIDB.dbo.ViewStudent' no tiene definida nin
                 <ScalarProperty Name="IdCareer" ColumnName="IdCareer" />
                 <ScalarProperty Name="FullName" ColumnName="FullName" />
                 <ScalarProperty Name="IdStudent" ColumnName="IdStudent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewAppointments">
+            <EntityTypeMapping TypeName="FEIDBModel.ViewAppointment">
+              <MappingFragment StoreEntitySet="ViewAppointment">
+                <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+                <ScalarProperty Name="IdProcedure" ColumnName="IdProcedure" />
+                <ScalarProperty Name="IdTutor" ColumnName="IdTutor" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="IdStudent" ColumnName="IdStudent" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="AttendedDate" ColumnName="AttendedDate" />
+                <ScalarProperty Name="IdAppointment" ColumnName="IdAppointment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewAppointmentReports">
+            <EntityTypeMapping TypeName="FEIDBModel.ViewAppointmentReport">
+              <MappingFragment StoreEntitySet="ViewAppointmentReport">
+                <ScalarProperty Name="CareerName" ColumnName="CareerName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="AttendedDate" ColumnName="AttendedDate" />
+                <ScalarProperty Name="IdAppointment" ColumnName="IdAppointment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewStudentsQueueReports">
+            <EntityTypeMapping TypeName="FEIDBModel.ViewStudentsQueueReport">
+              <MappingFragment StoreEntitySet="ViewStudentsQueueReport">
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="IdStudent" ColumnName="IdStudent" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="AttendedDate" ColumnName="AttendedDate" />
+                <ScalarProperty Name="IdAppointment" ColumnName="IdAppointment" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

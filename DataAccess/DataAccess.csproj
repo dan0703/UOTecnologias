@@ -93,10 +93,19 @@
     <Compile Include="User.cs">
       <DependentUpon>FEIDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewAppointment.cs">
+      <DependentUpon>FEIDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewAppointmentReport.cs">
+      <DependentUpon>FEIDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="ViewStudent.cs">
       <DependentUpon>FEIDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewStudentInfo.cs">
+      <DependentUpon>FEIDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewStudentsQueueReport.cs">
       <DependentUpon>FEIDB.tt</DependentUpon>
     </Compile>
   </ItemGroup>

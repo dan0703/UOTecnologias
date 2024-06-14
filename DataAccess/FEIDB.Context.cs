@@ -35,5 +35,8 @@ namespace DataAccess
         public virtual DbSet<GetStudentInfo> GetStudentInfoes { get; set; }
         public virtual DbSet<ViewStudentInfo> ViewStudentInfoes { get; set; }
         public virtual DbSet<ViewStudent> ViewStudents { get; set; }
+        public virtual DbSet<ViewAppointment> ViewAppointments { get; set; }
+        public virtual DbSet<ViewAppointmentReport> ViewAppointmentReports { get; set; }
+        public virtual DbSet<ViewStudentsQueueReport> ViewStudentsQueueReports { get; set; }
     }
 }

@@ -21,6 +21,9 @@
         <AssociationConnector Association="FEIDBModel.FK_TutorStudent" ManuallyRouted="false" />
         <AssociationConnector Association="FEIDBModel.FK_UserStudent" ManuallyRouted="false" />
         <EntityTypeShape EntityType="FEIDBModel.ViewStudent" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="FEIDBModel.ViewAppointment" Width="1.5" PointX="8.375" PointY="7.75" />
+        <EntityTypeShape EntityType="FEIDBModel.ViewAppointmentReport" Width="1.5" PointX="10.375" PointY="0.75" />
+        <EntityTypeShape EntityType="FEIDBModel.ViewStudentsQueueReport" Width="1.5" PointX="10.375" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
