@@ -27,5 +27,11 @@ namespace Domain
     {
         [OperationContract]
         void SetAppointments(List<Appointment> appointments);
+
+        [OperationContract]
+        void UpdateTimer(TimeSpan elapsedTime);
+
+        [OperationContract]
+        void NotifyCancellation(string reason);
     }
 }
