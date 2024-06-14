@@ -45,7 +45,6 @@
   <ItemGroup>
     <Compile Include="Appointment.cs" />
     <Compile Include="Career.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="Intafaces\IAppointment.cs" />
     <Compile Include="Intafaces\ICareer.cs" />
     <Compile Include="Intafaces\IProcedure.cs" />
