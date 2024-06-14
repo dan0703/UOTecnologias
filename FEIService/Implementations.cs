@@ -1,14 +1,16 @@
 ﻿using DataAccess;
 using Domain;
+using FEIService;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Core;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Security.Principal;
 using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
+using System.Timers;
 
 namespace Service
 {
@@ -41,6 +43,10 @@ namespace Service
                         }
                     }
                 }
+                catch (EntityException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
@@ -65,6 +71,10 @@ namespace Service
                         fullName = foundTutor.Name,
                     };
 
+                }
+                catch (EntityException ex)
+                {
+                    Console.WriteLine(ex.Message);
                 }
                 catch (Exception ex)
                 {
@@ -96,6 +106,10 @@ namespace Service
                         tutorList.Add(tutorInfo);
                     }
                 }
+                catch (EntityException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
@@ -122,22 +136,21 @@ namespace Service
                         {
                             idCareer = career.IdCareer,
                             name = career.CareerName
-
                         };
-
                         careerList.Add(careerInfo);
                     }
                 }
+                catch (EntityException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"{ex.Message}");
+                    Console.WriteLine(ex.Message);
                 }
-
             }
-
             return careerList;
         }
-
     }
 
     public partial class Implementations : IStudent
@@ -158,6 +171,10 @@ namespace Service
 
                     };
 
+                }
+                catch (EntityException ex)
+                {
+                    Console.WriteLine(ex.Message);
                 }
                 catch (Exception ex)
                 {
@@ -238,27 +255,106 @@ namespace Service
     {
         private static readonly Dictionary<string, StudentCallbackChanels> studentList = new Dictionary<string, StudentCallbackChanels>();
         private static readonly List<Domain.Appointment> appointmentList = new List<Domain.Appointment>();
+        private static System.Threading.Timer timer;
+        private static DateTime startTime;
+        private static bool isTimerStoped = false; 
+
+        public Implementations()
+        {
+            timer = new System.Threading.Timer(TimerElapsed, null, Timeout.Infinite, 1000);
+        }
+        private static void StartTimer()
+        {
+            startTime = DateTime.Now;
+            timer.Change(0, 1000); 
+        }
+
+        private static void StopTimer()
+        {
+            timer.Change(Timeout.Infinite, 1000); 
+        }
+
+        private static void TimerElapsed(object state)
+        {
+            if (!isTimerStoped)
+            {
+                var elapsedTime = DateTime.Now - startTime;
+                try
+                {
+                    foreach (var student in studentList.Values)
+                    {
+                        student.appointmentCallback.UpdateTimer(elapsedTime);
+                    }
+                }catch(Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+                
+            }
+        }
+
+        private void NotifyClients()
+        {
+            var students = studentList.Select(x => x.Key).ToList();
+            foreach (var student in students)
+            {
+                studentList[student].appointmentCallback.SetAppointments(appointmentList);
+            }
+        }
 
         public void AppointmentRequest(Domain.Appointment newAppointment)
         {
             if (appointmentList.FirstOrDefault(x => x.student_IdStudent == newAppointment.student_IdStudent) == null)
             {
                 appointmentList.Add(newAppointment);
-                Console.WriteLine(newAppointment.student_IdStudent);
-            }
-            var students = studentList.Select(x => x.Key).ToList();
-            foreach (var student in students)
-            {
-                Console.WriteLine(student);
+                using (FEIDBEntities context = new FEIDBEntities())
+                {
+                    try
+                    {
+                        var newAppointmentAux = new DataAccess.Appointment()
+                        {
+                            AttendedDate = DateTime.Now,
+                            Duration = 0,
+                            Status = Constants.Pending,
+                            Student_IdStudent = newAppointment.student_IdStudent,
+                            Procedure_IdProcedure = newAppointment.procedure_IdProcedure,
+                            NotAttendedReason = "",
+                        };
+                        context.Appointments.Add(newAppointmentAux);
+                        context.SaveChanges();
+                    }
+                    catch (DbEntityValidationException ex)
+                    {
+                        foreach (var entityValidationErrors in ex.EntityValidationErrors)
+                        {
+                            foreach (var validationError in entityValidationErrors.ValidationErrors)
+                            {
+                                Console.WriteLine($"Property: {validationError.PropertyName}, Error: {validationError.ErrorMessage}");
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Error al guardar en la base de datos: {ex.Message}");
+                    }
+                }
 
-                studentList[student].appointmentCallback.SetAppointments(appointmentList);
+                if (appointmentList.Count == 1) 
+                {
+                    isTimerStoped = false;
+                    StartTimer();
+                }
             }
+            NotifyClients();
         }
+
 
         public List<Domain.Appointment> GetAllAppointments()
         {
             return appointmentList;
         }
+
+
 
         public void LeaveAppointment(string studentId, string reason)
         {
@@ -266,14 +362,25 @@ namespace Service
 
             if (appointmentToRemove != null)
             {
+                var wasFirstAppointment = (appointmentToRemove == appointmentList.First());
+
                 appointmentList.Remove(appointmentToRemove);
+
+                if (appointmentList.Count == 0)
+                {
+                    Console.WriteLine("stop");
+                    isTimerStoped = true;
+                    StopTimer();
+
+                }
+                else if (wasFirstAppointment)
+                {
+                    StartTimer();
+                }
             }
-            var students = studentList.Select(x => x.Key).ToList();
-            foreach (var student in students)
-            {
-                studentList[student].appointmentCallback.SetAppointments(appointmentList);
-            }
+            NotifyClients();
         }
+
         void IAppointment.JoinToSesion(string idStudent)
         {
             StudentCallbackChanels studentCallbackChanels = new StudentCallbackChanels()
@@ -291,6 +398,9 @@ namespace Service
         }
 
     }
+
+
+
     public partial class Implementations : IProcedure
     {
         public List<Domain.Procedure> GetProcedureList()
