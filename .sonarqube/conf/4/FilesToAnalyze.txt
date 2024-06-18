@@ -1,0 +1,12 @@
+﻿C:\Users\danse\source\repos\FEIService\UnitTestFEI\AppointmentTest.cs
+C:\Users\danse\source\repos\FEIService\UnitTestFEI\CareerTest.cs
+C:\Users\danse\source\repos\FEIService\UnitTestFEI\ProcedureTest.cs
+C:\Users\danse\source\repos\FEIService\UnitTestFEI\TutorTest.cs
+C:\Users\danse\source\repos\FEIService\UnitTestFEI\StudentTest.cs
+C:\Users\danse\source\repos\FEIService\UnitTestFEI\Properties\AssemblyInfo.cs
+C:\Users\danse\source\repos\FEIService\packages\MSTest.TestAdapter.2.2.10\build\_common\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\danse\source\repos\FEIService\packages\MSTest.TestAdapter.2.2.10\build\_common\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\danse\source\repos\FEIService\packages\MSTest.TestAdapter.2.2.10\build\net46\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\danse\source\repos\FEIService\packages\MSTest.TestAdapter.2.2.10\build\net46\Microsoft.TestPlatform.AdapterUtilities.dll
+C:\Users\danse\source\repos\FEIService\UnitTestFEI\App.config
+C:\Users\danse\source\repos\FEIService\UnitTestFEI\packages.config

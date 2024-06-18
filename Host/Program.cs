@@ -53,25 +53,25 @@ namespace Host
                     switch (option)
                     {
                         case 1:
-                            RegisterUsers();  // Llama al método para registrar usuarios
+                            RegisterUsers();  
                             break;
                         case 2:
-                            MarkAsAttended(); // Llama al método para marcar como atendidoa una cita
+                            MarkAsAttended(); 
                             break;
                         case 3:
-                            MarkAsNotAttended(); // Llama al método para marcar como no atendida una cita
+                            MarkAsNotAttended(); 
                             break;
                         case 4:
-                            ReportQueue(); // Llama al método para reportar la lista de estudiantes en cola
+                            ReportQueue(); 
                             break;
                         case 5:
-                            CancelAppointment(); // Llama al método para cancelar un turno
+                            CancelAppointment(); 
                             break;
                         case 6:
-                            GenerateReportsByDate(); // Llama al método para generar reportes por fecha
+                            GenerateReportsByDate();
                             break;
                         case 0:
-                            return; // Sale del programa
+                            return; 
                         default:
                             Console.WriteLine("Opción inválida. Presione cualquier tecla para intentar nuevamente...");
                             Console.ReadKey();
@@ -94,7 +94,6 @@ namespace Host
             DateTime reportDate = DateTime.MinValue;
             bool isValidDate = false;
 
-            // Solicitar y validar la fecha para el reporte
             while (!isValidDate)
             {
                 Console.Write("Ingrese la fecha para el reporte (yyyy-MM-dd): ");
@@ -113,14 +112,13 @@ namespace Host
             List<Domain.ViewAppointment> reportData= new List<Domain.ViewAppointment>();
             try
             {
-                reportData = serviceInstance.GetAppointmentReportByDate(reportDate); // Obtener el reporte de citas por fecha
+                reportData = serviceInstance.GetAppointmentReportByDate(reportDate); 
             
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error al obtener el reporte: {ex.Message}");
             }
-            // Mostrar los datos del reporte en la consola
             if (reportData.Count > 0)
             {
                 Console.WriteLine("Reporte de citas:");
@@ -134,7 +132,7 @@ namespace Host
             {
                 Console.WriteLine("No se encontraron citas para la fecha especificada.");
             }
-            PressAnyKey(); // Esperar a que el usuario presione una tecla
+            PressAnyKey(); 
 
         }
 
@@ -196,14 +194,13 @@ namespace Host
             Implementations serviceInstance = new Implementations();
             try
             {
-                serviceInstance.CancelAppointment(idAppointment, reason); // Llamar al servicio para cancelar la cita
-                Console.WriteLine("Cita cancelada con éxito.");
+                serviceInstance.CancelAppointment(idAppointment, reason); 
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Ha ocurrido un error mientras se cancelaba la cita." + ex.Message);
             }
-            PressAnyKey(); // Esperar a que el usuario presione una tecla
+            PressAnyKey(); 
         }
 
         /// <summary>
@@ -215,14 +212,13 @@ namespace Host
             List<Domain.ViewStudentsQueueReport> reportData = new List<Domain.ViewStudentsQueueReport>();
             try
             {
-                reportData = serviceInstance.GetStudentsQueueReport(); // Obtener el reporte de estudiantes en cola
+                reportData = serviceInstance.GetStudentsQueueReport(); 
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error al obtener el reporte: {ex.Message}");
             }
 
-            // Mostrar los datos del reporte en la consola
             if (reportData.Count > 0)
             {
                 Console.WriteLine("Reporte de citas:");
@@ -236,7 +232,7 @@ namespace Host
             {
                 Console.WriteLine("No se encontraron citas pendientes");
             }
-            PressAnyKey(); // Esperar a que el usuario presione una tecla
+            PressAnyKey(); 
         }
 
         /// <summary>
@@ -258,8 +254,8 @@ namespace Host
                 reason = Console.ReadLine();
             }
             Implementations serviceInstance = new Implementations();
-            serviceInstance.MarkAppointmentAsNotAttended(idAppointment, reason); // Marcar la cita como no atendida
-            PressAnyKey(); // Esperar a que el usuario presione una tecla
+            serviceInstance.MarkAppointmentAsNotAttended(idAppointment, reason); 
+            PressAnyKey(); 
         }
 
         /// <summary>
@@ -276,8 +272,8 @@ namespace Host
             }
 
             Implementations serviceInstance = new Implementations();
-            serviceInstance.MarkAppointmentAsAttended(idAppointment);// Marcar la cita como atendida
-            PressAnyKey(); // Esperar a que el usuario presione una tecla
+            serviceInstance.MarkAppointmentAsAttended(idAppointment);
+            PressAnyKey(); 
         }
 
 

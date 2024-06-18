@@ -1,0 +1,4 @@
+﻿C:\Users\danse\source\repos\FEIService\Host\Program.cs
+C:\Users\danse\source\repos\FEIService\Host\Properties\AssemblyInfo.cs
+C:\Users\danse\source\repos\FEIService\Host\App.config
+C:\Users\danse\source\repos\FEIService\Host\packages.config

@@ -3,8 +3,36 @@
   "WorkspaceRootPath": "C:\\Users\\danse\\source\\repos\\FEIService\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{04C552B3-B7F0-4642-8E5E-E4F3606D67C6}|FEIService\\Service.csproj|c:\\users\\danse\\source\\repos\\feiservice\\feiservice\\implementations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{04C552B3-B7F0-4642-8E5E-E4F3606D67C6}|FEIService\\Service.csproj|solutionrelative:feiservice\\implementations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{60295C8D-3DB2-49A4-93A8-01B3B9C26770}|Domain\\Domain.csproj|c:\\users\\danse\\source\\repos\\feiservice\\domain\\viewstudentinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{60295C8D-3DB2-49A4-93A8-01B3B9C26770}|Domain\\Domain.csproj|solutionrelative:domain\\viewstudentinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{60295C8D-3DB2-49A4-93A8-01B3B9C26770}|Domain\\Domain.csproj|c:\\users\\danse\\source\\repos\\feiservice\\domain\\career.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{60295C8D-3DB2-49A4-93A8-01B3B9C26770}|Domain\\Domain.csproj|solutionrelative:domain\\career.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00B168D2-78F5-4C57-9183-9FD823F01B87}|Host\\Host.csproj|c:\\users\\danse\\source\\repos\\feiservice\\host\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00B168D2-78F5-4C57-9183-9FD823F01B87}|Host\\Host.csproj|solutionrelative:host\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{60295C8D-3DB2-49A4-93A8-01B3B9C26770}|Domain\\Domain.csproj|c:\\users\\danse\\source\\repos\\feiservice\\domain\\appointment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{60295C8D-3DB2-49A4-93A8-01B3B9C26770}|Domain\\Domain.csproj|solutionrelative:domain\\appointment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{04C552B3-B7F0-4642-8E5E-E4F3606D67C6}|FEIService\\Service.csproj|c:\\users\\danse\\source\\repos\\feiservice\\feiservice\\complements.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{04C552B3-B7F0-4642-8E5E-E4F3606D67C6}|FEIService\\Service.csproj|solutionrelative:feiservice\\complements.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{04C552B3-B7F0-4642-8E5E-E4F3606D67C6}|FEIService\\Service.csproj|C:\\Users\\danse\\source\\repos\\FEIService\\feiservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{04C552B3-B7F0-4642-8E5E-E4F3606D67C6}|FEIService\\Service.csproj|solutionrelative:feiservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2B216EF8-8587-451C-9769-D2589012B3B1}|UnitTestFEI\\UnitTestFEI.csproj|c:\\users\\danse\\source\\repos\\feiservice\\unittestfei\\appointmenttest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2B216EF8-8587-451C-9769-D2589012B3B1}|UnitTestFEI\\UnitTestFEI.csproj|solutionrelative:unittestfei\\appointmenttest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{60295C8D-3DB2-49A4-93A8-01B3B9C26770}|Domain\\Domain.csproj|c:\\users\\danse\\source\\repos\\feiservice\\domain\\intafaces\\iappointment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{60295C8D-3DB2-49A4-93A8-01B3B9C26770}|Domain\\Domain.csproj|solutionrelative:domain\\intafaces\\iappointment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,14 +59,105 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Implementations.cs",
-              "DocumentMoniker": "C:\\Users\\danse\\source\\repos\\FEIService\\FEIService\\Implementations.cs",
-              "RelativeDocumentMoniker": "FEIService\\Implementations.cs",
-              "ToolTip": "C:\\Users\\danse\\source\\repos\\FEIService\\FEIService\\Implementations.cs",
-              "RelativeToolTip": "FEIService\\Implementations.cs",
-              "ViewState": "AQIAAAIDAAAAAAAAAAAAABsDAABJAAAA",
+              "Title": "ViewStudentInfo.cs",
+              "DocumentMoniker": "C:\\Users\\danse\\source\\repos\\FEIService\\Domain\\ViewStudentInfo.cs",
+              "RelativeDocumentMoniker": "Domain\\ViewStudentInfo.cs",
+              "ToolTip": "C:\\Users\\danse\\source\\repos\\FEIService\\Domain\\ViewStudentInfo.cs",
+              "RelativeToolTip": "Domain\\ViewStudentInfo.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-14T15:56:51.582Z",
+              "WhenOpened": "2024-06-18T21:53:38.325Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Career.cs",
+              "DocumentMoniker": "C:\\Users\\danse\\source\\repos\\FEIService\\Domain\\Career.cs",
+              "RelativeDocumentMoniker": "Domain\\Career.cs",
+              "ToolTip": "C:\\Users\\danse\\source\\repos\\FEIService\\Domain\\Career.cs",
+              "RelativeToolTip": "Domain\\Career.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-18T21:53:26.08Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Complements.cs",
+              "DocumentMoniker": "C:\\Users\\danse\\source\\repos\\FEIService\\FEIService\\Complements.cs",
+              "RelativeDocumentMoniker": "FEIService\\Complements.cs",
+              "ToolTip": "C:\\Users\\danse\\source\\repos\\FEIService\\FEIService\\Complements.cs",
+              "RelativeToolTip": "FEIService\\Complements.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-18T19:51:44.434Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\danse\\source\\repos\\FEIService\\Host\\Program.cs",
+              "RelativeDocumentMoniker": "Host\\Program.cs",
+              "ToolTip": "C:\\Users\\danse\\source\\repos\\FEIService\\Host\\Program.cs",
+              "RelativeToolTip": "Host\\Program.cs",
+              "ViewState": "AQIAALEAAAAAAAAAAAAtwMQAAAAxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-18T16:07:10.76Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Appointment.cs",
+              "DocumentMoniker": "C:\\Users\\danse\\source\\repos\\FEIService\\Domain\\Appointment.cs",
+              "RelativeDocumentMoniker": "Domain\\Appointment.cs",
+              "ToolTip": "C:\\Users\\danse\\source\\repos\\FEIService\\Domain\\Appointment.cs",
+              "RelativeToolTip": "Domain\\Appointment.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-18T15:25:36.996Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "IAppointment.cs",
+              "DocumentMoniker": "C:\\Users\\danse\\source\\repos\\FEIService\\Domain\\Intafaces\\IAppointment.cs",
+              "RelativeDocumentMoniker": "Domain\\Intafaces\\IAppointment.cs",
+              "ToolTip": "C:\\Users\\danse\\source\\repos\\FEIService\\Domain\\Intafaces\\IAppointment.cs",
+              "RelativeToolTip": "Domain\\Intafaces\\IAppointment.cs",
+              "ViewState": "AQIAAD0AAAAAAAAAAAAtwEcAAAA4AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-18T15:05:00.501Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AppointmentTest.cs",
+              "DocumentMoniker": "C:\\Users\\danse\\source\\repos\\FEIService\\UnitTestFEI\\AppointmentTest.cs",
+              "RelativeDocumentMoniker": "UnitTestFEI\\AppointmentTest.cs",
+              "ToolTip": "C:\\Users\\danse\\source\\repos\\FEIService\\UnitTestFEI\\AppointmentTest.cs",
+              "RelativeToolTip": "UnitTestFEI\\AppointmentTest.cs",
+              "ViewState": "AQIAAC0AAAAAAAAAAAAAAEIAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-18T15:04:46.051Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\danse\\source\\repos\\FEIService\\FEIService\\Program.cs",
+              "RelativeDocumentMoniker": "FEIService\\Program.cs",
+              "ToolTip": "C:\\Users\\danse\\source\\repos\\FEIService\\FEIService\\Program.cs",
+              "RelativeToolTip": "FEIService\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-17T03:28:36.054Z",
               "EditorCaption": ""
             }
           ]

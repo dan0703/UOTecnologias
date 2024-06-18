@@ -31,11 +31,11 @@ namespace Service
         public Domain.ViewStudentInfo LogIn(string studentId, string password)
         {
             Domain.ViewStudentInfo studentInfo = null;
-
             using (FEIDBEntities context = new FEIDBEntities())
             {
                 try
                 {
+
                     var foundStudent = context.ViewStudents.Where(x => x.IdStudent == studentId).FirstOrDefault();
                     if (foundStudent != null)
                     {
@@ -53,18 +53,22 @@ namespace Service
                             studentInfo.tutorName = foundStudent.Name;
                         }
                     }
+
                 }
                 catch (EntityException ex)
                 {
                     log.Error(errorEntityExceptionMessage, ex);
-
-
+                    Console.WriteLine(ex);
                 }
                 catch (Exception ex)
                 {
                     log.Error("Error inesperado en LogIn", ex);
+                    Console.WriteLine(ex);
+
                 }
             }
+            Console.WriteLine(studentInfo.fullName);
+
             return studentInfo;
         }
     }
@@ -102,7 +106,7 @@ namespace Service
                 }
                 catch (Exception ex)
                 {
-                    log.Error("Error inesperado en LogIn", ex);
+                    log.Error("Error inesperado en GetTutorById", ex);
                 }
 
             }
@@ -623,6 +627,7 @@ namespace Service
                         existingAppointment.Status = (short)AppointmentStatus.CanceledBySecretary;
                         existingAppointment.NotAttendedReason = reason;
                         context.SaveChanges();
+                        Console.WriteLine("Cita cancelada con éxito.");
                     }
                     else
                     {
@@ -793,8 +798,9 @@ namespace Service
                 try
                 {
                     var appointments = context.ViewAppointments
-                                    .Where(x => DbFunctions.TruncateTime(x.AttendedDate) == date.Date)
-                                    .ToList();
+                        .Where(x => DbFunctions.TruncateTime(x.AttendedDate) == date.Date && x.Status == 1)
+                        .ToList();
+
 
                     foreach (var appointment in appointments)
                     {

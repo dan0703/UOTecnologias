@@ -1,0 +1,16 @@
+﻿C:\Users\danse\source\repos\FEIService\Domain\Appointment.cs
+C:\Users\danse\source\repos\FEIService\Domain\Career.cs
+C:\Users\danse\source\repos\FEIService\Domain\Intafaces\IAppointment.cs
+C:\Users\danse\source\repos\FEIService\Domain\Intafaces\ICareer.cs
+C:\Users\danse\source\repos\FEIService\Domain\Intafaces\IProcedure.cs
+C:\Users\danse\source\repos\FEIService\Domain\Intafaces\IStudent.cs
+C:\Users\danse\source\repos\FEIService\Domain\Intafaces\ITutor.cs
+C:\Users\danse\source\repos\FEIService\Domain\Intafaces\IViewStudentInfo.cs
+C:\Users\danse\source\repos\FEIService\Domain\Procedure.cs
+C:\Users\danse\source\repos\FEIService\Domain\Properties\AssemblyInfo.cs
+C:\Users\danse\source\repos\FEIService\Domain\Student.cs
+C:\Users\danse\source\repos\FEIService\Domain\StudentCallbackChanels.cs
+C:\Users\danse\source\repos\FEIService\Domain\Tutor.cs
+C:\Users\danse\source\repos\FEIService\Domain\ViewAppointment.cs
+C:\Users\danse\source\repos\FEIService\Domain\ViewStudentInfo.cs
+C:\Users\danse\source\repos\FEIService\Domain\ViewStudentsQueueReport.cs
