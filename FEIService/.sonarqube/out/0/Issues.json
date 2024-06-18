@@ -1,0 +1,2462 @@
+{
+  "$schema": "http://json.schemastore.org/sarif-1.0.0",
+  "version": "1.0.0",
+  "runs": [
+    {
+      "tool": {
+        "name": "Microsoft (R) Visual C# Compiler",
+        "version": "4.9.0.0",
+        "fileVersion": "4.9.0-3.24121.1 (a98c90d5)",
+        "semanticVersion": "4.9.0",
+        "language": "en-US"
+      },
+      "results": [
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'Administrator'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/Administrator.cs",
+                "region": {
+                  "startLine": 15,
+                  "startColumn": 26,
+                  "endLine": 15,
+                  "endColumn": 39
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'Administrator.IdAdministrator'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/Administrator.cs",
+                "region": {
+                  "startLine": 17,
+                  "startColumn": 20,
+                  "endLine": 17,
+                  "endColumn": 35
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'Administrator.FullName'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/Administrator.cs",
+                "region": {
+                  "startLine": 18,
+                  "startColumn": 23,
+                  "endLine": 18,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'Administrator.Users_IdUser'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/Administrator.cs",
+                "region": {
+                  "startLine": 19,
+                  "startColumn": 20,
+                  "endLine": 19,
+                  "endColumn": 32
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'Administrator.User_IdUser'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/Administrator.cs",
+                "region": {
+                  "startLine": 20,
+                  "startColumn": 20,
+                  "endLine": 20,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'Administrator.User'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/Administrator.cs",
+                "region": {
+                  "startLine": 22,
+                  "startColumn": 29,
+                  "endLine": 22,
+                  "endColumn": 33
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'Appointment'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/Appointment.cs",
+                "region": {
+                  "startLine": 15,
+                  "startColumn": 26,
+                  "endLine": 15,
+                  "endColumn": 37
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'Appointment.IdAppointment'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/Appointment.cs",
+                "region": {
+                  "startLine": 17,
+                  "startColumn": 20,
+                  "endLine": 17,
+                  "endColumn": 33
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'Appointment.AttendedDate'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/Appointment.cs",
+                "region": {
+                  "startLine": 18,
+                  "startColumn": 32,
+                  "endLine": 18,
+                  "endColumn": 44
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'Appointment.Duration'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/Appointment.cs",
+                "region": {
+                  "startLine": 19,
+                  "startColumn": 21,
+                  "endLine": 19,
+                  "endColumn": 29
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'Appointment.Status'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/Appointment.cs",
+                "region": {
+                  "startLine": 20,
+                  "startColumn": 22,
+                  "endLine": 20,
+                  "endColumn": 28
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'Appointment.NotAttendedReason'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/Appointment.cs",
+                "region": {
+                  "startLine": 21,
+                  "startColumn": 23,
+                  "endLine": 21,
+                  "endColumn": 40
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'Appointment.Student_IdStudent'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/Appointment.cs",
+                "region": {
+                  "startLine": 22,
+                  "startColumn": 23,
+                  "endLine": 22,
+                  "endColumn": 40
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'Appointment.Procedure_IdProcedure'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/Appointment.cs",
+                "region": {
+                  "startLine": 23,
+                  "startColumn": 20,
+                  "endLine": 23,
+                  "endColumn": 41
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'Appointment.Procedure'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/Appointment.cs",
+                "region": {
+                  "startLine": 25,
+                  "startColumn": 34,
+                  "endLine": 25,
+                  "endColumn": 43
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'Appointment.Student'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/Appointment.cs",
+                "region": {
+                  "startLine": 26,
+                  "startColumn": 32,
+                  "endLine": 26,
+                  "endColumn": 39
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'Career'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/Career.cs",
+                "region": {
+                  "startLine": 15,
+                  "startColumn": 26,
+                  "endLine": 15,
+                  "endColumn": 32
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'Career.Career()'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/Career.cs",
+                "region": {
+                  "startLine": 18,
+                  "startColumn": 16,
+                  "endLine": 18,
+                  "endColumn": 22
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'Career.IdCareer'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/Career.cs",
+                "region": {
+                  "startLine": 23,
+                  "startColumn": 20,
+                  "endLine": 23,
+                  "endColumn": 28
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'Career.CareerName'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/Career.cs",
+                "region": {
+                  "startLine": 24,
+                  "startColumn": 23,
+                  "endLine": 24,
+                  "endColumn": 33
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'Career.Students'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/Career.cs",
+                "region": {
+                  "startLine": 27,
+                  "startColumn": 45,
+                  "endLine": 27,
+                  "endColumn": 53
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'FEIDBEntities'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/FEIDB.Context.cs",
+                "region": {
+                  "startLine": 16,
+                  "startColumn": 26,
+                  "endLine": 16,
+                  "endColumn": 39
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'FEIDBEntities.FEIDBEntities()'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/FEIDB.Context.cs",
+                "region": {
+                  "startLine": 18,
+                  "startColumn": 16,
+                  "endLine": 18,
+                  "endColumn": 29
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'FEIDBEntities.OnModelCreating(DbModelBuilder)'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/FEIDB.Context.cs",
+                "region": {
+                  "startLine": 23,
+                  "startColumn": 33,
+                  "endLine": 23,
+                  "endColumn": 48
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'FEIDBEntities.Administrators'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/FEIDB.Context.cs",
+                "region": {
+                  "startLine": 28,
+                  "startColumn": 45,
+                  "endLine": 28,
+                  "endColumn": 59
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'FEIDBEntities.Appointments'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/FEIDB.Context.cs",
+                "region": {
+                  "startLine": 29,
+                  "startColumn": 43,
+                  "endLine": 29,
+                  "endColumn": 55
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'FEIDBEntities.Careers'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/FEIDB.Context.cs",
+                "region": {
+                  "startLine": 30,
+                  "startColumn": 38,
+                  "endLine": 30,
+                  "endColumn": 45
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'FEIDBEntities.Procedures'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/FEIDB.Context.cs",
+                "region": {
+                  "startLine": 31,
+                  "startColumn": 41,
+                  "endLine": 31,
+                  "endColumn": 51
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'FEIDBEntities.Students'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/FEIDB.Context.cs",
+                "region": {
+                  "startLine": 32,
+                  "startColumn": 39,
+                  "endLine": 32,
+                  "endColumn": 47
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'FEIDBEntities.Tutors'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/FEIDB.Context.cs",
+                "region": {
+                  "startLine": 33,
+                  "startColumn": 37,
+                  "endLine": 33,
+                  "endColumn": 43
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'FEIDBEntities.Users'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/FEIDB.Context.cs",
+                "region": {
+                  "startLine": 34,
+                  "startColumn": 36,
+                  "endLine": 34,
+                  "endColumn": 41
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'FEIDBEntities.GetStudentInfoes'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/FEIDB.Context.cs",
+                "region": {
+                  "startLine": 35,
+                  "startColumn": 46,
+                  "endLine": 35,
+                  "endColumn": 62
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'FEIDBEntities.ViewStudentInfoes'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/FEIDB.Context.cs",
+                "region": {
+                  "startLine": 36,
+                  "startColumn": 47,
+                  "endLine": 36,
+                  "endColumn": 64
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'FEIDBEntities.ViewStudents'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/FEIDB.Context.cs",
+                "region": {
+                  "startLine": 37,
+                  "startColumn": 43,
+                  "endLine": 37,
+                  "endColumn": 55
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'FEIDBEntities.ViewAppointments'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/FEIDB.Context.cs",
+                "region": {
+                  "startLine": 38,
+                  "startColumn": 47,
+                  "endLine": 38,
+                  "endColumn": 63
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'FEIDBEntities.ViewAppointmentReports'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/FEIDB.Context.cs",
+                "region": {
+                  "startLine": 39,
+                  "startColumn": 53,
+                  "endLine": 39,
+                  "endColumn": 75
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'FEIDBEntities.ViewStudentsQueueReports'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/FEIDB.Context.cs",
+                "region": {
+                  "startLine": 40,
+                  "startColumn": 55,
+                  "endLine": 40,
+                  "endColumn": 79
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'GetStudentInfo'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/GetStudentInfo.cs",
+                "region": {
+                  "startLine": 15,
+                  "startColumn": 26,
+                  "endLine": 15,
+                  "endColumn": 40
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'GetStudentInfo.IdStudent'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/GetStudentInfo.cs",
+                "region": {
+                  "startLine": 17,
+                  "startColumn": 23,
+                  "endLine": 17,
+                  "endColumn": 32
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'GetStudentInfo.FullName'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/GetStudentInfo.cs",
+                "region": {
+                  "startLine": 18,
+                  "startColumn": 23,
+                  "endLine": 18,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'GetStudentInfo.Tutor_IdTutor'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/GetStudentInfo.cs",
+                "region": {
+                  "startLine": 19,
+                  "startColumn": 20,
+                  "endLine": 19,
+                  "endColumn": 33
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'GetStudentInfo.Career_IdCareer'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/GetStudentInfo.cs",
+                "region": {
+                  "startLine": 20,
+                  "startColumn": 20,
+                  "endLine": 20,
+                  "endColumn": 35
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'GetStudentInfo.Password'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/GetStudentInfo.cs",
+                "region": {
+                  "startLine": 21,
+                  "startColumn": 23,
+                  "endLine": 21,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'Procedure'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/Procedure.cs",
+                "region": {
+                  "startLine": 15,
+                  "startColumn": 26,
+                  "endLine": 15,
+                  "endColumn": 35
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'Procedure.Procedure()'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/Procedure.cs",
+                "region": {
+                  "startLine": 18,
+                  "startColumn": 16,
+                  "endLine": 18,
+                  "endColumn": 25
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'Procedure.IdProcedure'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/Procedure.cs",
+                "region": {
+                  "startLine": 23,
+                  "startColumn": 20,
+                  "endLine": 23,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'Procedure.Name'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/Procedure.cs",
+                "region": {
+                  "startLine": 24,
+                  "startColumn": 23,
+                  "endLine": 24,
+                  "endColumn": 27
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'Procedure.Appointments'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/Procedure.cs",
+                "region": {
+                  "startLine": 27,
+                  "startColumn": 49,
+                  "endLine": 27,
+                  "endColumn": 61
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'Student'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/Student.cs",
+                "region": {
+                  "startLine": 15,
+                  "startColumn": 26,
+                  "endLine": 15,
+                  "endColumn": 33
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'Student.Student()'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/Student.cs",
+                "region": {
+                  "startLine": 18,
+                  "startColumn": 16,
+                  "endLine": 18,
+                  "endColumn": 23
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'Student.IdStudent'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/Student.cs",
+                "region": {
+                  "startLine": 23,
+                  "startColumn": 23,
+                  "endLine": 23,
+                  "endColumn": 32
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'Student.FullName'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/Student.cs",
+                "region": {
+                  "startLine": 24,
+                  "startColumn": 23,
+                  "endLine": 24,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'Student.Tutor_IdTutor'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/Student.cs",
+                "region": {
+                  "startLine": 25,
+                  "startColumn": 20,
+                  "endLine": 25,
+                  "endColumn": 33
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'Student.User_IdUser'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/Student.cs",
+                "region": {
+                  "startLine": 26,
+                  "startColumn": 20,
+                  "endLine": 26,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'Student.Career_IdCareer'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/Student.cs",
+                "region": {
+                  "startLine": 27,
+                  "startColumn": 20,
+                  "endLine": 27,
+                  "endColumn": 35
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'Student.Matricula'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/Student.cs",
+                "region": {
+                  "startLine": 28,
+                  "startColumn": 23,
+                  "endLine": 28,
+                  "endColumn": 32
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'Student.Appointments'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/Student.cs",
+                "region": {
+                  "startLine": 31,
+                  "startColumn": 49,
+                  "endLine": 31,
+                  "endColumn": 61
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'Student.Career'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/Student.cs",
+                "region": {
+                  "startLine": 32,
+                  "startColumn": 31,
+                  "endLine": 32,
+                  "endColumn": 37
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'Student.Tutor'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/Student.cs",
+                "region": {
+                  "startLine": 33,
+                  "startColumn": 30,
+                  "endLine": 33,
+                  "endColumn": 35
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'Student.User'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/Student.cs",
+                "region": {
+                  "startLine": 34,
+                  "startColumn": 29,
+                  "endLine": 34,
+                  "endColumn": 33
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'Tutor'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/Tutor.cs",
+                "region": {
+                  "startLine": 15,
+                  "startColumn": 26,
+                  "endLine": 15,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'Tutor.Tutor()'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/Tutor.cs",
+                "region": {
+                  "startLine": 18,
+                  "startColumn": 16,
+                  "endLine": 18,
+                  "endColumn": 21
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'Tutor.IdTutor'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/Tutor.cs",
+                "region": {
+                  "startLine": 23,
+                  "startColumn": 20,
+                  "endLine": 23,
+                  "endColumn": 27
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'Tutor.Name'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/Tutor.cs",
+                "region": {
+                  "startLine": 24,
+                  "startColumn": 23,
+                  "endLine": 24,
+                  "endColumn": 27
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'Tutor.Students'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/Tutor.cs",
+                "region": {
+                  "startLine": 27,
+                  "startColumn": 45,
+                  "endLine": 27,
+                  "endColumn": 53
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'User'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/User.cs",
+                "region": {
+                  "startLine": 15,
+                  "startColumn": 26,
+                  "endLine": 15,
+                  "endColumn": 30
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'User.User()'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/User.cs",
+                "region": {
+                  "startLine": 18,
+                  "startColumn": 16,
+                  "endLine": 18,
+                  "endColumn": 20
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'User.IdUser'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/User.cs",
+                "region": {
+                  "startLine": 24,
+                  "startColumn": 20,
+                  "endLine": 24,
+                  "endColumn": 26
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'User.Password'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/User.cs",
+                "region": {
+                  "startLine": 25,
+                  "startColumn": 23,
+                  "endLine": 25,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'User.Administrators'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/User.cs",
+                "region": {
+                  "startLine": 28,
+                  "startColumn": 51,
+                  "endLine": 28,
+                  "endColumn": 65
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'User.Students'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/User.cs",
+                "region": {
+                  "startLine": 30,
+                  "startColumn": 45,
+                  "endLine": 30,
+                  "endColumn": 53
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'ViewAppointment'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/ViewAppointment.cs",
+                "region": {
+                  "startLine": 15,
+                  "startColumn": 26,
+                  "endLine": 15,
+                  "endColumn": 41
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'ViewAppointment.IdAppointment'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/ViewAppointment.cs",
+                "region": {
+                  "startLine": 17,
+                  "startColumn": 20,
+                  "endLine": 17,
+                  "endColumn": 33
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'ViewAppointment.AttendedDate'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/ViewAppointment.cs",
+                "region": {
+                  "startLine": 18,
+                  "startColumn": 32,
+                  "endLine": 18,
+                  "endColumn": 44
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'ViewAppointment.Duration'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/ViewAppointment.cs",
+                "region": {
+                  "startLine": 19,
+                  "startColumn": 21,
+                  "endLine": 19,
+                  "endColumn": 29
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'ViewAppointment.Status'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/ViewAppointment.cs",
+                "region": {
+                  "startLine": 20,
+                  "startColumn": 22,
+                  "endLine": 20,
+                  "endColumn": 28
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'ViewAppointment.IdStudent'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/ViewAppointment.cs",
+                "region": {
+                  "startLine": 21,
+                  "startColumn": 23,
+                  "endLine": 21,
+                  "endColumn": 32
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'ViewAppointment.FullName'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/ViewAppointment.cs",
+                "region": {
+                  "startLine": 22,
+                  "startColumn": 23,
+                  "endLine": 22,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'ViewAppointment.Name'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/ViewAppointment.cs",
+                "region": {
+                  "startLine": 23,
+                  "startColumn": 23,
+                  "endLine": 23,
+                  "endColumn": 27
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'ViewAppointment.IdTutor'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/ViewAppointment.cs",
+                "region": {
+                  "startLine": 24,
+                  "startColumn": 20,
+                  "endLine": 24,
+                  "endColumn": 27
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'ViewAppointment.IdProcedure'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/ViewAppointment.cs",
+                "region": {
+                  "startLine": 25,
+                  "startColumn": 20,
+                  "endLine": 25,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'ViewAppointment.Expr1'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/ViewAppointment.cs",
+                "region": {
+                  "startLine": 26,
+                  "startColumn": 23,
+                  "endLine": 26,
+                  "endColumn": 28
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'ViewAppointmentReport'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/ViewAppointmentReport.cs",
+                "region": {
+                  "startLine": 15,
+                  "startColumn": 26,
+                  "endLine": 15,
+                  "endColumn": 47
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'ViewAppointmentReport.IdAppointment'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/ViewAppointmentReport.cs",
+                "region": {
+                  "startLine": 17,
+                  "startColumn": 20,
+                  "endLine": 17,
+                  "endColumn": 33
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'ViewAppointmentReport.AttendedDate'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/ViewAppointmentReport.cs",
+                "region": {
+                  "startLine": 18,
+                  "startColumn": 32,
+                  "endLine": 18,
+                  "endColumn": 44
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'ViewAppointmentReport.Duration'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/ViewAppointmentReport.cs",
+                "region": {
+                  "startLine": 19,
+                  "startColumn": 21,
+                  "endLine": 19,
+                  "endColumn": 29
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'ViewAppointmentReport.Status'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/ViewAppointmentReport.cs",
+                "region": {
+                  "startLine": 20,
+                  "startColumn": 22,
+                  "endLine": 20,
+                  "endColumn": 28
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'ViewAppointmentReport.FullName'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/ViewAppointmentReport.cs",
+                "region": {
+                  "startLine": 21,
+                  "startColumn": 23,
+                  "endLine": 21,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'ViewAppointmentReport.Name'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/ViewAppointmentReport.cs",
+                "region": {
+                  "startLine": 22,
+                  "startColumn": 23,
+                  "endLine": 22,
+                  "endColumn": 27
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'ViewAppointmentReport.CareerName'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/ViewAppointmentReport.cs",
+                "region": {
+                  "startLine": 23,
+                  "startColumn": 23,
+                  "endLine": 23,
+                  "endColumn": 33
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'ViewStudent'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/ViewStudent.cs",
+                "region": {
+                  "startLine": 15,
+                  "startColumn": 26,
+                  "endLine": 15,
+                  "endColumn": 37
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'ViewStudent.IdStudent'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/ViewStudent.cs",
+                "region": {
+                  "startLine": 17,
+                  "startColumn": 23,
+                  "endLine": 17,
+                  "endColumn": 32
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'ViewStudent.FullName'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/ViewStudent.cs",
+                "region": {
+                  "startLine": 18,
+                  "startColumn": 23,
+                  "endLine": 18,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'ViewStudent.IdCareer'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/ViewStudent.cs",
+                "region": {
+                  "startLine": 19,
+                  "startColumn": 20,
+                  "endLine": 19,
+                  "endColumn": 28
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'ViewStudent.CareerName'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/ViewStudent.cs",
+                "region": {
+                  "startLine": 20,
+                  "startColumn": 23,
+                  "endLine": 20,
+                  "endColumn": 33
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'ViewStudent.IdTutor'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/ViewStudent.cs",
+                "region": {
+                  "startLine": 21,
+                  "startColumn": 20,
+                  "endLine": 21,
+                  "endColumn": 27
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'ViewStudent.Name'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/ViewStudent.cs",
+                "region": {
+                  "startLine": 22,
+                  "startColumn": 23,
+                  "endLine": 22,
+                  "endColumn": 27
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'ViewStudent.Password'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/ViewStudent.cs",
+                "region": {
+                  "startLine": 23,
+                  "startColumn": 23,
+                  "endLine": 23,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'ViewStudent.IdUser'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/ViewStudent.cs",
+                "region": {
+                  "startLine": 24,
+                  "startColumn": 20,
+                  "endLine": 24,
+                  "endColumn": 26
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'ViewStudentInfo'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/ViewStudentInfo.cs",
+                "region": {
+                  "startLine": 15,
+                  "startColumn": 26,
+                  "endLine": 15,
+                  "endColumn": 41
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'ViewStudentInfo.IdStudent'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/ViewStudentInfo.cs",
+                "region": {
+                  "startLine": 17,
+                  "startColumn": 23,
+                  "endLine": 17,
+                  "endColumn": 32
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'ViewStudentInfo.FullName'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/ViewStudentInfo.cs",
+                "region": {
+                  "startLine": 18,
+                  "startColumn": 23,
+                  "endLine": 18,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'ViewStudentInfo.Career_IdCareer'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/ViewStudentInfo.cs",
+                "region": {
+                  "startLine": 19,
+                  "startColumn": 20,
+                  "endLine": 19,
+                  "endColumn": 35
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'ViewStudentInfo.Tutor_IdTutor'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/ViewStudentInfo.cs",
+                "region": {
+                  "startLine": 20,
+                  "startColumn": 20,
+                  "endLine": 20,
+                  "endColumn": 33
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'ViewStudentInfo.IdUser'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/ViewStudentInfo.cs",
+                "region": {
+                  "startLine": 21,
+                  "startColumn": 20,
+                  "endLine": 21,
+                  "endColumn": 26
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'ViewStudentInfo.Password'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/ViewStudentInfo.cs",
+                "region": {
+                  "startLine": 22,
+                  "startColumn": 23,
+                  "endLine": 22,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'ViewStudentsQueueReport'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/ViewStudentsQueueReport.cs",
+                "region": {
+                  "startLine": 15,
+                  "startColumn": 26,
+                  "endLine": 15,
+                  "endColumn": 49
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'ViewStudentsQueueReport.IdAppointment'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/ViewStudentsQueueReport.cs",
+                "region": {
+                  "startLine": 17,
+                  "startColumn": 20,
+                  "endLine": 17,
+                  "endColumn": 33
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'ViewStudentsQueueReport.AttendedDate'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/ViewStudentsQueueReport.cs",
+                "region": {
+                  "startLine": 18,
+                  "startColumn": 32,
+                  "endLine": 18,
+                  "endColumn": 44
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'ViewStudentsQueueReport.Status'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/ViewStudentsQueueReport.cs",
+                "region": {
+                  "startLine": 19,
+                  "startColumn": 22,
+                  "endLine": 19,
+                  "endColumn": 28
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'ViewStudentsQueueReport.IdStudent'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/ViewStudentsQueueReport.cs",
+                "region": {
+                  "startLine": 20,
+                  "startColumn": 23,
+                  "endLine": 20,
+                  "endColumn": 32
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "CS1591",
+          "level": "warning",
+          "message": "Missing XML comment for publicly visible type or member 'ViewStudentsQueueReport.FullName'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/ViewStudentsQueueReport.cs",
+                "region": {
+                  "startLine": 21,
+                  "startColumn": 23,
+                  "endLine": 21,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 4
+          }
+        },
+        {
+          "ruleId": "S1118",
+          "level": "warning",
+          "message": "Add a 'protected' constructor or the 'static' keyword to the class declaration.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/Program.cs",
+                "region": {
+                  "startLine": 9,
+                  "startColumn": 20,
+                  "endLine": 9,
+                  "endColumn": 27
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1186",
+          "level": "warning",
+          "message": "Add a nested comment explaining why this method is empty, throw a 'NotSupportedException' or complete the implementation.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/danse/source/repos/FEIService/DataAccess/Program.cs",
+                "region": {
+                  "startLine": 11,
+                  "startColumn": 21,
+                  "endLine": 11,
+                  "endColumn": 25
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        }
+      ],
+      "rules": {
+        "CS1591": {
+          "id": "CS1591",
+          "shortDescription": "Missing XML comment for publicly visible type or member",
+          "fullDescription": "The /doc compiler option was specified, but one or more constructs did not have comments.",
+          "defaultLevel": "warning",
+          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS1591)",
+          "properties": {
+            "category": "Compiler",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Compiler",
+              "Telemetry"
+            ]
+          }
+        },
+        "S1118": {
+          "id": "S1118",
+          "shortDescription": "Utility classes should not have public constructors",
+          "fullDescription": "Whenever there are portions of code that are duplicated and do not depend on the state of their container class, they can be centralized inside a \"utility class\". A utility class is a class that only has static members, hence it should not be instantiated.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1118",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S1186": {
+          "id": "S1186",
+          "shortDescription": "Methods should not be empty",
+          "fullDescription": "An empty method is generally considered bad practice and can lead to confusion, readability, and maintenance issues. Empty methods bring no functionality and are misleading to others as they might think the method implementation fulfills a specific and identified requirement.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1186",
+          "properties": {
+            "category": "Critical Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

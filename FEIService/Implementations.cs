@@ -1,11 +1,13 @@
 ﻿using DataAccess;
 using Domain;
 using FEIService;
+using log4net;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Core;
 using System.Data.Entity.Validation;
+using System.Diagnostics;
 using System.Linq;
 using System.ServiceModel;
 using System.Threading;
@@ -18,6 +20,8 @@ namespace Service
     /// </summary>
     public partial class Implementations : IViewStudentInfo
     {
+        private static string errorEntityExceptionMessage = "Error al acceder a la base de datos(EntityException)";
+        private static readonly ILog log = LogManager.GetLogger(typeof(Implementations));
         /// <summary>
         /// Intenta autenticar a un estudiante basado en su identificación y contraseña.
         /// </summary>
@@ -35,29 +39,30 @@ namespace Service
                     var foundStudent = context.ViewStudents.Where(x => x.IdStudent == studentId).FirstOrDefault();
                     if (foundStudent != null)
                     {
+
                         var foundUser = context.Users.Where(x => x.IdUser == foundStudent.IdUser).FirstOrDefault();
-                        if (foundUser.Password != null)
+                       
+                        if (foundUser!=null && foundUser.Password == password)
                         {
-                            if (foundUser.Password == password)
-                            {
-                                studentInfo = new Domain.ViewStudentInfo();
-                                studentInfo.fullName = foundStudent.FullName;
-                                studentInfo.idCareer = foundStudent.IdCareer;
-                                studentInfo.idTutor = foundStudent.IdTutor;
-                                studentInfo.idStudent = foundStudent.IdStudent;
-                                studentInfo.careerName = foundStudent.CareerName;
-                                studentInfo.tutorName = foundStudent.Name;
-                            }
+                            studentInfo = new Domain.ViewStudentInfo();
+                            studentInfo.fullName = foundStudent.FullName;
+                            studentInfo.idCareer = foundStudent.IdCareer;
+                            studentInfo.idTutor = foundStudent.IdTutor;
+                            studentInfo.idStudent = foundStudent.IdStudent;
+                            studentInfo.careerName = foundStudent.CareerName;
+                            studentInfo.tutorName = foundStudent.Name;
                         }
                     }
                 }
                 catch (EntityException ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    log.Error(errorEntityExceptionMessage, ex);
+
+
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    log.Error("Error inesperado en LogIn", ex);
                 }
             }
             return studentInfo;
@@ -82,20 +87,22 @@ namespace Service
                 try
                 {
                     var foundTutor = context.Tutors.Where(x => x.IdTutor == idTutor).FirstOrDefault();
-                    tutor = new Domain.Tutor()
+                    if (foundTutor!=null)
                     {
-                        idTutor = foundTutor.IdTutor,
-                        fullName = foundTutor.Name,
-                    };
-
+                        tutor = new Domain.Tutor()
+                        {
+                            idTutor = foundTutor.IdTutor,
+                            fullName = foundTutor.Name,
+                        };
+                    }
                 }
                 catch (EntityException ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    log.Error(errorEntityExceptionMessage, ex);
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    log.Error("Error inesperado en LogIn", ex);
                 }
 
             }
@@ -129,15 +136,17 @@ namespace Service
                 }
                 catch (EntityException ex)
                 {
+                    log.Error(errorEntityExceptionMessage, ex);
                     Console.WriteLine(ex.Message);
                 }
                 catch (Exception ex)
                 {
+                    log.Error("Error inesperado en GetTutorsList", ex);
                     Console.WriteLine(ex.Message);
+
                 }
 
             }
-
             return tutorList;
         }
     }
@@ -171,11 +180,11 @@ namespace Service
                 }
                 catch (EntityException ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    log.Error(errorEntityExceptionMessage, ex);
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    log.Error("Error inesperado en GetCareerList", ex);
                 }
             }
             return careerList;
@@ -200,22 +209,23 @@ namespace Service
                 try
                 {
                     var foundStudent = context.Students.Where(x => x.IdStudent == idStudent).FirstOrDefault();
-                    student = new Domain.Student()
+                    if(foundStudent!= null)
                     {
-                        idStudent = idStudent,
-                        matricula = foundStudent.Matricula,
-                        fullName = foundStudent.FullName,
-
-                    };
-
+                        student = new Domain.Student()
+                        {
+                            idStudent = idStudent,
+                            matricula = foundStudent.Matricula,
+                            fullName = foundStudent.FullName
+                        };
+                    }
                 }
                 catch (EntityException ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    log.Error(errorEntityExceptionMessage, ex);
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    log.Error("Error inesperado en GetStudentNameById", ex);
                 }
 
             }
@@ -259,7 +269,8 @@ namespace Service
                             var existingStudent = context.Students.FirstOrDefault(s => s.IdStudent == newStudent.IdStudent);
                             if (existingStudent != null)
                             {
-                                throw new ArgumentNullException("Ya existe un registro con esa matricula");
+                                Console.WriteLine("Ya existe un registro con esa matricula");
+                                return isSuccessful;
                             }
 
                             context.Students.Add(newStudent);
@@ -271,18 +282,11 @@ namespace Service
                         catch (DbEntityValidationException ex)
                         {
                             dbContextTransaction.Rollback();
-                            foreach (var validationErrors in ex.EntityValidationErrors)
-                            {
-                                foreach (var validationError in validationErrors.ValidationErrors)
-                                {
-                                    Console.WriteLine($"Property: {validationError.PropertyName} Error: {validationError.ErrorMessage}");
-                                }
-                            }
+                            log.Error(errorEntityExceptionMessage, ex);
                         }
                         catch (Exception ex)
                         {
-                            dbContextTransaction.Rollback();
-                            Console.WriteLine(ex.Message);
+                            log.Error("Error inesperado en RegisterStudent", ex);
                         }
                     }
                 }
@@ -298,19 +302,19 @@ namespace Service
     [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Reentrant)]
     public partial class Implementations : IAppointment
     {
+
         private static readonly Dictionary<string, StudentCallbackChanels> studentList = new Dictionary<string, StudentCallbackChanels>();
         private static readonly List<Domain.Appointment> appointmentList = new List<Domain.Appointment>();
-        private static System.Threading.Timer timer;
-        private static DateTime startTime;
-        private static bool isTimerStoped = false;
+        private static readonly System.Threading.Timer timer = new System.Threading.Timer(TimerElapsed, null, Timeout.Infinite, 1000);
+        private static bool isTimerStopped = false;
+        private static readonly Stopwatch stopwatch = Stopwatch.StartNew();
 
         /// <summary>
-        /// Constructor de la clase Implementations.
-        /// Inicializa el temporizador para notificar a los clientes.
+        /// Constructor publico de la clase Implementations.
         /// </summary>
         public Implementations()
         {
-            timer = new System.Threading.Timer(TimerElapsed, null, Timeout.Infinite, 1000);
+            
         }
 
         /// <summary>
@@ -318,7 +322,8 @@ namespace Service
         /// </summary>
         private static void StartTimer()
         {
-            startTime = DateTime.Now;
+            isTimerStopped = false;
+            stopwatch.Restart();
             timer.Change(0, 1000); 
         }
 
@@ -327,7 +332,8 @@ namespace Service
         /// </summary>
         private static void StopTimer()
         {
-            timer.Change(Timeout.Infinite, 1000); 
+            stopwatch.Stop();
+            timer.Change(Timeout.Infinite, Timeout.Infinite);
         }
 
         /// <summary>
@@ -335,20 +341,20 @@ namespace Service
         /// </summary>
         private static void TimerElapsed(object state)
         {
-            if (!isTimerStoped)
+            if (!isTimerStopped)
             {
-                var elapsedTime = DateTime.Now - startTime;
+                var elapsedTime = stopwatch.Elapsed;
                 try
                 {
                     foreach (var student in studentList.Values)
                     {
                         student.appointmentCallback.UpdateTimer(elapsedTime);
                     }
-                }catch(Exception ex)
-                {
-                    Console.WriteLine(ex.ToString());
                 }
-                
+                catch (Exception ex)
+                {
+                    log.Error("Error inesperado en TimerElapsed", ex);
+                }
             }
         }
 
@@ -357,32 +363,82 @@ namespace Service
         /// </summary>
         private void NotifyClients()
         {
+            
             var students = studentList.Select(x => x.Key).ToList();
             foreach (var student in students)
             {
-                studentList[student].appointmentCallback.SetAppointments(appointmentList);
+                try
+                {
+                    studentList[student].appointmentCallback.SetAppointments(appointmentList);
+                }
+                catch (Exception ex)
+                {
+                    studentList.Remove(student);
+                    log.Error("Error inesperado, canal de callback de cliente no disponible", ex);
+
+                }
             }
         }
+        /// <summary>
+        /// Metodo realizado unicamente para razones de pruebas unitaras.
+        /// Registra un nuevo objeto tipo Appointment en la lista AppointmentList y registrarlo en base de datos
+        /// </summary>
+        /// <param name="newAppointment">Datos de la nueva cita.</param>
+        /// 
+        public int AddAppointmentToAppointmentList(Domain.Appointment newAppointment)
+        {
+            appointmentList.Add(newAppointment);
+            using (FEIDBEntities context = new FEIDBEntities())
+            {
+                try
+                {
+                    var newAppointmentAux = new DataAccess.Appointment()
+                    {
 
+                        AttendedDate = DateTime.Now,
+                        Duration = 0,
+                        Status = (short)newAppointment.status,
+                        Student_IdStudent = newAppointment.student_IdStudent,
+                        Procedure_IdProcedure = newAppointment.procedure_IdProcedure,
+                        NotAttendedReason = "",
+                    };
+
+                    context.Appointments.Add(newAppointmentAux);
+                    context.SaveChanges();
+                    newAppointment.idAppointment = newAppointmentAux.IdAppointment;
+                }
+                catch (DbEntityValidationException ex)
+                {
+                    log.Error(errorEntityExceptionMessage, ex);
+                }
+                catch (Exception ex)
+                {
+                    log.Error("Error inesperado en AppointmentRequest", ex);
+                }
+                return newAppointment.idAppointment;
+            }
+        }
         /// <summary>
         /// Registra una nueva cita.
         /// </summary>
         /// <param name="newAppointment">Datos de la nueva cita.</param>
+        /// 
         public void AppointmentRequest(Domain.Appointment newAppointment)
         {
-            if (appointmentList.FirstOrDefault(x => x.student_IdStudent == newAppointment.student_IdStudent) == null)
+            if (appointmentList.Find(x => x.student_IdStudent == newAppointment.student_IdStudent) == null)
             {
                 using (FEIDBEntities context = new FEIDBEntities())
                 {
                     try
                     {
                         appointmentList.Add(newAppointment);
-                        int status = Constants.Pending;
+                        AppointmentStatus status = AppointmentStatus.Pending;
                         if (appointmentList.Count == 1)
                         {
-                            status = Constants.InProgress;
-                            appointmentList.Remove(newAppointment);
+                            status = AppointmentStatus.InProgress;
+                            
                         }
+                        appointmentList.Remove(newAppointment);
                         var newAppointmentAux = new DataAccess.Appointment()
                         {
                             
@@ -400,26 +456,19 @@ namespace Service
                     }
                     catch (DbEntityValidationException ex)
                     {
-                        foreach (var entityValidationErrors in ex.EntityValidationErrors)
-                        {
-                            foreach (var validationError in entityValidationErrors.ValidationErrors)
-                            {
-                                Console.WriteLine($"Property: {validationError.PropertyName}, Error: {validationError.ErrorMessage}");
-                            }
-                        }
+                        log.Error(errorEntityExceptionMessage, ex);
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine($"Error al guardar en la base de datos: {ex.Message}");
+                        log.Error("Error inesperado en AppointmentRequest", ex);
                     }
                 }
+                appointmentList.Add(newAppointment);
 
                 if (appointmentList.Count == 1) 
                 {
-                    isTimerStoped = false;
                     StartTimer();
                 }
-                appointmentList.Add(newAppointment);
 
             }
             NotifyClients();
@@ -435,40 +484,51 @@ namespace Service
         }
 
         /// <summary>
-        /// Deja una cita específica.
+        /// Determina el estado de la cita que se desea abandonar.
+        /// </summary>
+        private AppointmentStatus SetStatus()
+        {
+            AppointmentStatus status = AppointmentStatus.Pending;
+            if (appointmentList.Count == 0)
+            {
+                status = AppointmentStatus.InProgress;
+            }
+            return status;
+        }
+
+        /// <summary>
+        /// Abandona una cita específica.
         /// </summary>
         /// <param name="studentId">ID del estudiante.</param>
         /// <param name="reason">Motivo de la cancelación.</param>
         public void LeaveAppointment(string studentId, string reason)
         {
-            var appointmentToRemove = appointmentList.FirstOrDefault(x => x.student_IdStudent == studentId);
+            var appointmentToRemove = appointmentList.Find(x => x.student_IdStudent == studentId);
+            appointmentList.Remove(appointmentToRemove);
+
+            AppointmentStatus status = SetStatus();
 
             if (appointmentToRemove != null)
             {
-                var wasFirstAppointment = (appointmentToRemove == appointmentList.First());
-                int status = Constants.Pending;
-                appointmentList.Remove(appointmentToRemove);
-                if (appointmentList.Count == 0)
-                {
-                    status = Constants.InProgress;
-                }
+                var wasFirstAppointment = (appointmentToRemove == appointmentList.FirstOrDefault());
+
                 using (FEIDBEntities context = new FEIDBEntities())
                 {
                     try
                     {
                         var existingAppointment = context.Appointments
-                                         .Where(a => a.Student_IdStudent == studentId && a.Status == status)
+                                         .Where(a => a.Student_IdStudent == studentId && a.Status == (int)status)
                                          .OrderByDescending(a => a.IdAppointment)
                                          .FirstOrDefault();
 
                         if (existingAppointment != null)
                         {
-                            if(existingAppointment.Status== Constants.InProgress)
+                            if(existingAppointment.Status == (int)AppointmentStatus.InProgress)
                             {
-                                var elapsedTime = DateTime.Now - startTime;
+                                var elapsedTime = stopwatch.Elapsed;
                                 existingAppointment.Duration = (int)elapsedTime.TotalSeconds;
                             }
-                            existingAppointment.Status = (short)Constants.CanceledByStudent;
+                            existingAppointment.Status = (short)AppointmentStatus.CanceledByStudent;
                             existingAppointment.NotAttendedReason = reason; 
                             context.SaveChanges();
                         }
@@ -479,33 +539,36 @@ namespace Service
                     }
                     catch (DbEntityValidationException ex)
                     {
-                        foreach (var entityValidationErrors in ex.EntityValidationErrors)
-                        {
-                            foreach (var validationError in entityValidationErrors.ValidationErrors)
-                            {
-                                Console.WriteLine($"Property: {validationError.PropertyName}, Error: {validationError.ErrorMessage}");
-                            }
-                        }
+                        log.Error("Error al acceder a la base de datos ", ex);
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine($"Error al guardar en la base de datos: {ex.Message}");
+                        log.Error("Error inesperado en LeaveAppointment", ex);
                     }
                 }
-
-                if (appointmentList.Count == 0)
-                {
-                    Console.WriteLine("stop");
-                    isTimerStoped = true;
-                    StopTimer();
-
-                }
-                else if (wasFirstAppointment)
-                {
-                    StartTimer();
-                }
+                StopStartTimer(wasFirstAppointment);
+                
             }
             NotifyClients();
+        }
+
+        /// <summary>
+        /// Inicia o detiene el timer con el tiempo transcurrido de la cita en progreso
+        /// </summary>
+        /// <param name="wasFirstAppointment">ID del estudiante.</param>
+        private static void StopStartTimer(bool wasFirstAppointment)
+        {
+            if (appointmentList.Count == 0)
+            {
+                Console.WriteLine("stop");
+                isTimerStopped = true;
+                StopTimer();
+
+            }
+            else if (wasFirstAppointment)
+            {
+                StartTimer();
+            }
         }
 
         /// <summary>
@@ -535,7 +598,8 @@ namespace Service
         /// <param name="reason">Motivo de la cancelación.</param>
         public void CancelAppointment(int idAppointment, string reason)
         {
-            var appointmentToRemove = appointmentList.FirstOrDefault(x => x.idAppointment == idAppointment);
+            
+            var appointmentToRemove = appointmentList.Find(x => x.idAppointment == idAppointment);
             
             if (appointmentToRemove != null)
             {
@@ -556,7 +620,7 @@ namespace Service
                     if (existingAppointment != null)
                     {
                         existingAppointment.Duration = 0;
-                        existingAppointment.Status = (short)Constants.CanceledBySecretary;
+                        existingAppointment.Status = (short)AppointmentStatus.CanceledBySecretary;
                         existingAppointment.NotAttendedReason = reason;
                         context.SaveChanges();
                     }
@@ -567,17 +631,11 @@ namespace Service
                 }
                 catch (DbEntityValidationException ex)
                 {
-                    foreach (var entityValidationErrors in ex.EntityValidationErrors)
-                    {
-                        foreach (var validationError in entityValidationErrors.ValidationErrors)
-                        {
-                            Console.WriteLine($"Property: {validationError.PropertyName}, Error: {validationError.ErrorMessage}");
-                        }
-                    }
+                    log.Error(errorEntityExceptionMessage, ex);
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Error al guardar en la base de datos: {ex.Message}");
+                    log.Error("Error inesperado en CancelAppointment", ex);
                 }
             }
             NotifyClients();
@@ -586,10 +644,9 @@ namespace Service
         /// Marca una cita como no atendida con el motivo especificado.
         /// </summary>
         /// <param name="idAppointment">ID de la cita a marcar.</param>
-        /// <param name="reason">Motivo de no asistencia.</param>
         public void MarkAppointmentAsAttended(int idAppointment)
         {
-            var appointmentToRemove = appointmentList.FirstOrDefault(x => x.idAppointment == idAppointment);
+            var appointmentToRemove = appointmentList.Find(x => x.idAppointment == idAppointment);
             if (appointmentToRemove != null)
             {
                 appointmentList.Remove(appointmentToRemove);
@@ -604,12 +661,12 @@ namespace Service
 
                     if (existingAppointment != null)
                     {
-                        if (existingAppointment.Status == Constants.InProgress)
+                        if (existingAppointment.Status == (int)AppointmentStatus.InProgress)
                         {
-                            var elapsedTime = DateTime.Now - startTime;
+                            var elapsedTime = stopwatch.Elapsed;
                             existingAppointment.Duration = (int)elapsedTime.TotalSeconds;
                         }
-                        existingAppointment.Status = (short)Constants.Attended;
+                        existingAppointment.Status = (short)AppointmentStatus.Attended;
                         context.SaveChanges();
                         Console.WriteLine($"Se ha marcado la cita como atendida {idAppointment} del estudiante con matricula: {existingAppointment.Student_IdStudent}.");
 
@@ -621,17 +678,11 @@ namespace Service
                 }
                 catch (DbEntityValidationException ex)
                 {
-                    foreach (var entityValidationErrors in ex.EntityValidationErrors)
-                    {
-                        foreach (var validationError in entityValidationErrors.ValidationErrors)
-                        {
-                            Console.WriteLine($"Property: {validationError.PropertyName}, Error: {validationError.ErrorMessage}");
-                        }
-                    }
+                    log.Error(errorEntityExceptionMessage, ex);
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Error al guardar en la base de datos: {ex.Message}");
+                    log.Error("Error inesperado en MarkAppointmentAsAttended", ex);
                 }
             }
 
@@ -645,7 +696,7 @@ namespace Service
         /// <param name="reason">Motivo de no asistencia.</param>
         public void MarkAppointmentAsNotAttended(int idAppointment, string reason)
         {
-            var appointmentToRemove = appointmentList.FirstOrDefault(x => x.idAppointment == idAppointment);
+            var appointmentToRemove = appointmentList.Find(x => x.idAppointment == idAppointment);
             if (appointmentToRemove != null)
             {
                 appointmentList.Remove(appointmentToRemove);
@@ -661,7 +712,7 @@ namespace Service
                     if (existingAppointment != null)
                     {
                         existingAppointment.Duration = 0;
-                        existingAppointment.Status = (short)Constants.NotAttended;
+                        existingAppointment.Status = (short)AppointmentStatus.NotAttended;
                         existingAppointment.NotAttendedReason = reason;
                         context.SaveChanges();
                         if (studentList.ContainsKey(existingAppointment.Student_IdStudent))
@@ -676,17 +727,11 @@ namespace Service
                 }
                 catch (DbEntityValidationException ex)
                 {
-                    foreach (var entityValidationErrors in ex.EntityValidationErrors)
-                    {
-                        foreach (var validationError in entityValidationErrors.ValidationErrors)
-                        {
-                            Console.WriteLine($"Property: {validationError.PropertyName}, Error: {validationError.ErrorMessage}");
-                        }
-                    }
+                    log.Error(errorEntityExceptionMessage, ex);
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Error al guardar en la base de datos: {ex.Message}");
+                    log.Error("Error inesperado en MarkAppointmentAsNotAttended", ex);
                 }
             }
 
@@ -706,7 +751,7 @@ namespace Service
                 {
                     
                     var studentsQueue = context.ViewStudentsQueueReports
-                    .Where(x => x.Status== Constants.Pending)
+                    .Where(x => x.Status== (int)AppointmentStatus.Pending)
                     .ToList();
 
                     foreach (var student in studentsQueue)
@@ -723,9 +768,13 @@ namespace Service
                     }
 
                 }
+                catch (DbEntityValidationException ex)
+                {
+                    log.Error(errorEntityExceptionMessage, ex);
+                }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.ToString());
+                    log.Error("Error inesperado en GetStudentsQueueReport", ex);
                 }
             }
             return studentsReport;
@@ -766,9 +815,13 @@ namespace Service
                     }
                     
                 }
+                catch (DbEntityValidationException ex)
+                {
+                    log.Error(errorEntityExceptionMessage, ex);
+                }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.ToString());
+                    log.Error("Error inesperado en GetAppointmentReportByDate", ex);
                 }
             }
             return report;
@@ -781,13 +834,12 @@ namespace Service
     /// </summary>
     public partial class Implementations : IProcedure
     {
+        /// <summary>
+        /// Obtiene una lista de todos los tipos de tramites disponibles.
+        /// </summary>
+        /// <returns>Lista de objetos Domain.Procedure que representan los tramites.</returns>
         public List<Domain.Procedure> GetProcedureList()
         {
-
-            /// <summary>
-            /// Obtiene una lista de todos los tipos de tramites disponibles.
-            /// </summary>
-            /// <returns>Lista de objetos Domain.Procedure que representan los tramites.</returns>
             List<Domain.Procedure> procedureList = new List<Domain.Procedure>();
             using (FEIDBEntities context = new FEIDBEntities())
             {
@@ -807,9 +859,13 @@ namespace Service
                         procedureList.Add(procedureInfo);
                     }
                 }
+                catch (DbEntityValidationException ex)
+                {
+                    log.Error(errorEntityExceptionMessage, ex);
+                }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"{ex.Message}");
+                    log.Error("Error inesperado en GetProcedureList", ex);
                 }
             }
             return procedureList;

@@ -18,3 +18,47 @@ C:\Users\danse\source\repos\FEIService\Host\bin\Debug\EntityFramework.SqlServer.
 C:\Users\danse\source\repos\FEIService\Host\obj\Debug\Host.csproj.Up2Date
 C:\Users\danse\source\repos\FEIService\Host\obj\Debug\Host.exe
 C:\Users\danse\source\repos\FEIService\Host\obj\Debug\Host.pdb
+C:\Users\danse\source\repos\FEIService\Host\bin\Debug\Service.xml
+C:\Users\danse\source\repos\FEIService\Host\bin\Debug\Host.xml
+C:\Users\danse\source\repos\FEIService\Host\bin\Debug\DataAccess.xml
+C:\Users\danse\source\repos\FEIService\Host\bin\Debug\Domain.xml
+C:\Users\danse\OneDrive - Universidad Veracruzana\Escritorio\Host.exe.config
+C:\Users\danse\OneDrive - Universidad Veracruzana\Escritorio\Host.exe
+C:\Users\danse\OneDrive - Universidad Veracruzana\Escritorio\Host.pdb
+C:\Users\danse\OneDrive - Universidad Veracruzana\Escritorio\Host.xml
+C:\Users\danse\source\repos\FEIService\Host\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\danse\source\repos\FEIService\Host\bin\Debug\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\danse\source\repos\FEIService\Host\bin\Debug\Microsoft.Extensions.Configuration.dll
+C:\Users\danse\source\repos\FEIService\Host\bin\Debug\Microsoft.Extensions.Configuration.FileExtensions.dll
+C:\Users\danse\source\repos\FEIService\Host\bin\Debug\Microsoft.Extensions.Configuration.Json.dll
+C:\Users\danse\source\repos\FEIService\Host\bin\Debug\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\danse\source\repos\FEIService\Host\bin\Debug\Microsoft.Extensions.FileProviders.Physical.dll
+C:\Users\danse\source\repos\FEIService\Host\bin\Debug\Microsoft.Extensions.FileSystemGlobbing.dll
+C:\Users\danse\source\repos\FEIService\Host\bin\Debug\Microsoft.Extensions.Primitives.dll
+C:\Users\danse\source\repos\FEIService\Host\bin\Debug\System.Buffers.dll
+C:\Users\danse\source\repos\FEIService\Host\bin\Debug\System.Memory.dll
+C:\Users\danse\source\repos\FEIService\Host\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\danse\source\repos\FEIService\Host\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\danse\source\repos\FEIService\Host\bin\Debug\System.Text.Encodings.Web.dll
+C:\Users\danse\source\repos\FEIService\Host\bin\Debug\System.Text.Json.dll
+C:\Users\danse\source\repos\FEIService\Host\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\danse\source\repos\FEIService\Host\bin\Debug\System.ValueTuple.dll
+C:\Users\danse\source\repos\FEIService\Host\bin\Debug\log4net.dll
+C:\Users\danse\source\repos\FEIService\Host\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\danse\source\repos\FEIService\Host\bin\Debug\Microsoft.Extensions.Configuration.xml
+C:\Users\danse\source\repos\FEIService\Host\bin\Debug\Microsoft.Extensions.Configuration.Abstractions.xml
+C:\Users\danse\source\repos\FEIService\Host\bin\Debug\Microsoft.Extensions.Configuration.FileExtensions.xml
+C:\Users\danse\source\repos\FEIService\Host\bin\Debug\Microsoft.Extensions.Configuration.Json.xml
+C:\Users\danse\source\repos\FEIService\Host\bin\Debug\Microsoft.Extensions.FileProviders.Abstractions.xml
+C:\Users\danse\source\repos\FEIService\Host\bin\Debug\Microsoft.Extensions.FileProviders.Physical.xml
+C:\Users\danse\source\repos\FEIService\Host\bin\Debug\Microsoft.Extensions.FileSystemGlobbing.xml
+C:\Users\danse\source\repos\FEIService\Host\bin\Debug\Microsoft.Extensions.Primitives.xml
+C:\Users\danse\source\repos\FEIService\Host\bin\Debug\System.Buffers.xml
+C:\Users\danse\source\repos\FEIService\Host\bin\Debug\System.Memory.xml
+C:\Users\danse\source\repos\FEIService\Host\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\danse\source\repos\FEIService\Host\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\danse\source\repos\FEIService\Host\bin\Debug\System.Text.Encodings.Web.xml
+C:\Users\danse\source\repos\FEIService\Host\bin\Debug\System.Text.Json.xml
+C:\Users\danse\source\repos\FEIService\Host\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\danse\source\repos\FEIService\Host\bin\Debug\System.ValueTuple.xml
+C:\Users\danse\source\repos\FEIService\Host\bin\Debug\log4net.xml

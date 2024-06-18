@@ -1,10 +1,12 @@
 ﻿using System;
-using System.CodeDom.Compiler;
 using System.Collections.Generic;
+using System.Globalization;
 using System.ServiceModel;
 using System.Text.RegularExpressions;
 using FEIService;
 using Service;
+
+
 
 namespace Host
 {
@@ -19,12 +21,10 @@ namespace Host
         /// <param name="args">Argumentos de línea de comandos (no utilizados).</param>
         static void Main(string[] args)
         {
+
             using (ServiceHost host = new ServiceHost(typeof(Implementations)))
             {
-                // Iniciar el host del servicio
                 host.Open();
-
-                // Mostrar el menú principal
                 MainMenu();
             }
         }
@@ -100,7 +100,7 @@ namespace Host
                 Console.Write("Ingrese la fecha para el reporte (yyyy-MM-dd): ");
                 string inputDate = Console.ReadLine();
 
-                if (DateTime.TryParseExact(inputDate, "yyyy-MM-dd", null, System.Globalization.DateTimeStyles.None, out reportDate))
+                if (DateTime.TryParseExact(inputDate, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out reportDate))
                 {
                     isValidDate = true;
                 }
@@ -280,6 +280,18 @@ namespace Host
             PressAnyKey(); // Esperar a que el usuario presione una tecla
         }
 
+
+        static bool RegexMatchWithTimeout(string input, string pattern, TimeSpan timeout)
+        {
+            try
+            {
+                return Regex.IsMatch(input, pattern, RegexOptions.None, timeout);
+            }
+            catch (RegexMatchTimeoutException)
+            {
+                return false;
+            }
+        }
         /// <summary>
         /// Registra un nuevo estudiante en el sistema, solicitando información como nombre, matrícula, contraseña, etc.
         /// </summary>
@@ -295,7 +307,7 @@ namespace Host
 
             Console.Write("Ingrese la matricula del estudiante: ");
             string studentId = Console.ReadLine();
-            while (string.IsNullOrEmpty(studentId) || Regex.IsMatch(studentId, @"^zs\d{8}$")) // Validación de la matrícula
+            while (string.IsNullOrEmpty(studentId) || !RegexMatchWithTimeout(studentId, @"^zs\d{8}$", TimeSpan.FromSeconds(1)))
             {
                 Console.WriteLine("Por favor, ingrese una matricula valida:");
                 studentId = Console.ReadLine();

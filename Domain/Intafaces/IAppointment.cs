@@ -38,14 +38,14 @@ namespace Domain
         /// </summary>
         /// <param name="idAppointment">ID de la cita a cancelar.</param>
         /// <param name="reason">Motivo de la cancelación.</param>
-        [OperationContract]
+        [OperationContract(IsOneWay = true)]
         void CancelAppointment(int idAppointment, string reason);
 
         /// <summary>
         /// Marca una cita como atendida.
         /// </summary>
         /// <param name="idAppointment">ID de la cita.</param>
-        [OperationContract]
+        [OperationContract(IsOneWay = true)]
         void MarkAppointmentAsAttended(int idAppointment);
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace Domain
         /// </summary>
         /// <param name="idAppointment">ID de la cita.</param>
         /// <param name="reason">Motivo por el cual la cita no fue atendida.</param>
-        [OperationContract]
+        [OperationContract(IsOneWay = true)]
         void MarkAppointmentAsNotAttended(int idAppointment, string reason);
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace Domain
         /// Permite que un estudiante se una a la sesión del servicio.
         /// </summary>
         /// <param name="idStudent">ID del estudiante que se une a la sesión.</param>
-        [OperationContract]
+        [OperationContract(IsOneWay = true)]
         void JoinToSesion(string idStudent);
 
     }

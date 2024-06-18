@@ -1,0 +1,7 @@
+﻿C:\Users\danse\source\repos\FEIService\FEIService\Complements.cs
+C:\Users\danse\source\repos\FEIService\FEIService\Constants.cs
+C:\Users\danse\source\repos\FEIService\FEIService\Implementations.cs
+C:\Users\danse\source\repos\FEIService\FEIService\Program.cs
+C:\Users\danse\source\repos\FEIService\FEIService\Properties\AssemblyInfo.cs
+C:\Users\danse\source\repos\FEIService\FEIService\App.config
+C:\Users\danse\source\repos\FEIService\FEIService\packages.config

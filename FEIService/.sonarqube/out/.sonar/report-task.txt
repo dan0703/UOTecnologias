@@ -1,0 +1,6 @@
+projectKey=FEIService
+serverUrl=http://localhost:9000
+serverVersion=10.5.1.90531
+dashboardUrl=http://localhost:9000/dashboard?id=FEIService
+ceTaskId=353e68ac-b88c-47dc-82b6-951802fddcf5
+ceTaskUrl=http://localhost:9000/api/ce/task?id=353e68ac-b88c-47dc-82b6-951802fddcf5

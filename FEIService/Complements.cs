@@ -10,7 +10,7 @@ namespace FEIService
     /// <summary>
     /// Proporciona métodos auxiliares y utilidades para diversas funcionalidades.
     /// </summary>
-    public class Complements
+    public static class Complements
     {
         /// <summary>
         /// Encripta una contraseña utilizando el algoritmo de hash SHA-256.

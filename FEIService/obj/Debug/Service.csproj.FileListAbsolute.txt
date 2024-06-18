@@ -15,3 +15,8 @@ C:\Users\danse\source\repos\FEIService\FEIService\bin\Debug\EntityFramework.SqlS
 C:\Users\danse\source\repos\FEIService\FEIService\obj\Debug\Service.csproj.Up2Date
 C:\Users\danse\source\repos\FEIService\FEIService\obj\Debug\Service.exe
 C:\Users\danse\source\repos\FEIService\FEIService\obj\Debug\Service.pdb
+C:\Users\danse\source\repos\FEIService\FEIService\bin\Debug\Service.xml
+C:\Users\danse\source\repos\FEIService\FEIService\bin\Debug\DataAccess.xml
+C:\Users\danse\source\repos\FEIService\FEIService\bin\Debug\Domain.xml
+C:\Users\danse\source\repos\FEIService\FEIService\bin\Debug\log4net.dll
+C:\Users\danse\source\repos\FEIService\FEIService\bin\Debug\log4net.xml
